@@ -1,3 +1,15 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout fullscreen>
+	<md-sidenav #sidenav>
+	    <md-nav-list>
+	        <span md-line>Nestor Huallpa</span>
+	        <span md-line class="secondary">Fiuba</span>
+	      
+	    </md-nav-list>
+  	</md-sidenav>
+	<md-toolbar color="primary">
+		<button md-icon-button (click)="sidenav.open()">
+		  Menu
+		</button>
+		{{title}}
+	</md-toolbar>
+</md-sidenav-layout>
