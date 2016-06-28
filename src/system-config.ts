@@ -22,6 +22,7 @@ const materialPkgs:string[] = [
   'toolbar',
   'list',
   'sidenav',
+  'icon',
 ];
 
 materialPkgs.forEach((pkg) => {
