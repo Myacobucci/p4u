@@ -23,6 +23,7 @@ const materialPkgs:string[] = [
   'list',
   'sidenav',
   'icon',
+  'input',
 ];
 
 materialPkgs.forEach((pkg) => {
@@ -40,6 +41,7 @@ const barrels: string[] = [
   '@angular/compiler',
   '@angular/http',
   '@angular/router',
+  '@angular/router-deprecated',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
 
@@ -49,6 +51,10 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/my-login',
+  'app/my-vidriera',
+  'app/vidriera/components/vidriera',
+  'app/login/login',
   /** @cli-barrel */
 ];
 
