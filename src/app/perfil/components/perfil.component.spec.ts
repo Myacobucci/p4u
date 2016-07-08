@@ -10,12 +10,11 @@ import {
   async, inject
 } from '@angular/core/testing';
 
-import { VidrieraComponent } from './vidriera.component';
-import { VidrieraService } from '../services/vidriera.service';
+import { PerfilComponent } from './perfil.component';
 
-describe('Component: Vidriera', () => {
+describe('Component: Perfil', () => {
   it('should create an instance', () => {
-    let component = new VidrieraComponent(new VidrieraService());
+    let component = new PerfilComponent();
     expect(component).toBeTruthy();
   });
 });

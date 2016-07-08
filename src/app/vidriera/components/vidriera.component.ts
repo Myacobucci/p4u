@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdButton} from '@angular2-material/button';
+import { VidrieraService } from '../services/vidriera.service';
 
 
 
@@ -12,41 +13,19 @@ import {MdButton} from '@angular2-material/button';
   styleUrls: ['vidriera.component.css'],
   directives: [
   	MD_BUTTON_DIRECTIVES,
-    MD_CARD_DIRECTIVES
+    MD_CARD_DIRECTIVES,
   ],
+  providers: [VidrieraService],
 })
 export class VidrieraComponent implements OnInit {
 
-  constructor() {}
+  constructor(private vidriera:VidrieraService) {}
 
 
-  articulos: Object[] = [
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    
-    
-  ];
+  articulos: Object[];
 
   ngOnInit() {
+    this.articulos = this.vidriera.getArticulos();
   }
 
 }

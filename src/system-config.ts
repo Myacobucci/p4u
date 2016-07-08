@@ -24,6 +24,8 @@ const materialPkgs:string[] = [
   'sidenav',
   'icon',
   'input',
+  'radio',
+  'checkbox'
 ];
 
 materialPkgs.forEach((pkg) => {
@@ -55,6 +57,7 @@ const barrels: string[] = [
   'app/my-vidriera',
   'app/vidriera/components/vidriera',
   'app/login/login',
+  'app/perfil/perfil',
   /** @cli-barrel */
 ];
 

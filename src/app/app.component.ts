@@ -7,6 +7,7 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import { VidrieraComponent } from './vidriera/components/vidriera.component';
 import { LoginComponent } from './login/components/login.component';
+import { PerfilComponent } from './perfil/components/perfil.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 
@@ -25,7 +26,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     MdButton,
     MdIcon,
     VidrieraComponent,
-    LoginComponent
+    LoginComponent,
+    PerfilComponent
   ],
 })
 
@@ -40,6 +42,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     component: VidrieraComponent,
     name: 'Vidriera',
     useAsDefault: true
+  },
+  {
+    path: '/perfil',
+    component: PerfilComponent,
+    name: 'Perfil',
   }
 ])
 
