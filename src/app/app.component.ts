@@ -8,6 +8,7 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import { VidrieraComponent } from './vidriera/components/vidriera.component';
 import { LoginComponent } from './login/components/login.component';
 import { PerfilComponent } from './perfil/components/perfil.component';
+import { RubrosComponent } from './rubros/components/rubros.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 
@@ -36,6 +37,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     path: '/login',
     component: LoginComponent,
     name: 'Login',
+  },
+  {
+    path: '/rubros',
+    component: RubrosComponent,
+    name: 'Rubros',
   },
   {
     path: '/vidriera',
