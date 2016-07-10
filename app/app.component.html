@@ -1,0 +1,34 @@
+<md-sidenav-layout fullscreen>
+	<md-sidenav #sidenav>
+	    <md-nav-list>
+	      <a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="sidenav.close()">
+	        <md-icon md-list-icon>home</md-icon>
+	        <span md-line>Home</span>
+	      </a>
+	      <a md-list-item [routerLink]="['Login']" routerLinkActive="active" (click)="sidenav.close()">
+	        <md-icon md-list-icon>assignment ind</md-icon>
+	        <span md-line>Iniciar sesión</span>
+	      </a>
+	      <a md-list-item [routerLink]="['Perfil']" routerLinkActive="active" (click)="sidenav.close()">
+	        <md-icon md-list-icon>assignment ind</md-icon>
+	        <span md-line>Mi cuenta</span>
+	      </a>
+	      <a md-list-item [routerLink]="['Rubros']" routerLinkActive="active" (click)="sidenav.close()">
+	        <md-icon md-list-icon>assignment ind</md-icon>
+	        <span md-line>Mis Rubros</span>
+	      </a>
+	      <a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="sidenav.close()">
+	        <md-icon md-list-icon>list</md-icon>
+	        <span md-line>Mis regalos</span>
+	      </a>
+	    </md-nav-list>
+  	</md-sidenav>
+	<md-toolbar color="primary">
+		<button md-icon-button (click)="sidenav.open()">
+		  <md-icon>menu</md-icon>
+		</button>
+		{{title}}
+	</md-toolbar>
+	<router-outlet></router-outlet>
+</md-sidenav-layout>
+
