@@ -1,10 +1,10 @@
 <div class="card-container">
 	<md-card *ngFor="let articulo of articulos">
-	  <img md-card-image [alt]="articulo.nombre" src="default-store-350x350.jpg">
-	  <md-card-title>{{articulo.nombre}}</md-card-title>
+	  <img md-card-image [alt]="articulo.name" src="default-store-350x350.jpg">
+	  <md-card-title>{{articulo.name}}</md-card-title>
+
 	  <md-card-content class="secondary">
-	    Very ipsum such dolor amet wow very divs very content concern, very much develop much spans
-	    much layer so so scare such spans such padding many beta very layer much excuse.
+	    <h4>Precio: ${{articulo.cost}}</h4>
 	  </md-card-content>
 	  <md-card-actions align="end">
 	    <button md-button color="primary">Ver Detalle</button>

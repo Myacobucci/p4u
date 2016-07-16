@@ -12,6 +12,7 @@ import { RubrosComponent } from './rubros/components/rubros.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 
+
 @Component({
   moduleId: module.id,
   selector: 'app-root',

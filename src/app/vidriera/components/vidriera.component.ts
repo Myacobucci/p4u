@@ -3,6 +3,7 @@ import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdButton} from '@angular2-material/button';
 import { VidrieraService } from '../services/vidriera.service';
+import { Articulo } from './articulo'
 
 
 
@@ -18,14 +19,17 @@ import { VidrieraService } from '../services/vidriera.service';
   providers: [VidrieraService],
 })
 export class VidrieraComponent implements OnInit {
+  errorMessage: string;
+  articulos: Articulo[];
 
-  constructor(private vidriera:VidrieraService) {}
-
-
-  articulos: Object[];
+  constructor(private vidrieraService:VidrieraService) {}
 
   ngOnInit() {
-    this.articulos = this.vidriera.getArticulos();
+    this.vidrieraService.getArticulos()
+                        .subscribe(
+                          articulos => this.articulos = articulos,
+                          error => this.errorMessage = <any>error);
+
   }
 
 }
