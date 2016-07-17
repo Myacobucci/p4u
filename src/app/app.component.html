@@ -27,7 +27,20 @@
 		<button md-icon-button (click)="sidenav.open()">
 		  <md-icon>menu</md-icon>
 		</button>
-		{{title}}
+		<span>{{title}}</span>
+		<!-- This fills the remaining space of the current row -->
+  		<span class="toolbar-fill-remaining-space"></span>
+  		
+  		<div *ngIf="isLogged" class="my-perfil-link">
+			<a md-list-item [routerLink]="['Perfil']">
+	        	<span md-line>Mi cuenta</span>
+	      	</a>
+		</div>
+		<div *ngIf="!isLogged" class="my-login-link">
+			<a md-list-item [routerLink]="['Login']">
+	        	<span md-line>Login</span>
+	      	</a>
+		</div>
 	</md-toolbar>
 	<router-outlet></router-outlet>
 </md-sidenav-layout>

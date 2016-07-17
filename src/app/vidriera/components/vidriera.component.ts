@@ -3,7 +3,7 @@ import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdButton} from '@angular2-material/button';
 import { VidrieraService } from '../services/vidriera.service';
-import { Articulo } from './articulo'
+import { Articulo } from './articulo';
 
 
 

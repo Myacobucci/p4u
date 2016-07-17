@@ -61,5 +61,6 @@ export class AppComponent {
 
   title = 'Present for you';
 
+  isLogged = false;
   
 }
