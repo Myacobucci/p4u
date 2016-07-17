@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MdCheckbox} from '@angular2-material/checkbox';
-import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material/radio';
+import {MdRadioButton, MdRadioGroup} from '@angular2-material/radio';
 
 @Component({
   moduleId: module.id,
@@ -11,8 +11,7 @@ import {MdRadioButton, MdRadioGroup, MdRadioDispatcher} from '@angular2-material
     MdCheckbox,
     MdRadioGroup,
     MdRadioButton,
-  ],
-  providers: [MdRadioDispatcher],
+  ]
 })
 export class PerfilComponent implements OnInit {
 
