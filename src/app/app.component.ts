@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
@@ -9,6 +9,8 @@ import { VidrieraComponent } from './vidriera/components/vidriera.component';
 import { LoginComponent } from './login/components/login.component';
 import { PerfilComponent } from './perfil/components/perfil.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
+import { UserSettingsService } from './user-settings.service';
+import { UserState }     from './core/user-state';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
 
@@ -57,10 +59,34 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
   }
 ])
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'Present for you';
 
   isLogged = false;
+
+  userState:UserState;
   
+  constructor(private userSettingsService:UserSettingsService) {
+
+  }
+
+  ngOnInit() {
+    this.userState = new UserState();
+    console.log("Registrado en app component");
+    this.userSettingsService.userStateObs$.subscribe(
+        userState => {
+          console.log("Recibido");
+          this.userState = userState;
+          this.isLogged = userState.logged;
+        });
+    console.log(this.userSettingsService.userStateSource.observers);
+  }
+
+  doLogout() {
+      this.isLogged = false;
+      this.userState = new UserState();
+  }
+
+
 }

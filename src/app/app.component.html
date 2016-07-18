@@ -21,6 +21,10 @@
 	        <md-icon md-list-icon>list</md-icon>
 	        <span md-line>Mis regalos</span>
 	      </a>
+	      <a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="doLogout();sidenav.close()">
+	        <md-icon md-list-icon>list</md-icon>
+	        <span md-line>Cerrar sesion</span>
+	      </a>
 	    </md-nav-list>
   	</md-sidenav>
 	<md-toolbar color="primary">
@@ -33,7 +37,7 @@
   		
   		<div *ngIf="isLogged" class="my-perfil-link">
 			<a md-list-item [routerLink]="['Perfil']">
-	        	<span md-line>Mi cuenta</span>
+	        	<span md-line>{{userState.user.email}}</span>
 	      	</a>
 		</div>
 		<div *ngIf="!isLogged" class="my-login-link">

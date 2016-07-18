@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import { MdButton} from '@angular2-material/button';
 import { MdInput } from '@angular2-material/input';
+import { UserSettingsService } from '../../user-settings.service';
+import { LoginService } from '../services/login.service';
+import { UserState }     from '../../core/user-state';
 
 @Component({
   moduleId: module.id,
@@ -13,14 +16,35 @@ import { MdInput } from '@angular2-material/input';
   	MD_BUTTON_DIRECTIVES,
     MD_CARD_DIRECTIVES,
     MdInput,
-    MdButton
+    MdButton,
   ],
+  providers: [LoginService],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  constructor() {}
+  errorMessage:string;
+
+  constructor(private userSettingsService:UserSettingsService,
+              private loginService:LoginService) {}
 
   ngOnInit() {
+    
+  }
+
+  ngOnDestroy() {
+  }
+
+  doLogin(email:string, pass:string) {
+    console.log("Loguear " + email);
+    console.log("pass " + pass);
+    this.loginService.doLogin(email, pass)
+                        .subscribe(
+                          userState => this.updateState(userState),
+                          error =>  this.errorMessage = <any>error);
+  }
+
+  updateState(userState:UserState) {
+    this.userSettingsService.updateUserState(userState);
   }
 
 }

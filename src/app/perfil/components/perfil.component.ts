@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MdCheckbox} from '@angular2-material/checkbox';
 import {MD_RADIO_DIRECTIVES} from '@angular2-material/radio';
 
+
 @Component({
   moduleId: module.id,
   selector: 'app-perfil',
