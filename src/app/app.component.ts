@@ -11,9 +11,7 @@ import { PerfilComponent } from './perfil/components/perfil.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
 import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
-
-
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -42,7 +40,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
     name: 'Login',
   },
   {
-    path: '/rubros',
+    path: '/rubros',  
     component: RubrosComponent,
     name: 'Rubros',
   },
@@ -61,13 +59,14 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 
 export class AppComponent implements OnInit {
 
-  title = 'Present for you';
+  title = 'Present for you!!';
 
   isLogged = false;
 
   userState:UserState;
   
-  constructor(private userSettingsService:UserSettingsService) {
+  constructor(private userSettingsService:UserSettingsService,
+              private router:Router) {
 
   }
 
@@ -86,6 +85,8 @@ export class AppComponent implements OnInit {
   doLogout() {
       this.isLogged = false;
       this.userState = new UserState();
+      let link = ['/',];
+      this.router.navigate(link);
   }
 
 

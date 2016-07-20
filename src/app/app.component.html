@@ -5,23 +5,19 @@
 	        <md-icon md-list-icon>home</md-icon>
 	        <span md-line>Home</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Login']" routerLinkActive="active" (click)="sidenav.close()">
-	        <md-icon md-list-icon>assignment ind</md-icon>
-	        <span md-line>Iniciar sesión</span>
-	      </a>
-	      <a md-list-item [routerLink]="['Perfil']" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Perfil']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>assignment ind</md-icon>
 	        <span md-line>Mi cuenta</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Rubros']" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Rubros']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>assignment ind</md-icon>
 	        <span md-line>Mis Rubros</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Vidriera']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>list</md-icon>
 	        <span md-line>Mis regalos</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="doLogout();sidenav.close()">
+	      <a md-list-item [routerLink]="['Vidriera']" *ngIf="isLogged" routerLinkActive="active" (click)="doLogout();sidenav.close()">
 	        <md-icon md-list-icon>list</md-icon>
 	        <span md-line>Cerrar sesion</span>
 	      </a>

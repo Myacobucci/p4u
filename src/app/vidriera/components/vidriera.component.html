@@ -1,3 +1,4 @@
+<h3 class="seccion-title">Vidriera</h3>
 <div class="card-container">
 	<md-card *ngFor="let articulo of articulos">
 	  <img md-card-image [alt]="articulo.name" src="default-store-350x350.jpg">
@@ -12,3 +13,20 @@
 	  </md-card-actions>
 	</md-card>
 </div>
+
+  <h3  class="seccion-title">Recomendados para vos</h3>
+  <div class="card-container">
+    <md-card *ngFor="let articuloUser of articulosPorUsuario">
+	  <img md-card-image [alt]="articuloUser.name" src="default-store-350x350.jpg">
+	  <md-card-title>{{articuloUser.name}}</md-card-title>
+
+	  <md-card-content class="secondary">
+	    <h4>Precio: ${{articuloUser.cost}}</h4>
+	  </md-card-content>
+	  <md-card-actions align="end">
+	    <button md-button color="primary">Ver Detalle</button>
+	    <button md-button color="primary">Comprar</button>
+	  </md-card-actions>
+    </md-card>
+  </div>	
+

@@ -6,6 +6,7 @@ import { MdInput } from '@angular2-material/input';
 import { UserSettingsService } from '../../user-settings.service';
 import { LoginService } from '../services/login.service';
 import { UserState }     from '../../core/user-state';
+import { Router} from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage:string;
 
   constructor(private userSettingsService:UserSettingsService,
-              private loginService:LoginService) {}
+              private loginService:LoginService,
+              private router:Router) {}
 
   ngOnInit() {
     
@@ -45,6 +47,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   updateState(userState:UserState) {
     this.userSettingsService.updateUserState(userState);
+    let link = ['Vidriera',];
+    this.router.navigate(link);
   }
 
 }

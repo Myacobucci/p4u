@@ -9,11 +9,22 @@ import { Observable }     from 'rxjs/Observable';
 export class VidrieraService {
 
   private articulosUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/all";
+  private articulosPorUserUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/by-user/";
 
   constructor(private http:Http) {}
 
   public getArticulos(): Observable<Articulo[]> {
   	return this.http.get(this.articulosUrl)
+                  .map(this.extractData)
+                  .catch(this.handleError);
+  }
+
+  public getArticulosByUser(idUser:string):Observable<Articulo[]> {
+    console.log("usuario " + idUser);
+    //let url = this.articulosPorUserUrl + idUser;
+    let url = this.articulosPorUserUrl + "1";
+    console.log("url " + url);
+    return this.http.get(url)
                   .map(this.extractData)
                   .catch(this.handleError);
   }
@@ -34,29 +45,5 @@ export class VidrieraService {
     return Observable.throw(errMsg);
   }
 
-  articulos: Object[] = [
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Lapicera", precio: 10, rubro: "Libreria"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Alfajor", precio: 10, rubro: "Gastronomia"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-    {nombre: "Entradas", precio: 10, rubro: "Entretenimiento"},
-   
-  ];
 
 }
