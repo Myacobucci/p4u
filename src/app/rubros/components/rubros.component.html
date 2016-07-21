@@ -1,12 +1,21 @@
 <form (submit)="saveUser()">
 <div class="card-container">
-	<md-card *ngFor="let articulo of articulos">
-	  <md-checkbox [checked]="false" class="red" align="end">
-  		{{articulo.nombre}}
+	<md-card *ngFor="let preferencia of preferencias">
+	  <md-checkbox [checked]="false" class="red" align="left">
+  		{{preferencia.name}}
 	  </md-checkbox>
 	</md-card>
 </div>
 <div class="wrapper">
 <button md-raised-button color="accent">Guardar</button>
+</div>
+
+
+<div class="card-container">
+	<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
+	  <md-checkbox [checked]="false" class="red" align="left">
+  		{{preferenciaUser.name}}
+	  </md-checkbox>
+	</md-card>
 </div>
 </form>
