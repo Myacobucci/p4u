@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ChangeDetectionStrategy} from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MdButton } from '@angular2-material/button';
@@ -21,6 +21,8 @@ import { UserState }     from '../../core/user-state';
     MD_CARD_DIRECTIVES,
   ],
   providers: [VidrieraService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class VidrieraComponent implements OnInit {
   errorMessage: string;
@@ -59,11 +61,20 @@ export class VidrieraComponent implements OnInit {
 
   }
 
+
+  cargarArticulo(articulos:Articulo[]) {
+    this.articulosPorUsuario = articulos;
+    console.log("articulos recibido: " + this.articulosPorUsuario);
+    console.log("Esta logueado: " + this.isLogged);
+  
+  }
+
   cargarRecomendaciones(idUser:string) {
     this.vidrieraService.getArticulosByUser(idUser)
                         .subscribe(
-                          articulos => this.articulosPorUsuario = articulos,
+                          articulos => this.cargarArticulo(articulos),
                           error => this.errorMessage = <any>error);
   }
+
 
 }

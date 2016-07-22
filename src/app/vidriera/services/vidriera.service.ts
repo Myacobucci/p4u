@@ -31,7 +31,6 @@ export class VidrieraService {
 
   private extractData(res: Response) {
     let body = res.json();
-    console.debug(body);
     return body || { };
   }
 
