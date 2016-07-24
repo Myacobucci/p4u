@@ -7,11 +7,23 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  '@angular2-material': 'vendor/@angular2-material'
+  '@angular2-material': 'vendor/@angular2-material',
+  'immutable': 'vendor/immutable/dist/immutable.js',
+  'angular2-uuid': 'vendor/angular2-uuid/index.js',
+  'moment': 'vendor/moment/moment.js'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  'immutable':{
+    format: 'cjs'
+  },
+  'angular2-uuid':{
+    format: 'cjs'
+  },
+  'moment':{
+    format: 'cjs'
+  }
 };
 
 // put the names of any of your Material components here
@@ -31,7 +43,7 @@ const materialPkgs:string[] = [
 materialPkgs.forEach((pkg) => {
   packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
 });
-
+console.log(packages);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
@@ -50,15 +62,15 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
+  'immutable',
 
   // App specific barrels.
   'app',
   'app/shared',
-  'app/my-login',
-  'app/my-vidriera',
-  'app/vidriera/components/vidriera',
+  'app/vidriera/components',
   'app/login/login',
   'app/perfil/perfil',
+  'app/orden/components',
   /** @cli-barrel */
 ];
 

@@ -9,6 +9,7 @@ import { VidrieraComponent } from './vidriera/components/vidriera.component';
 import { LoginComponent } from './login/components/login.component';
 import { PerfilComponent } from './perfil/components/perfil.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
+import { OrdenComponent } from './orden/components/orden.component';
 import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angular/router-deprecated';
@@ -54,6 +55,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     path: '/perfil',
     component: PerfilComponent,
     name: 'Perfil',
+  },
+  {
+    path: '/orden',
+    component: OrdenComponent,
+    name: 'Orden',
   }
 ])
 
@@ -61,7 +67,7 @@ export class AppComponent implements OnInit {
 
   title = 'Present for you!!';
 
-  isLogged = false;
+  isLogged:boolean;
 
   userState:UserState;
   

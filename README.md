@@ -31,3 +31,15 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+===========================
+
+Instalar librerias de terceros
+Instalar moment
+https://github.com/angular/angular-cli/wiki/3rd-party-libs
+
+
+sudo typings install github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#b090bcf9ba9f756ec8ff53e7707269729172a325 --global --save
+
