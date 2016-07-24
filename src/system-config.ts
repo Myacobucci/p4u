@@ -59,6 +59,7 @@ const barrels: string[] = [
   'app/vidriera/components/vidriera',
   'app/login/login',
   'app/perfil/perfil',
+  'app/registracion/components/registracion'
   /** @cli-barrel */
 ];
 
