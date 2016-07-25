@@ -12,6 +12,7 @@ import { RubrosComponent } from './rubros/components/rubros.component';
 import { OrdenComponent } from './orden/components/orden.component';
 import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
+import { RegistracionComponent } from './registracion/components/registracion.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angular/router-deprecated';
 
 @Component({
@@ -30,7 +31,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     MdIcon,
     VidrieraComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    RegistracionComponent
   ],
 })
 
@@ -60,6 +62,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     path: '/orden',
     component: OrdenComponent,
     name: 'Orden',
+  },
+  {
+    path: '/registracion',
+    component: RegistracionComponent,
+    name: 'Registracion'
   }
 ])
 
