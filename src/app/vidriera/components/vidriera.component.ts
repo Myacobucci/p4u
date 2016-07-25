@@ -8,6 +8,7 @@ import { Articulo } from './articulo';
 import { UserState }     from '../../core/user-state';
 import { Producto }     from '../../core/producto';
 import { Router } from '@angular/router-deprecated';
+import { Subscription }   from 'rxjs/Subscription';
 import { List, Map } from 'immutable';
 import * as moment from 'moment';
 moment().format();
@@ -31,19 +32,15 @@ export class VidrieraComponent implements OnInit {
   prodRecomendados = List<Producto>();
   userState:UserState;
   isLogged:boolean;
+  subscription: Subscription;
+
 
   constructor(private vidrieraService:VidrieraService,
               private userSettingsService:UserSettingsService,
               private router: Router) {
     this.isLogged = false;
     this.userState = new UserState();
-  }
-
-  ngOnInit() {
-    /*this.vidrieraService.getArticulos()
-                        .subscribe(
-                          articulos => this.articulos = articulos,
-                          error => this.errorMessage = <any>error);*/
+    console.log("Constructor");
     this.vidrieraService.getProductos()
                         .subscribe(
                           productos => this.productos = productos,
@@ -51,10 +48,16 @@ export class VidrieraComponent implements OnInit {
 
     this.userState = new UserState();
     console.log("Registrado en vidriera");
-    this.userSettingsService.userStateObs$.subscribe(
+    this.subscription = this.userSettingsService.userStateObs$.subscribe(
         userState => {
           this.cargarRecomendaciones(userState);
         });
+  }
+
+  ngOnInit() {
+    console.log("ngOnInit");
+    console.log("Estoy logueado para comprar: " + this.isLogged);
+
   }
 
   doLogin() {
@@ -76,11 +79,13 @@ export class VidrieraComponent implements OnInit {
   }
   ngAfterContentInit() {
     console.log("ngAfterContentInit");
+    console.log("Estoy logueado para comprar: " + this.isLogged);
     // Component content has been initialized
   }
   
   ngAfterViewInit() {
     console.log("ngAfterViewInit");
+    console.log("Estoy logueado para comprar: " + this.isLogged);
     // Component views are initialized
     
   }
@@ -110,6 +115,12 @@ export class VidrieraComponent implements OnInit {
       let link = ['Login',];
       this.router.navigate(link);    
     }*/    
+  }
+
+  ngOnDestroy() {
+    // prevent memory leak when component destroyed
+    console.log("ngOnDestroy: " + this.isLogged);
+    this.subscription.unsubscribe();
   }
 
 }
