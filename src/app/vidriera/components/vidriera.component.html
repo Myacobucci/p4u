@@ -1,5 +1,5 @@
 <h3 class="seccion-title">Vidriera</h3>
-<div class="card-container">
+<!--div class="card-container">
 	<md-card *ngFor="let articulo of articulos">
 	  <img md-card-image [alt]="articulo.name" src="default-store-350x350.jpg">
 	  <md-card-title>{{articulo.name}}</md-card-title>
@@ -11,12 +11,25 @@
 	    <button md-button color="primary" (click)="realizarOrden(articulo);" >Comprar</button>
 	  </md-card-actions>
 	</md-card>
+</div-->
+
+<div class="card-container">
+	<md-card *ngFor="let producto of productos">
+	  <img md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
+	  <md-card-title>{{producto.getName()}}</md-card-title>
+
+	  <md-card-content class="secondary">
+	    <h4>Precio: ${{producto.getCost()}}</h4>
+	  </md-card-content>
+	  <md-card-actions align="end">
+	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
+	  </md-card-actions>
+	</md-card>
 </div>
 
-<button md-button color="primary" (click)="doLogin()" >Click</button>
-<h3 *ngIf="isLogged" class="seccion-title">Recomendados para vos</h3>
-<div *ngIf="isLogged" class="card-container">
-	<md-card *ngFor="let producto of productos">
+<h3 class="seccion-title">Recomendados para vos</h3>
+<div class="card-container">
+	<md-card *ngFor="let producto of prodRecomendados">
 	  <img md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
 	  <md-card-title>{{producto.getName()}}</md-card-title>
 

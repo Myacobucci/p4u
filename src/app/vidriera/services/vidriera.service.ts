@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Articulo } from '../components/articulo';
+import { Producto } from '../../core/producto';
 import { Observable }     from 'rxjs/Observable';
+import { List, Map } from 'immutable';
 
 
 
@@ -19,19 +21,36 @@ export class VidrieraService {
                   .catch(this.handleError);
   }
 
-  public getArticulosByUser(idUser:string):Observable<Articulo[]> {
+  public getProductos(): Observable< List<Producto> > {
+    return this.http.get(this.articulosUrl)
+                  .map(this.parseProductos)
+                  .catch(this.handleError);
+  }
+
+  public getProductosByUser(idUser:string):Observable< List<Producto> > {
     console.log("usuario " + idUser);
     //let url = this.articulosPorUserUrl + idUser;
     let url = this.articulosPorUserUrl + "1";
     console.log("url " + url);
     return this.http.get(url)
-                  .map(this.extractData)
+                  .map(this.parseProductos)
                   .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     let body = res.json();
     return body || { };
+  }
+
+  private parseProductos(res: Response) {
+    let body = res.json();
+    let productos = List<Producto>();
+    for (var producto of body) {
+      var item = new Producto(producto); 
+      productos = productos.push(item);
+    }
+    console.log("Productos: " + productos);
+    return productos || { };
   }
 
 

@@ -23,6 +23,12 @@ export class Producto {
 	getCost() {
 		return <number> this._data.get("cost");
 	}
+	getFree() {
+		return <boolean> this._data.get("free");
+	}
+	getStock() {
+		return <boolean> this._data.get("stock");
+	}
 
 	setId(value:number) {
 		return new Producto(this._data.set('id', value));
@@ -32,6 +38,12 @@ export class Producto {
 	}
 	setCost(value:number) {
 		return new Producto(this._data.set('cost', value));
+	}
+	setFree(value:boolean) {
+		return new Producto(this._data.set('free', value));
+	}
+	setStock(value:boolean) {
+		return new Producto(this._data.set('free', value));
 	}
 
 }
