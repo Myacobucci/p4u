@@ -85,8 +85,6 @@ export class VidrieraComponent implements OnInit {
     
   }
  
-  
-
   cargarRecomendaciones(userState:UserState) {
 
     console.log("Recibido en Vidriera");
@@ -111,8 +109,7 @@ export class VidrieraComponent implements OnInit {
     /*} else {
       let link = ['Login',];
       this.router.navigate(link);    
-    }*/
-    
+    }*/    
   }
 
 }
