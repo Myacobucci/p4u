@@ -5,6 +5,9 @@ export class User {
     password:string;
     facebookUserName:string;
     address:string;
+    firstName:string;
+    lastName:string;
+    birthDate:string;
 
     constructor() {
     	
