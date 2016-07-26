@@ -29,6 +29,11 @@ export class Producto {
 	getStock() {
 		return <boolean> this._data.get("stock");
 	}
+	getImageFileName() {
+		return <boolean> this._data.get("imageFileName");
+	}
+
+	
 
 	setId(value:number) {
 		return new Producto(this._data.set('id', value));
@@ -44,6 +49,9 @@ export class Producto {
 	}
 	setStock(value:boolean) {
 		return new Producto(this._data.set('free', value));
+	}
+	setImageFileName(value:boolean) {
+		return new Producto(this._data.set('imageFileName', value));
 	}
 
 }

@@ -28,6 +28,7 @@ moment().format();
 export class VidrieraComponent implements OnInit {
   errorMessage: string;
 
+  hostImage:string;
   productos = List<Producto>();
   prodRecomendados = List<Producto>();
   userState:UserState;
@@ -39,7 +40,7 @@ export class VidrieraComponent implements OnInit {
               private userSettingsService:UserSettingsService,
               private router: Router) {
     
-    
+    this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
   }
 
   ngOnInit() {
