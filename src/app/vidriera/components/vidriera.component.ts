@@ -27,78 +27,40 @@ moment().format();
 })
 export class VidrieraComponent implements OnInit {
   errorMessage: string;
-  //articulos: Articulo[];
+
   productos = List<Producto>();
   prodRecomendados = List<Producto>();
   userState:UserState;
   isLogged:boolean;
-  subscription: Subscription;
+
 
 
   constructor(private vidrieraService:VidrieraService,
               private userSettingsService:UserSettingsService,
               private router: Router) {
-    this.isLogged = false;
-    this.userState = new UserState();
-    console.log("Constructor");
+    
+    
+  }
+
+  ngOnInit() {
+    this.userState = this.userSettingsService.userState;
+    this.isLogged = this.userState.logged;
     this.vidrieraService.getProductos()
                         .subscribe(
                           productos => this.productos = productos,
                           error => this.errorMessage = <any>error);
-
-    this.userState = new UserState();
-    console.log("Registrado en vidriera");
-    this.subscription = this.userSettingsService.userStateObs$.subscribe(
-        userState => {
-          this.cargarRecomendaciones(userState);
-        });
+    if (this.isLogged) {
+      this.cargarRecomendaciones(this.userState);  
+    }
   }
 
-  ngOnInit() {
-    console.log("ngOnInit");
-    console.log("Estoy logueado para comprar: " + this.isLogged);
-
-  }
-
-  doLogin() {
-    this.isLogged = true;
-    this.userState.logged = true;
-  }
-
-  
-  ngOnChanges(changes) {
-    console.log("ngOnChanges");
-    console.log("Cambios:" + changes);
-    // Called right after our bindings have been checked but only
-    // if one of our bindings has changed.
-    //
-    // changes is an object of the format:
-    // {
-    //   'prop': PropertyUpdate
-    // }
-  }
-  ngAfterContentInit() {
-    console.log("ngAfterContentInit");
-    console.log("Estoy logueado para comprar: " + this.isLogged);
-    // Component content has been initialized
-  }
-  
-  ngAfterViewInit() {
-    console.log("ngAfterViewInit");
-    console.log("Estoy logueado para comprar: " + this.isLogged);
-    // Component views are initialized
-    
-  }
  
   cargarRecomendaciones(userState:UserState) {
 
-    console.log("Recibido en Vidriera");
     this.userState = userState;
     this.isLogged=userState.logged;
-    console.log("Me logueo: " + this.isLogged);
     if (this.isLogged) {
       let idUser = userState.user.id;
-      console.log("cargarRecomendaciones: " + idUser);
       this.vidrieraService.getProductosByUser(String(idUser))
                           .subscribe(
                             productos => this.prodRecomendados = productos,
@@ -107,20 +69,13 @@ export class VidrieraComponent implements OnInit {
   }
 
   realizarOrden(producto:Producto) {
-    console.log("Estoy logueado para comprar: " + this.isLogged);
-    //if (this.isLogged) {
+    if (this.isLogged) {
       let link = ['Orden', { id: producto.getId() }];
       this.router.navigate(link);    
-    /*} else {
+    } else {
       let link = ['Login',];
       this.router.navigate(link);    
-    }*/    
-  }
-
-  ngOnDestroy() {
-    // prevent memory leak when component destroyed
-    console.log("ngOnDestroy: " + this.isLogged);
-    this.subscription.unsubscribe();
+    }
   }
 
 }

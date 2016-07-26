@@ -27,8 +27,8 @@
 	</md-card>
 </div>
 
-<h3 class="seccion-title">Recomendados para vos</h3>
-<div class="card-container">
+<h3 *ngIf="isLogged" class="seccion-title">Recomendados para vos</h3>
+<div *ngIf="isLogged" class="card-container">
 	<md-card *ngFor="let producto of prodRecomendados">
 	  <img md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
 	  <md-card-title>{{producto.getName()}}</md-card-title>

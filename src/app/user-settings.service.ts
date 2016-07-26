@@ -5,6 +5,7 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 export class UserSettingsService {
 
+  public userState:UserState = new UserState();
   public userStateSource = new Subject<UserState>();
   userStateObs$ = this.userStateSource.asObservable();
 
@@ -12,11 +13,8 @@ export class UserSettingsService {
 
   // Service message commands
   updateUserState(userState: UserState) {
-  	console.log("Me acualizaron");
-  	console.log(userState);
+    this.userState = userState;
     this.userStateSource.next(userState);
-    console.log("Y despues?");
-    console.log(this.userStateSource.observers);
   }
 
 }
