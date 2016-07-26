@@ -37,7 +37,7 @@
 	    <h4>Precio: ${{producto.getCost()}}</h4>
 	  </md-card-content>
 	  <md-card-actions align="end">
-	    <button md-button color="primary">Comprar</button>
+	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
 	  </md-card-actions>
 	</md-card>
 </div>	

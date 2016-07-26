@@ -28,9 +28,9 @@ export class VidrieraService {
   }
 
   public getProductosByUser(idUser:string):Observable< List<Producto> > {
-    console.log("usuario " + idUser);
-    //let url = this.articulosPorUserUrl + idUser;
-    let url = this.articulosPorUserUrl + "1";
+    console.log("get productos from usuario " + idUser);
+    let url = this.articulosPorUserUrl + idUser;
+    //let url = this.articulosPorUserUrl + "1";
     console.log("url " + url);
     return this.http.get(url)
                   .map(this.parseProductos)
