@@ -6,10 +6,23 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 var map = {
-    '@angular2-material': 'vendor/@angular2-material'
+    '@angular2-material': 'vendor/@angular2-material',
+    'immutable': 'vendor/immutable/dist/immutable.js',
+    'angular2-uuid': 'vendor/angular2-uuid/index.js',
+    'moment': 'vendor/moment/moment.js'
 };
 /** User packages configuration. */
-var packages = {};
+var packages = {
+    'immutable': {
+        format: 'cjs'
+    },
+    'angular2-uuid': {
+        format: 'cjs'
+    },
+    'moment': {
+        format: 'cjs'
+    }
+};
 // put the names of any of your Material components here
 var materialPkgs = [
     'core',
@@ -26,6 +39,7 @@ var materialPkgs = [
 materialPkgs.forEach(function (pkg) {
     packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };
 });
+console.log(packages);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
  * Everything underneath this line is managed by the CLI.
@@ -37,19 +51,21 @@ var barrels = [
     '@angular/compiler',
     '@angular/http',
     '@angular/router',
+    '@angular/forms',
     '@angular/router-deprecated',
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
     // Thirdparty barrels.
     'rxjs',
+    'immutable',
     // App specific barrels.
     'app',
     'app/shared',
-    'app/my-login',
-    'app/my-vidriera',
-    'app/vidriera/components/vidriera',
+    'app/vidriera/components',
     'app/login/login',
     'app/perfil/perfil',
+    'app/orden/components',
+    'app/registracion/components/registracion'
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {

@@ -5,21 +5,21 @@
 	        <md-icon md-list-icon>home</md-icon>
 	        <span md-line>Home</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Login']" routerLinkActive="active" (click)="sidenav.close()">
-	        <md-icon md-list-icon>assignment ind</md-icon>
-	        <span md-line>Iniciar sesión</span>
-	      </a>
-	      <a md-list-item [routerLink]="['Perfil']" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Perfil']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>assignment ind</md-icon>
 	        <span md-line>Mi cuenta</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Rubros']" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Rubros']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>assignment ind</md-icon>
-	        <span md-line>Mis Rubros</span>
+	        <span md-line>Mis Preferencias</span>
 	      </a>
-	      <a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Vidriera']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>list</md-icon>
 	        <span md-line>Mis regalos</span>
+	      </a>
+	      <a md-list-item [routerLink]="['Vidriera']" *ngIf="isLogged" routerLinkActive="active" (click)="doLogout();sidenav.close()">
+	        <md-icon md-list-icon>list</md-icon>
+	        <span md-line>Cerrar sesion</span>
 	      </a>
 	    </md-nav-list>
   	</md-sidenav>
@@ -27,7 +27,20 @@
 		<button md-icon-button (click)="sidenav.open()">
 		  <md-icon>menu</md-icon>
 		</button>
-		{{title}}
+		<span>{{title}}</span>
+		<!-- This fills the remaining space of the current row -->
+  		<span class="toolbar-fill-remaining-space"></span>
+  		
+  		<div *ngIf="isLogged" class="my-perfil-link">
+			<a md-list-item [routerLink]="['Perfil']">
+	        	<span md-line>{{userState.user.email}}</span>
+	      	</a>
+		</div>
+		<div *ngIf="!isLogged" class="my-login-link">
+			<a md-list-item [routerLink]="['Login']">
+	        	<span md-line>Login</span>
+	      	</a>
+		</div>
 	</md-toolbar>
 	<router-outlet></router-outlet>
 </md-sidenav-layout>

@@ -1,0 +1,111 @@
+ <div class="form">
+    <md-card>
+      <md-card-title>Registraci&oacute;n</md-card-title>
+      <md-card-content>
+        <form>
+          <!-- Nombre -->               
+          <table style="width: 100%" cellpadding="0">
+            <tr><td>
+              <md-input class="demo-full-width" #nombre placeholder="Nombre" required="required" ng-required="true">
+                <span md-prefix>
+                  <md-icon aria-hidden="true" md-svg-src="img/icons/ic_person_24px.svg" class="name" style="color: dodgerblue;">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" fit=""      xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                      <path d="M0 0h24v24h-24z" fill="none"></path>
+                    </svg>
+                  </md-icon>
+                </span>
+              </md-input>
+            </td></tr>        
+          </table>
+
+          <!-- Apellido -->               
+          <table style="width: 100%" cellpadding="0">
+            <tr><td>
+              <md-input class="demo-full-width" #apellido placeholder="Apellido" required="required" ng-required="true">
+                <span md-prefix>
+                  <md-icon aria-hidden="true" md-svg-src="img/icons/ic_person_24px.svg" class="name" style="color: red;">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" fit=""      xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                      <path d="M0 0h24v24h-24z" fill="none"></path>
+                    </svg>
+                  </md-icon>
+                </span>
+              </md-input>
+            </td></tr>        
+          </table>
+
+          <!-- Direccion -->               
+          <table style="width: 100%" cellpadding="0">
+            <tr><td>
+              <md-input class="demo-full-width" #direccion placeholder="Direcci&oacute;n">
+                <span md-prefix>
+                  <md-icon aria-hidden="true" md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block; color: blue;">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" fit="" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                      <path d="M12 2c-3.87 0-7 3.13-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+                      <path d="M0 0h24v24h-24z" fill="none"></path>
+                    </svg>
+                  </md-icon>
+                </span>
+              </md-input>
+            </td></tr>        
+          </table>
+
+          <!-- Fecha de Nacimiento -->                 
+          <table style="width: 100%" cellpadding="0">
+            <tr><td>
+              <md-input class="demo-full-width" #fechaNacimiento placeholder="Fecha de nacimiento" type="date">
+                <span md-prefix>
+                  <md-icon role="img" aria-label="md-calendar" class="md-datepicker-calendar-icon ng-scope" md-svg-icon="md-calendar">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" fit=""
+                    xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path>
+                    </svg>
+                  </md-icon>
+                </span>                
+              </md-input>  
+            </td></tr>        
+          </table>         
+
+          <!-- Email -->
+          <table style="width: 100%" cellpadding="0">
+            <tr><td>
+              <md-input class="demo-full-width" #email placeholder="Email" required="required" ng-required="true" type="email" ng-pattern="/^.+@.+\..$/">
+                <span md-prefix>
+                  <md-icon aria-hidden="true" md-svg-src="img/icons/ic_email_24px.svg" class="email" style="color: green;">
+                  <svg focusable="false" preserveAspectRatio="xMidYMid meet" fit=""
+                  xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                    <path d="M20 4h-16c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 4l-8 5-8-5v-2l8 5 8-5v2z"></path>
+                    <path d="M0 0h24v24h-24z" fill="none"></path>
+                  </svg>
+                  </md-icon>
+                </span>
+              </md-input>
+            </td></tr>        
+          </table>
+
+          <!-- Password -->               
+          <table style="width: 100%" cellpadding="0">
+            <tr><td>
+              <md-input class="demo-full-width" #password placeholder="Contraseña" required="required" ng-required="true" type="password">
+                <span md-prefix>
+                  <md-icon aria-hidden="true" md-svg-src="img/icons/ic_lock_24px.svg" class="password" style="color: red;">
+                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" fit=""
+                    xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24">
+                      <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                      <path d="M0 0h24v24h-24z" fill="none"></path> 
+                    </svg>
+                  </md-icon>
+                </span>
+              </md-input>
+            </td></tr>        
+          </table>
+        </form>
+      </md-card-content>
+      <md-card-actions align="center">
+        <button (click)="registrar(nombre.value, apellido.value, direccion.value, fechaNacimiento.value, email.value, password.value)" md-raised-button color="accent">Registrar</button>
+      </md-card-actions>
+    </md-card>
+    
+  <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>
