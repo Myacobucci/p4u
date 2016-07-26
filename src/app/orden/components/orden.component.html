@@ -6,13 +6,12 @@
 		  <div>   
 		    <md-card>
 			   <md-card-title-group>
-			      <img md-card-sm-image src="default-store-350x350.jpg"/>
-			      <md-card-title>Nombre del articulo</md-card-title>
-			      <md-card-subtitle>Marca</md-card-subtitle>
+			      <img md-card-sm-image src="{{hostImage + imageFileName}}"/>
+			      <md-card-title>{{productName}}</md-card-title>
 			   </md-card-title-group>
 			</md-card>
 	      </div>
-	      <md-input placeholder="Cantidad"></md-input>
+	      <md-input placeholder="Cantidad">1</md-input>
 	      <div>
 	      	<h4>Detinatario</h4>
 		    <md-radio-group>

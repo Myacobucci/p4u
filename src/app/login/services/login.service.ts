@@ -6,7 +6,8 @@ import { UserState }     from '../../core/user-state';
 @Injectable()
 export class LoginService {
 
-  private loginUrl:string = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/login";
+  private loginUrl:string = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/login";
+  
   constructor(private http:Http) {}
 
   doLogin(email:string, pass: string):Observable<UserState> {

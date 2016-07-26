@@ -10,8 +10,8 @@ import { List, Map } from 'immutable';
 @Injectable()
 export class VidrieraService {
 
-  private articulosUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/all";
-  private articulosPorUserUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/by-user/";
+  private articulosUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/present/all";
+  private articulosPorUserUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/present/by-user/";
 
   constructor(private http:Http) {}
 
@@ -28,10 +28,7 @@ export class VidrieraService {
   }
 
   public getProductosByUser(idUser:string):Observable< List<Producto> > {
-    console.log("get productos from usuario " + idUser);
     let url = this.articulosPorUserUrl + idUser;
-    //let url = this.articulosPorUserUrl + "1";
-    console.log("url " + url);
     return this.http.get(url)
                   .map(this.parseProductos)
                   .catch(this.handleError);
@@ -49,7 +46,6 @@ export class VidrieraService {
       var item = new Producto(producto); 
       productos = productos.push(item);
     }
-    console.log("Productos: " + productos);
     return productos || { };
   }
 
