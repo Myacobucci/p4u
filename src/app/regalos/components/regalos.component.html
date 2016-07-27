@@ -1,0 +1,22 @@
+<h3 class="seccion-title">Mis Regalos</h3>
+
+<div class="card-container">
+	<md-card *ngFor="let regalo of regalos">
+	<img align="right" src="{{hostImage + regalo.getImageFileName()}}" height="150" width="150">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{regalo.getName()}}</span>
+            <span class="md-subhead"></span>
+          </md-card-title-text>
+          <md-card-content>
+          <p> </p>
+      		<p><u>Código:</u> 159776264</p>
+   		</md-card-content>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <button md-raised-button (click)="savePreferences()" color="accent">Aceptar</button>
+          <button md-raised-button (click)="savePreferences()" color="accent">Regalar</button>
+        </md-card-actions>
+      </md-card>
+      
+</div>

@@ -10,6 +10,7 @@ import { LoginComponent } from './login/components/login.component';
 import { PerfilComponent } from './perfil/components/perfil.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
 import { OrdenComponent } from './orden/components/orden.component';
+import { RegalosComponent } from './regalos/components/regalos.component';
 import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
 import { RegistracionComponent } from './registracion/components/registracion.component';
@@ -52,6 +53,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     component: VidrieraComponent,
     name: 'Vidriera',
     useAsDefault: true
+  },
+  {
+    path: '/regalos',
+    component: RegalosComponent,
+    name: 'Regalos',
   },
   {
     path: '/perfil',

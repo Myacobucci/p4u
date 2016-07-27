@@ -9,6 +9,9 @@ import { UserSettingsService } from '../../user-settings.service';
 import { UserState }     from '../../core/user-state';
 import {Injectable} from '@angular/core';
 import { Router} from '@angular/router-deprecated';
+import { Subscription }   from 'rxjs/Subscription';
+import { List, Map } from 'immutable';
+import * as moment from 'moment';
 
 @Component({
   moduleId: module.id,
@@ -45,11 +48,15 @@ export class RubrosComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("siiii");
-    this.rubrosService.getPreferenciasPorUsuario("1")
+    this.userState = this.userSettingsService.userState;
+    this.isLogged = this.userState.logged;
+    if (this.isLogged) {
+      let idUser = this.userState.user.id;
+    this.rubrosService.getPreferenciasPorUsuario(String(idUser))
                         .subscribe(
                           preferenciasPorUsuario => this.preferenciasPorUsuario = preferenciasPorUsuario,
                           error => this.errorMessage = <any>error);
+                       }
     this.rubrosService.getPreferencias()
                         .subscribe(
                           preferencias => this.preferencias = preferencias,
@@ -74,15 +81,22 @@ updateMessage(id:number, m: string): void {
  }
 
  savePreferences(): void{
-   this.rubrosService.deletePreferences()
+   this.isLogged=this.userState.logged;
+   if (this.isLogged) {
+     let idUser = this.userState.user.id;
+   this.rubrosService.deletePreferences(String(idUser))
                      .subscribe(
                           userState => this.updateState(userState),
                           error =>  this.errorMessage = <any>error);;
+                   }
+   if (this.isLogged) {
+     let idUser = this.userState.user.id;
    for (var i = this.selected.length - 1; i >= 0; i--) {
-     this.rubrosService.saveOnePreference(this.selected[i])
+     this.rubrosService.saveOnePreference(String(idUser), this.selected[i])
                            .subscribe(
                           userState => this.updateState(userState),
                           error =>  this.errorMessage = <any>error);;
+                          }
      console.log("se postea", this.selected[i]);
    }
  }

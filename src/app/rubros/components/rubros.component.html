@@ -1,19 +1,20 @@
 
 <div ng-controller="RubrosCtrl" class="card-container">
 Sus preferencias son:
-<div ng-controller="RubrosCtrl" class="card-container">
+<div ng-controller="RubrosCtrl4" class="card-container">
 	<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
-  		{{preferenciaUser.name}}
+  		{{preferenciaUser.getName()}}
 	</md-card>
 </div>
 </div>
 
-<div ng-controller="RubrosCtrl" class="card-container">
+
+<div ng-controller="RubrosCtrl2" class="card-container">
 Elija nuevas preferencias:
-<div ng-controller="RubrosCtrl" class="card-container">
+<div ng-controller="RubrosCtrl3" class="card-container">
 	<md-card *ngFor="let preferencia of preferencias">
-	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.id, preferencia.description)" [(ngModel)]="preferencia.description"  class="green" align="left">
-  		{{preferencia.name}}
+	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.getId(), preferencia.description)" [(ngModel)]="preferencia.description" class="green" align="left">
+  		{{preferencia.getName()}}
 	  </md-checkbox>
 	</md-card>
 	</div>

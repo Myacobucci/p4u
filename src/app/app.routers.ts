@@ -3,6 +3,7 @@ import { VidrieraComponent } from './vidriera/components/vidriera.component';
 import { LoginComponent } from './login/components/login.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
 import { RegistracionComponent } from './registracion/components/registracion.component';
+import { RegalosComponent } from './regalos/components/regalos.component';
 
 const routes: RouterConfig = [
   {
@@ -16,6 +17,10 @@ const routes: RouterConfig = [
   {
     path: 'rubros',
     component: VidrieraComponent
+  },
+  {
+    path: 'regalos',
+    component: RegalosComponent
   },
   {
     path: 'registracion',
