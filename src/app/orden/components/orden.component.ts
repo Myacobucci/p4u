@@ -5,7 +5,10 @@ import { MD_RADIO_DIRECTIVES } from '@angular2-material/radio/radio';
 import { RouteParams, } from '@angular/router-deprecated';
 import { List, Map } from 'immutable';
 import { MdRadioButton } from '@angular2-material/radio';
-import { MdRadioDispatcher } from '@angular2-material/radio/radio_dispatcher';  
+import {
+  MdUniqueSelectionDispatcher
+} from '@angular2-material/core/coordination/unique-selection-dispatcher';
+
 import { Producto }     from '../../core/producto';
 import { VidrieraService } from '../../vidriera/services/vidriera.service';
 
@@ -26,7 +29,7 @@ import { MdButton } from '@angular2-material/button';
     MdInput,
     MdRadioButton,
   ],
-  providers: [MdRadioDispatcher, MdRadioButton, VidrieraService],
+  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService],
 })
 export class OrdenComponent implements OnInit {
   errorMessage: string;
