@@ -28,7 +28,7 @@ export class RubrosService {
   }
 
 
-  public getPreferenciasPorUsuario(idUser:string):Observable<Preferencia[]> {
+  public getPreferenciasPorUsuario(idUser:string):Observable< List<Pref> > {
     console.log("usuario " + idUser);
     let url = this.preferenciasPorUserUrl + idUser;
     //let url = this.preferenciasPorUserUrl + "1";
@@ -79,7 +79,7 @@ export class RubrosService {
             .catch(this.handleError);
   }
 
-    private parseProductos(res: Response) {
+  private parseProductos(res: Response) {
     let body = res.json();
     let prefs = List<Pref>();
     for (var pref of body) {

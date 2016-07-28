@@ -35,12 +35,13 @@ export class RubrosComponent implements OnInit {
   message: string;
   errorMessage: string;
   preferencias: List<Pref>;
-  preferenciasPorUsuario: Preferencia[];
+  preferenciasPorUsuario: List<Pref>;
   isLogged:boolean;
   algwo:boolean;
   onee: Preferencia;
   userState:UserState;
   selected: string[];
+  entroXVeces: number;
 
   constructor(private rubrosService:RubrosService,
               private userSettingsService:UserSettingsService,
@@ -53,6 +54,7 @@ export class RubrosComponent implements OnInit {
     this.isLogged = this.userState.logged;
     if (this.isLogged) {
       let idUser = this.userState.user.id;
+
       this.rubrosService.getPreferenciasPorUsuario(String(idUser))
                           .subscribe(
                             preferenciasPorUsuario => this.preferenciasPorUsuario = preferenciasPorUsuario,
@@ -63,10 +65,12 @@ export class RubrosComponent implements OnInit {
                             preferencias => this.preferencias = preferencias,
                             error => this.errorMessage = <any>error);
       this.selected = [];
+      this.entroXVeces = 2;
+
     }
     
 updateMessage(id:number, m: string): void {
-    console.log(this.selected.indexOf(id.toString()));
+    //console.log(this.selected.indexOf(id.toString()));
     if (m){
       if (this.selected.indexOf(id.toString()) < 0){
         this.selected.push(id.toString());
@@ -100,6 +104,11 @@ updateMessage(id:number, m: string): void {
                           }
      console.log("se postea", this.selected[i]);
    }
+ }
+
+ tocaChecked(id:number): boolean{
+   console.log("ingresa ", id.toString());
+   return false;
  }
 
  updateState(userState:UserState) {

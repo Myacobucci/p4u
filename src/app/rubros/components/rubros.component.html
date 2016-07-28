@@ -1,31 +1,25 @@
-
-<div ng-controller="RubrosCtrl" class="card-container">
-Sus preferencias son:
-<div ng-controller="RubrosCtrl4" class="card-container">
-	<div *ngIf="preferenciasPorUsuario">
-		<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
-	  		{{preferenciaUser.getName()}}
-		</md-card>
-	</div>
-</div>
-</div>
-
-
 <div ng-controller="RubrosCtrl2" class="card-container">
-Elija nuevas preferencias:
-<div ng-controller="RubrosCtrl3" class="card-container">
+Sus preferencias son:
+	<div ng-controller="RubrosCtrl3" class="card-container">
 	<md-card *ngFor="let preferencia of preferencias">
-	  <!--md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.getId(), preferencia.getName)" [(ngModel)]="preferencia.getName()" class="green" align="left">
-  		{{preferencia.getName()}}
-	  </md-checkbox-->
 	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.getId(), preferencia.getName)" class="green" align="left">
   		{{preferencia.getName()}}
 	  </md-checkbox>
 	</md-card>
+	
+	</div>
+	<div ng-controller="RubrosCtrl3" class="card-container">
+	<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
+	  <!--md-checkbox [checked]="preferenciaUser.description == preferenciaUser.description" *ngIf="preferenciaUser.description == preferenciaUser.description" [ngClick]="updateMessage(preferenciaUser.getId(), checked)" class="green" align="left">
+  		{{preferenciaUser.getName()}}
+	  </md-checkbox-->
+	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferenciaUser.getId(), checked)" class="green" align="left">
+  		{{preferenciaUser.getName()}}
+	  </md-checkbox>
+	</md-card>
+	
 	</div>
 </div>
-
-
 <div class="wrapper">
 <button md-raised-button type="submit" (click)="savePreferences()" color="accent">Guardar</button>
 </div>

@@ -6,7 +6,7 @@ import { MdInput } from '@angular2-material/input';
 import { UserSettingsService } from '../../user-settings.service';
 import { LoginService } from '../services/login.service';
 import { UserState }     from '../../core/user-state';
-import { Router} from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -18,6 +18,7 @@ import { Router} from '@angular/router-deprecated';
     MD_CARD_DIRECTIVES,
     MdInput,
     MdButton,
+    ROUTER_DIRECTIVES
   ],
   providers: [LoginService],
 })
@@ -50,5 +51,4 @@ export class LoginComponent implements OnInit, OnDestroy {
     let link = ['Vidriera',];
     this.router.navigate(link);
   }
-
 }
