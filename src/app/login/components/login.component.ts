@@ -51,4 +51,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate(link);
   }
 
+  gotoRegistracion(){
+    let link = ['Registracion',];
+    this.router.navigate(link);
+  }
 }
