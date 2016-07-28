@@ -10,7 +10,11 @@ import {
 } from '@angular2-material/core/coordination/unique-selection-dispatcher';
 
 import { Producto }     from '../../core/producto';
+import { User }     from '../../core/user';
+import { AppSettingsService }     from '../../app-settings.service';
 import { VidrieraService } from '../../vidriera/services/vidriera.service';
+import { LoginService } from '../../login/services/login.service';
+
 
 
 import { MdInput } from '@angular2-material/input';
@@ -29,7 +33,7 @@ import { MdButton } from '@angular2-material/button';
     MdInput,
     MdRadioButton,
   ],
-  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService],
+  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService, LoginService],
 })
 export class OrdenComponent implements OnInit {
   errorMessage: string;
@@ -37,12 +41,18 @@ export class OrdenComponent implements OnInit {
   imageFileName:string;
   productName:string;
   producto:Producto;
+  listUser:User[];
+
 
   constructor(private routeParams: RouteParams,
-              private vidrieraService:VidrieraService) {
-    this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
+              private vidrieraService:VidrieraService,
+              private loginService:LoginService,
+              private context:AppSettingsService) {
+    this.hostImage=this.context.getServiceHostName();
     this.imageFileName = "";
     this.productName = "";
+    this.listUser = [];
+    console.log(this.listUser);
   }
 
   ngOnInit() {
@@ -50,9 +60,14 @@ export class OrdenComponent implements OnInit {
                         .subscribe(
                           productos => this.cargarProducto(productos),
                           error => this.errorMessage = <any>error);
+    this.loginService.getAllUser()
+                        .subscribe(
+                          users => this.cargarUsuarios(users),
+                          error => this.errorMessage = <any>error);
+                          
   }
 
-  cargarProducto(productos:List<Producto>) {
+  private cargarProducto(productos:List<Producto>) {
     if (this.routeParams.get('id') !== null) {
       let id = +this.routeParams.get('id');
       var list = productos.valueSeq().toArray();
@@ -67,6 +82,10 @@ export class OrdenComponent implements OnInit {
         this.imageFileName = productoEncontrado.getImageFileName();
       }
     }
+  }
+
+  private cargarUsuarios(users:User[]) {
+    this.listUser = users;
   }
 
 }

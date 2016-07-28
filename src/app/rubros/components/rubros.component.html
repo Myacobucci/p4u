@@ -2,9 +2,11 @@
 <div ng-controller="RubrosCtrl" class="card-container">
 Sus preferencias son:
 <div ng-controller="RubrosCtrl4" class="card-container">
-	<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
-  		{{preferenciaUser.getName()}}
-	</md-card>
+	<div *ngIf="preferenciasPorUsuario">
+		<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
+	  		{{preferenciaUser.getName()}}
+		</md-card>
+	</div>
 </div>
 </div>
 
@@ -13,7 +15,10 @@ Sus preferencias son:
 Elija nuevas preferencias:
 <div ng-controller="RubrosCtrl3" class="card-container">
 	<md-card *ngFor="let preferencia of preferencias">
-	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.getId(), preferencia.description)" [(ngModel)]="preferencia.description" class="green" align="left">
+	  <!--md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.getId(), preferencia.getName)" [(ngModel)]="preferencia.getName()" class="green" align="left">
+  		{{preferencia.getName()}}
+	  </md-checkbox-->
+	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.getId(), preferencia.getName)" class="green" align="left">
   		{{preferencia.getName()}}
 	  </md-checkbox>
 	</md-card>

@@ -2,16 +2,22 @@ import { Injectable } from '@angular/core';
 import { Headers, RequestOptions, Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { UserState }     from '../../core/user-state';
+import { User }     from '../../core/user';
+import { AppSettingsService }     from '../../app-settings.service';
+import { List, Map } from 'immutable';
 
 @Injectable()
 export class LoginService {
 
-  private loginUrl:string = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/login";
+  //private loginUrl:string = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/login";
+  private loginUri:string = "p4u/user/login";
+  private allUserUri:string = "p4u/user/all";
   
-  constructor(private http:Http) {}
+  constructor(private http:Http,
+              private context:AppSettingsService) {}
 
   doLogin(email:string, pass: string):Observable<UserState> {
-  	let url = this.loginUrl + "/" + email + "/" + pass;
+    let url = this.context.getServiceHostName() + this.loginUri + "/" + email + "/" + pass;
 
   	let body = "";
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -22,10 +28,24 @@ export class LoginService {
     				.catch(this.handleError);
   }
 
+  getAllUser() {
+    let url = this.context.getServiceHostName() + this.allUserUri;
+    console.log(url);
+    return this.http.get(url)
+            .map(this.extractUsers)
+            .catch(this.handleError); 
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     console.log(body);
     return body || { };
+  }
+
+  private extractUsers(res: Response) {
+    let body = res.json();
+    var users:User[] = body;
+    return users || { };
   }
 
   private handleError (error: any) {

@@ -18,8 +18,9 @@ export class RubrosService {
 
   constructor(private http:Http) {}
 
-  public getPreferencias(): Observable<Preferencia[]> {
+  public getPreferencias(): Observable< List<Pref> > {
     console.log("aca")
+    console.log("url " + this.preferenciasUrl);
   	return this.http.get(this.preferenciasUrl)
                   .map(this.parseProductos)
                   .catch(this.handleError);

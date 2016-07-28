@@ -18,6 +18,12 @@
 		      <md-radio-button value="0">Para mi </md-radio-button>
 		      <md-radio-button value="1">Para un Amigo</md-radio-button>
 		    </md-radio-group>
+		    <label for="power">Usuario</label>
+			<select class="form-control form-select" required>
+				<option *ngFor="let user of listUser" [value]="user.id">{{user.firstName + user.lastName}}</option>
+			</select>
+			<textarea class="form-message" placeholder="Escriba una mensaje"></textarea>
+
 	      </div>
 	      <div>
 	      	<h4>Medio de pago</h4>

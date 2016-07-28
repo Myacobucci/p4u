@@ -5,6 +5,7 @@ import {MD_CHECKBOX_DIRECTIVES} from '@angular2-material/checkbox';
 import {MdButton} from '@angular2-material/button';
 import { RubrosService } from '../services/rubros.service';
 import { Preferencia } from './preferencia';
+import { Pref } from './pref';
 import { UserSettingsService } from '../../user-settings.service';
 import { UserState }     from '../../core/user-state';
 import {Injectable} from '@angular/core';
@@ -33,7 +34,7 @@ export class RubrosComponent implements OnInit {
   body:  string = 'This is the about home body';
   message: string;
   errorMessage: string;
-  preferencias: Preferencia[];
+  preferencias: List<Pref>;
   preferenciasPorUsuario: Preferencia[];
   isLogged:boolean;
   algwo:boolean;
@@ -52,16 +53,16 @@ export class RubrosComponent implements OnInit {
     this.isLogged = this.userState.logged;
     if (this.isLogged) {
       let idUser = this.userState.user.id;
-    this.rubrosService.getPreferenciasPorUsuario(String(idUser))
-                        .subscribe(
-                          preferenciasPorUsuario => this.preferenciasPorUsuario = preferenciasPorUsuario,
-                          error => this.errorMessage = <any>error);
-                       }
-    this.rubrosService.getPreferencias()
-                        .subscribe(
-                          preferencias => this.preferencias = preferencias,
-                          error => this.errorMessage = <any>error);
-    this.selected = [];
+      this.rubrosService.getPreferenciasPorUsuario(String(idUser))
+                          .subscribe(
+                            preferenciasPorUsuario => this.preferenciasPorUsuario = preferenciasPorUsuario,
+                            error => this.errorMessage = <any>error);
+                         }
+      this.rubrosService.getPreferencias()
+                          .subscribe(
+                            preferencias => this.preferencias = preferencias,
+                            error => this.errorMessage = <any>error);
+      this.selected = [];
     }
     
 updateMessage(id:number, m: string): void {
