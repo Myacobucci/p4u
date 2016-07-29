@@ -30,12 +30,12 @@ import * as moment from 'moment';
 
 
 export class RubrosComponent implements OnInit {
-  title: string = 'Home Page';
-  body:  string = 'This is the about home body';
+
   message: string;
   errorMessage: string;
   preferencias: List<Pref>;
   preferenciasPorUsuario: List<Pref>;
+  checkboxes:boolean[];
   isLogged:boolean;
   algwo:boolean;
   onee: Preferencia;
@@ -47,72 +47,79 @@ export class RubrosComponent implements OnInit {
               private userSettingsService:UserSettingsService,
               private router:Router) {
     this.isLogged = false;
+    this.checkboxes=[];
+    
   }
 
   ngOnInit() {
     this.userState = this.userSettingsService.userState;
     this.isLogged = this.userState.logged;
+
+    this.rubrosService.getPreferencias()
+                      .subscribe(
+                        preferencias => this.cargarPreferencias(preferencias),
+                        error => this.errorMessage = <any>error);
+
+
+  }
+
+  cargarPreferencias(preferencias:List<Pref>){
+    this.preferencias = preferencias;
+    var checkboxesAux=[];
+    preferencias.forEach(function(item:Pref) {
+      checkboxesAux[item.getId()]=false;
+    });
+    this.checkboxes=checkboxesAux;
+
     if (this.isLogged) {
       let idUser = this.userState.user.id;
-
       this.rubrosService.getPreferenciasPorUsuario(String(idUser))
-                          .subscribe(
-                            preferenciasPorUsuario => this.preferenciasPorUsuario = preferenciasPorUsuario,
-                            error => this.errorMessage = <any>error);
-                         }
-      this.rubrosService.getPreferencias()
-                          .subscribe(
-                            preferencias => this.preferencias = preferencias,
-                            error => this.errorMessage = <any>error);
-      this.selected = [];
-      this.entroXVeces = 2;
-
+                        .subscribe(
+                        preferenciasPorUsuario => this.cargarPreferenciasUser(preferenciasPorUsuario),
+                        error => this.errorMessage = <any>error);
     }
-    
-updateMessage(id:number, m: string): void {
-    //console.log(this.selected.indexOf(id.toString()));
-    if (m){
-      if (this.selected.indexOf(id.toString()) < 0){
-        this.selected.push(id.toString());
-      }
-    } else{
-      if (this.selected.indexOf(id.toString()) >= 0){
-        var index = this.selected.indexOf(id.toString(), 0);
-        if (index > -1) {
-           this.selected.splice(index, 1);
-         }
-      }
-    }
- }
+  }
 
- savePreferences(): void{
-   this.isLogged=this.userState.logged;
-   if (this.isLogged) {
-     let idUser = this.userState.user.id;
-   this.rubrosService.deletePreferences(String(idUser))
-                     .subscribe(
-                          userState => this.updateState(userState),
-                          error =>  this.errorMessage = <any>error);;
-                   }
-   if (this.isLogged) {
-     let idUser = this.userState.user.id;
-   for (var i = this.selected.length - 1; i >= 0; i--) {
-     this.rubrosService.saveOnePreference(String(idUser), this.selected[i])
+  cargarPreferenciasUser(preferenciasPorUsuario:List<Pref>){
+    this.preferenciasPorUsuario = preferenciasPorUsuario;
+    var checkboxesAux:boolean[]=this.checkboxes;
+    preferenciasPorUsuario.forEach(function(item:Pref) {
+      checkboxesAux[item.getId()]=true;
+    });    
+    this.checkboxes=checkboxesAux;
+  }
+  
+  
+
+  /*Falta guardar los cambios, crea una sola funcion en servicio*/
+  savePreferences(): void{
+    this.isLogged=this.userState.logged;
+    if (this.isLogged) {
+      let idUser = this.userState.user.id;
+      this.rubrosService.deletePreferences(String(idUser))
+                       .subscribe(
+                            userState => this.updateState(userState),
+                            error =>  this.errorMessage = <any>error);;
+    }
+    if (this.isLogged) {
+      let idUser = this.userState.user.id;
+      for (var i = this.selected.length - 1; i >= 0; i--) {
+        this.rubrosService.saveOnePreference(String(idUser), this.selected[i])
                            .subscribe(
-                          userState => this.updateState(userState),
-                          error =>  this.errorMessage = <any>error);;
-                          }
-     console.log("se postea", this.selected[i]);
-   }
- }
+                              userState => this.updateState(userState),
+                              error =>  this.errorMessage = <any>error);
+      }
+      console.log("se postea", this.selected[i]);
+    }
+  }
 
- tocaChecked(id:number): boolean{
-   console.log("ingresa ", id.toString());
-   return false;
- }
 
- updateState(userState:UserState) {
-     
+  updateState(userState:UserState) {
+       
+  }
+
+  ngDoCheck() {
+    console.log(this.checkboxes); 
   }
 
 

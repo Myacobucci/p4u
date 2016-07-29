@@ -19,8 +19,7 @@ export class RubrosService {
   constructor(private http:Http) {}
 
   public getPreferencias(): Observable< List<Pref> > {
-    console.log("aca")
-    console.log("url " + this.preferenciasUrl);
+    console.log("getPreferencias url " + this.preferenciasUrl);
   	return this.http.get(this.preferenciasUrl)
                   .map(this.parseProductos)
                   .catch(this.handleError);
@@ -32,7 +31,7 @@ export class RubrosService {
     console.log("usuario " + idUser);
     let url = this.preferenciasPorUserUrl + idUser;
     //let url = this.preferenciasPorUserUrl + "1";
-    console.log("url " + url);
+    console.log("getPreferenciasPorUsuario url " + url);
     return this.http.get(url)
                   .map(this.parseProductos)
                   .catch(this.handleError);
@@ -85,6 +84,7 @@ export class RubrosService {
     for (var pref of body) {
       var item = new Pref(pref); 
       prefs = prefs.push(item);
+      console.log("Id: " + item.getId() + " name: "+ item.getName());  
     }
     console.log("Prefs: " + prefs);
     return prefs || { };
