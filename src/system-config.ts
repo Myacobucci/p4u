@@ -71,7 +71,8 @@ const barrels: string[] = [
   'app/login/login',
   'app/perfil/perfil',
   'app/orden/components',
-  'app/registracion/components/registracion'
+  'app/regalar/regalar',
+  'app/registracion/components/registracion',
   /** @cli-barrel */
 ];
 

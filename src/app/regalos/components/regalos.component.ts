@@ -8,6 +8,7 @@ import { Regalo } from './regalo';
 import { UserState }     from '../../core/user-state';
 import { Subscription }   from 'rxjs/Subscription';
 import { List, Map } from 'immutable';
+import { Router } from '@angular/router-deprecated';
 import * as moment from 'moment';
 moment().format();
 
@@ -32,9 +33,11 @@ export class RegalosComponent implements OnInit {
   isLogged:boolean;
 
   constructor(private regalosService:RegalosService,
-              private userSettingsService:UserSettingsService) {
-    this.isLogged = false;
+              private userSettingsService:UserSettingsService,
+              private router: Router) {
+
     this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
+    
   }
 
   ngOnInit() {
@@ -51,6 +54,16 @@ export class RegalosComponent implements OnInit {
 
        
 
+  }
+
+  regalar(regalo:Regalo) {
+    if (this.isLogged) {
+      let link = ['Regalar', { id: regalo.getId() }];
+      this.router.navigate(link);    
+    } else {
+      let link = ['Login',];
+      this.router.navigate(link);    
+    }
   }
 
 
