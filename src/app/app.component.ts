@@ -10,6 +10,7 @@ import { LoginComponent } from './login/components/login.component';
 import { PerfilComponent } from './perfil/components/perfil.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
 import { OrdenComponent } from './orden/components/orden.component';
+import { RegalarComponent } from './regalar/components/regalar.component';
 import { RegalosComponent } from './regalos/components/regalos.component';
 import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
@@ -68,6 +69,11 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     path: '/orden',
     component: OrdenComponent,
     name: 'Orden',
+  },
+  {
+    path: '/regalar',
+    component: RegalarComponent,
+    name: 'Regalar',
   },
   {
     path: '/registracion',

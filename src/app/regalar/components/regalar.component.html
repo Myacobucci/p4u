@@ -1,0 +1,30 @@
+<div class="container">
+	<md-card>
+	  <md-card-title>Regalar:</md-card-title>
+	  <md-card-content>
+	    <form>
+		  <div>   
+		    <md-card>
+			   <md-card-title-group>
+			      <img md-card-sm-image src="{{hostImage + imageFileName}}"/>
+			      <md-card-title>{{productName}}</md-card-title>
+			   </md-card-title-group>
+			</md-card>
+	      </div>
+	      <div>
+	      	<h4>Detinatario</h4>
+		    <select (change)="onChange()">
+   			 	<option *ngFor="let i of regalos">{{i.getName()}}</option>
+			</select>
+	      </div>
+	      <div>
+	      	<h4>Mensaje</h4>
+	        <md-input style="width: 100%" placeholder="Mensaje para el amigo"></md-input>
+	      </div>
+	    </form>
+	  </md-card-content>
+	  <md-card-actions align="center">
+	    <button md-raised-button color="accent">Regalar</button>
+	  </md-card-actions>
+	</md-card>
+</div>
