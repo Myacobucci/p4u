@@ -5,22 +5,25 @@ import { Observable }     from 'rxjs/Observable';
 import { UserState }     from '../../core/user-state';
 import { List, Map } from 'immutable';
 import { Pref } from '../components/pref';
+import { AppSettingsService }     from '../../app-settings.service';
 
 
 @Injectable()
 export class RubrosService {
 
 
-  private preferenciasUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/preference/all";
-  private preferenciasPorUserUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/preferences/";
-  private postPreferenceUrl:string = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/add-preference/";
-  private deletePreferencesUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/remove-all-preferences/";
+  private updateUrl = "p4u/user/update-preferences/";
+  private preferenciasUrl = "p4u/preference/all";
+  private preferenciasPorUserUrl = "p4u/user/preferences/";
+  
 
-  constructor(private http:Http) {}
+  constructor(private http:Http,
+              private context:AppSettingsService) {}
 
   public getPreferencias(): Observable< List<Pref> > {
     console.log("getPreferencias url " + this.preferenciasUrl);
-  	return this.http.get(this.preferenciasUrl)
+    let url = this.context.getServiceHostName() + this.preferenciasUrl;
+  	return this.http.get(url)
                   .map(this.parseProductos)
                   .catch(this.handleError);
     
@@ -29,7 +32,7 @@ export class RubrosService {
 
   public getPreferenciasPorUsuario(idUser:string):Observable< List<Pref> > {
     console.log("usuario " + idUser);
-    let url = this.preferenciasPorUserUrl + idUser;
+    let url = this.context.getServiceHostName() + this.preferenciasPorUserUrl + idUser;
     //let url = this.preferenciasPorUserUrl + "1";
     console.log("getPreferenciasPorUsuario url " + url);
     return this.http.get(url)
@@ -56,9 +59,11 @@ export class RubrosService {
   }
 
 
-  saveOnePreference(user:string, id:string):Observable<UserState> {
-    let url = this.postPreferenceUrl + user + "/" + id;
 
+  updatePreference(idUser:string, arrayChecked:boolean[]):Observable<UserState> {
+    var keyString = this.buildKeys(arrayChecked);
+
+    let url = this.context.getServiceHostName() + this.updateUrl + idUser + "/" + keyString
     let body = "";
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -68,15 +73,21 @@ export class RubrosService {
             .catch(this.handleError);
   }
 
-  deletePreferences(user:string):Observable<UserState> {
-    let url = this.deletePreferencesUrl + user;
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    console.log(url);
-    return this.http.delete(url, options)
-            .map(this.extractData)
-            .catch(this.handleError);
+  buildKeys(arrayChecked) {
+    var keys = [];
+    for (var key in arrayChecked) {
+      if(arrayChecked.hasOwnProperty(key)) {
+        var checked = arrayChecked[key];
+        if (checked) {
+          keys.push(key);
+        }
+      }
+    }
+    var keyString = keys.join(",");
+    return keyString;
   }
+
+
 
   private parseProductos(res: Response) {
     let body = res.json();

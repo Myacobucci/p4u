@@ -93,29 +93,19 @@ export class RubrosComponent implements OnInit {
 
   /*Falta guardar los cambios, crea una sola funcion en servicio*/
   savePreferences(): void{
-    this.isLogged=this.userState.logged;
+    var idUser = this.userState.user.id;
     if (this.isLogged) {
-      let idUser = this.userState.user.id;
-      this.rubrosService.deletePreferences(String(idUser))
-                       .subscribe(
-                            userState => this.updateState(userState),
-                            error =>  this.errorMessage = <any>error);;
-    }
-    if (this.isLogged) {
-      let idUser = this.userState.user.id;
-      for (var i = this.selected.length - 1; i >= 0; i--) {
-        this.rubrosService.saveOnePreference(String(idUser), this.selected[i])
-                           .subscribe(
-                              userState => this.updateState(userState),
-                              error =>  this.errorMessage = <any>error);
-      }
-      console.log("se postea", this.selected[i]);
+      this.rubrosService.updatePreference(String(idUser), this.checkboxes)
+                      .subscribe(
+                        response => this.updateConfirmation(response),
+                        error => this.errorMessage = <any>error);
+      
     }
   }
 
 
-  updateState(userState:UserState) {
-       
+  updateConfirmation(response) {
+    this.message = "Se actualizaron los datos correctamente.";
   }
 
   ngDoCheck() {

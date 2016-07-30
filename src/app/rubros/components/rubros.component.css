@@ -56,3 +56,18 @@ button {
 md-checkbox.md-checked.green .md-icon {
  background-color: rgba(0, 255, 0, 0.87);
 }
+
+.seccion-title{
+  font-size: 20px;
+    font-weight: 400;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding-left: 20px;
+    margin-bottom: 0px;
+}
+
+.message {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+}

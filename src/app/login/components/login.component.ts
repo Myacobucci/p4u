@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   updateState(userState:UserState) {
     this.userSettingsService.updateUserState(userState);
-    let link = ['Vidriera',];
+    let link = ['Rubros',];
     this.router.navigate(link);
   }
 }
