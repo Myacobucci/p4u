@@ -12,10 +12,13 @@ import {
 import { Producto }     from '../../core/producto';
 import { VidrieraService } from '../../vidriera/services/vidriera.service';
 import { RegalosService } from '../../regalos/services/regalos.service';
-
+import { UserSettingsService } from '../../user-settings.service';
 import { MdInput } from '@angular2-material/input';
+import { UserState }     from '../../core/user-state';
 import { MdButton } from '@angular2-material/button';
 import { Regalo } from '../../regalos/components/regalo';
+import { Router} from '@angular/router-deprecated';
+import { Amigo } from '../../regalos/components/amigo';
 
 
 @Component({
@@ -37,22 +40,33 @@ export class RegalarComponent implements OnInit {
   hostImage:string;
   imageFileName:string;
   productName:string;
+  itemId:string;
+  userId:string;
   producto:Producto;
   regalos = List<Regalo>();
+  amigos = List<Amigo>();
 
 
   constructor(private routeParams: RouteParams,
               private regalosService:RegalosService,
-              private vidrieraService:VidrieraService) {
+              private userSettingsService:UserSettingsService,
+              private vidrieraService:VidrieraService,
+              private router:Router) {
     this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
     this.imageFileName = "";
     this.productName = "";
+    this.itemId = "";
+    this.userId = "";
   }
 
   ngOnInit() {
     this.regalosService.getRegalos("1")
                         .subscribe(
                           regalos => this.regalos = regalos,
+                          error => this.errorMessage = <any>error);
+    this.regalosService.getAmigos()
+                        .subscribe(
+                          amigos => this.amigos = amigos,
                           error => this.errorMessage = <any>error);
     this.vidrieraService.getProductos()
                         .subscribe(
@@ -63,6 +77,7 @@ export class RegalarComponent implements OnInit {
 
   cargarProducto(productos:List<Producto>) {
     if (this.routeParams.get('id') !== null) {
+      this.itemId = this.routeParams.get('idItem')
       let id = +this.routeParams.get('id');
       var list = productos.valueSeq().toArray();
       var productoEncontrado = null;
@@ -77,8 +92,24 @@ export class RegalarComponent implements OnInit {
       }
     }
   }
-  onChange(){
-    console.log("aquii");
+
+  some(mensaje:string){
+    console.log(mensaje);
+    this.regalosService.regalarAUsuario(this.itemId, this.userId, mensaje)
+                        .subscribe(
+                          userState => this.updateState(userState),
+                          error =>  this.errorMessage = <any>error);
+  }
+
+  onChange(id:string){
+    this.userId = id;
+    console.log(id);
+  }
+
+  updateState(userState:UserState) {    
+    this.userSettingsService.updateUserState(userState);
+    let link = ['Vidriera'];
+    this.router.navigate(link);
   }
 
 }

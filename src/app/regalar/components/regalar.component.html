@@ -13,18 +13,18 @@
 	      </div>
 	      <div>
 	      	<h4>Detinatario</h4>
-		    <select (change)="onChange()">
-   			 	<option *ngFor="let i of regalos">{{i.getName()}}</option>
+		    <select class="form-control" [ngModel]="selectedWorkout" [value]="a" (ngModelChange)="onChange($event)">
+   			 	<option [value]="i.getId()"  *ngFor="#i of amigos">{{i.getFirstName()}} {{i.getLastName()}}</option>
 			</select>
 	      </div>
 	      <div>
 	      	<h4>Mensaje</h4>
-	        <md-input style="width: 100%" placeholder="Mensaje para el amigo"></md-input>
+	        <md-input style="width: 100%" placeholder="Mensaje para el amigo" #mensaje ></md-input>
 	      </div>
 	    </form>
 	  </md-card-content>
 	  <md-card-actions align="center">
-	    <button md-raised-button color="accent">Regalar</button>
+	    <button (click)="some(mensaje.value)" md-raised-button color="accent">Regalar</button>
 	  </md-card-actions>
 	</md-card>
 </div>

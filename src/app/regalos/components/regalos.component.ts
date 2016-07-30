@@ -58,7 +58,7 @@ export class RegalosComponent implements OnInit {
 
   regalar(regalo:Regalo) {
     if (this.isLogged) {
-      let link = ['Regalar', { id: regalo.getId() }];
+      let link = ['Regalar', { id: regalo.getId(),idItem: regalo.getItemId()  }];
       this.router.navigate(link);    
     } else {
       let link = ['Login',];
