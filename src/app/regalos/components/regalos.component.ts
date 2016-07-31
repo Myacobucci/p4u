@@ -5,6 +5,7 @@ import { MdButton } from '@angular2-material/button';
 import { RegalosService } from '../services/regalos.service';
 import { UserSettingsService } from '../../user-settings.service';
 import { Regalo } from './regalo';
+import { RouteParams, } from '@angular/router-deprecated';
 import { UserState }     from '../../core/user-state';
 import { Subscription }   from 'rxjs/Subscription';
 import { List, Map } from 'immutable';
@@ -34,12 +35,14 @@ export class RegalosComponent implements OnInit {
   userState:UserState;
   isLogged:boolean;
   message: string;
+  mensjRegAceptado: string;
   messageCanj: string;
   canjeados: Array<Regalo> = [];
   noCanjeados: Array<Regalo> = [];
   private _regalosCanjeados2: List<Regalo> ;
 
-  constructor(private regalosService:RegalosService,
+  constructor(private routeParams: RouteParams,
+              private regalosService:RegalosService,
               private userSettingsService:UserSettingsService,
               private router: Router) {
 
@@ -64,8 +67,13 @@ export class RegalosComponent implements OnInit {
                           regalosCanjeados => this.filtroCanjeados(regalosCanjeados),
                           error => this.errorMessage = <any>error);
                       }
-    this.regalosCanjeados = this.regalos;
-    console.log("hola");   
+    this.regalosCanjeados = this.regalos; 
+    if (this.routeParams.get('acepta') == "si"){
+      this.mensjRegAceptado = "       El regalo fue aceptado correctamente."
+    }
+    if (this.routeParams.get('regaloEnviado') == "si"){
+      this.mensjRegAceptado = "       El regalo fue enviado al usuario correctamente."
+    }
 
   }
 
@@ -102,13 +110,18 @@ export class RegalosComponent implements OnInit {
   }
 
   canjear(regalo:Regalo) {
+    if (this.isLogged) {
     this.regalosService.canjearRegalo(regalo.getItemId())
                         .subscribe(
                           userState => this.updateState(userState),
                           error =>  this.errorMessage = <any>error);
 
-     let link = ['Regalos', { id: 1}];
-
+     let link = ['Vidriera',];
+     this.router.navigate(link);
+     let link2 = ['Regalos', {acepta: "si"}];
+     this.router.navigate(link2);
+   }
+   let a = "a";
   }
 
 updateState(userState:UserState) {

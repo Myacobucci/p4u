@@ -36,6 +36,20 @@ export class Regalo {
 		this._data4 = Map<string, any>(data4);
 		return <string> this._data4.get("name");
 	}
+	getBrand() {
+		let data2 = this._data.get("item") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
+		this._data2 = Map<string, any>(data2);
+		let data4 = this._data2.get("present") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
+		this._data4 = Map<string, any>(data4);
+		return <string> this._data4.get("brand");
+	}
+	getType() {
+		let data2 = this._data.get("item") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
+		this._data2 = Map<string, any>(data2);
+		let data4 = this._data2.get("present") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
+		this._data4 = Map<string, any>(data4);
+		return <string> this._data4.get("type");
+	}
 	getState() {
 		let data2 = this._data.get("item") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
 		this._data2 = Map<string, any>(data2);
