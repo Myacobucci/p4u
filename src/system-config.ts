@@ -10,7 +10,9 @@ const map: any = {
   '@angular2-material': 'vendor/@angular2-material',
   'immutable': 'vendor/immutable/dist/immutable.js',
   'angular2-uuid': 'vendor/angular2-uuid/index.js',
-  'moment': 'vendor/moment/moment.js'
+  'moment': 'vendor/moment/moment.js',
+  /*'notifications': 'node_modules/angular2-notifications'*/
+  'ng2-toasty': 'vendor/ng2-toasty/ng2-toasty.js'
 };
 
 /** User packages configuration. */
@@ -23,6 +25,10 @@ const packages: any = {
   },
   'moment':{
     format: 'cjs'
+  },
+  //'notifications': { main: 'components.js', defaultExtension: 'js' }
+  'ng2-toasty':{
+    "defaultExtension": "js"
   }
 };
 
@@ -62,8 +68,10 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
-  'immutable',
-
+  'immutable',  
+  //'notifications'
+  'ng2-toasty',
+  
   // App specific barrels.
   'app',
   'app/shared',
@@ -73,6 +81,7 @@ const barrels: string[] = [
   'app/orden/components',
   'app/regalar/regalar',
   'app/registracion/components/registracion',
+  'app/notificacion/components/notificacion',
   /** @cli-barrel */
 ];
 
@@ -91,7 +100,7 @@ System.config({
     'rxjs': 'vendor/rxjs',
     'main': 'main.js'
   },
-  packages: cliSystemConfigPackages
+  packages: cliSystemConfigPackages    
 });
 
 // Apply the user's configuration.
