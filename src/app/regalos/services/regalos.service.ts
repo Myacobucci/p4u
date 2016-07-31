@@ -9,16 +9,15 @@ import { List, Map } from 'immutable';
 @Injectable()
 export class RegalosService {
 
-  private idUsuario = "";
   private regalosUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/notification/";
   private amigosUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/all";
   private regalarAAmigo = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/transfer-present";
+  private canjearUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/redeem-present/";
 
   constructor(private http:Http) {}
 
   public getRegalos(id: string): Observable<List<Regalo> > {
   	console.log("here");
-    this.idUsuario = id;
     let url = this.regalosUrl + id;
   	return this.http.get(url)
                   .map(this.parseRegalos)
@@ -68,17 +67,27 @@ export class RegalosService {
     return amigos || { };
   }
 
-  public regalarAUsuario(Id: string, userId: string, mensaje: string){
+  public regalarAUsuario(Id: string, userId: string, mensaje: string, userOrigen: number){
 
-    let body = JSON.stringify({itemId: +Id, userFrom: +this.idUsuario, userTo: +userId, msg: mensaje});
+    let body = JSON.stringify({itemId: +Id, userFrom: userOrigen, userTo: +userId, msg: mensaje});
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-
+     console.log(Id + " " + userId + " " + mensaje + " " + userOrigen);
     return this.http.post(this.regalarAAmigo, body, options)
             .map(this.extractData)
             .catch(this.handleError);
   }
 
+  public canjearRegalo(Id: number){
+
+    let url = this.canjearUrl + Id;
+    let body = "";
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
 
 }

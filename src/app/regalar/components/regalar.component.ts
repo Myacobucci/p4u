@@ -45,6 +45,9 @@ export class RegalarComponent implements OnInit {
   producto:Producto;
   regalos = List<Regalo>();
   amigos = List<Amigo>();
+  userState:UserState;
+  isLogged:boolean;
+
 
 
   constructor(private routeParams: RouteParams,
@@ -60,6 +63,8 @@ export class RegalarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userState = this.userSettingsService.userState;
+    this.isLogged = this.userState.logged;
     this.regalosService.getRegalos("1")
                         .subscribe(
                           regalos => this.regalos = regalos,
@@ -94,8 +99,8 @@ export class RegalarComponent implements OnInit {
   }
 
   some(mensaje:string){
-    console.log(mensaje);
-    this.regalosService.regalarAUsuario(this.itemId, this.userId, mensaje)
+    console.log(mensaje + this.userState.user.id);
+    this.regalosService.regalarAUsuario(this.itemId, this.userId, mensaje, this.userState.user.id)
                         .subscribe(
                           userState => this.updateState(userState),
                           error =>  this.errorMessage = <any>error);

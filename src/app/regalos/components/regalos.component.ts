@@ -29,8 +29,15 @@ export class RegalosComponent implements OnInit {
   errorMessage: string;
   hostImage:string;
   regalos = List<Regalo>();
+  regalosCanjeados = List<Regalo>();
+  regalosCanjeados2 = List<Regalo>();
   userState:UserState;
   isLogged:boolean;
+  message: string;
+  messageCanj: string;
+  canjeados: Array<Regalo> = [];
+  noCanjeados: Array<Regalo> = [];
+  private _regalosCanjeados2: List<Regalo> ;
 
   constructor(private regalosService:RegalosService,
               private userSettingsService:UserSettingsService,
@@ -50,11 +57,39 @@ export class RegalosComponent implements OnInit {
                         .subscribe(
                           regalos => this.regalos = regalos,
                           error => this.errorMessage = <any>error);
-                      }
+                      
 
-       
+    this.regalosService.getRegalos(String(idUser))
+                        .subscribe(
+                          regalosCanjeados => this.filtroCanjeados(regalosCanjeados),
+                          error => this.errorMessage = <any>error);
+                      }
+    this.regalosCanjeados = this.regalos;
+    console.log("hola");   
 
   }
+
+
+  filtroCanjeados(regalos:List<Regalo>) {
+    var canje: Array<Regalo> = [];
+    var noCanje: Array<Regalo> = [];
+    var mes: string;
+    var mesCanj: string;
+    regalos.forEach(function(item:Regalo) {
+      if (item.getState() == "Canjeado"){
+        canje.push(item);
+        mesCanj = "Mis Regalos Aceptados";
+      } else {
+        noCanje.push(item);
+        mes = "Mis Regalos Recibidos";
+      }
+    });
+    this.canjeados = canje;
+    this.noCanjeados = noCanje;
+    this.message = mes;
+    this.messageCanj = mesCanj;
+  }
+
 
   regalar(regalo:Regalo) {
     if (this.isLogged) {
@@ -66,6 +101,19 @@ export class RegalosComponent implements OnInit {
     }
   }
 
+  canjear(regalo:Regalo) {
+    this.regalosService.canjearRegalo(regalo.getItemId())
+                        .subscribe(
+                          userState => this.updateState(userState),
+                          error =>  this.errorMessage = <any>error);
+
+     let link = ['Regalos', { id: 1}];
+
+  }
+
+updateState(userState:UserState) {
+       
+  }
 
 
 

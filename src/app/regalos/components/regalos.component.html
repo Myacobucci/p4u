@@ -1,7 +1,10 @@
-<h3 class="seccion-title">Mis Regalos</h3>
 
+<div class="message" *ngIf="message">
+<h3 class="seccion-title">{{message}}</h3>
+</div>
 <div class="card-container">
-	<md-card *ngFor="let regalo of regalos">
+
+	<md-card *ngFor="let regalo of noCanjeados">
 	<img align="right" src="{{hostImage + regalo.getImageFileName()}}" height="150" width="150">
         <md-card-title>
           <md-card-title-text>
@@ -14,9 +17,29 @@
    		</md-card-content>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-          <button md-raised-button (click)="savePreferences()" color="accent">Aceptar</button>
+          <button md-raised-button (click)="canjear(regalo)" color="accent">Aceptar</button>
           <button md-raised-button (click)="regalar(regalo);" color="accent">Regalar</button>
         </md-card-actions>
+      </md-card>
+      
+</div>
+<div class="message" *ngIf="messageCanj">
+<h3 class="seccion-title">{{messageCanj}}</h3>
+</div>
+<div class="card-container">
+  <md-card *ngFor="let reg of canjeados">
+  <img align="right" src="{{hostImage + reg.getImageFileName()}}" height="150" width="150">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{reg.getName()}}</span>
+            <span class="md-subhead"></span>
+          </md-card-title-text>
+          <md-card-content>
+          <p> </p>
+          <p><u>Código:</u> {{reg.getCodigo()}}</p>
+      </md-card-content>
+        </md-card-title>
+ 
       </md-card>
       
 </div>

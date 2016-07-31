@@ -41,6 +41,11 @@ export class Regalo {
 		this._data2 = Map<string, any>(data2);
 		return <string> this._data2.get("state");
 	}
+	getCodigo() {
+		let data2 = this._data.get("item") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
+		this._data2 = Map<string, any>(data2);
+		return <string> this._data2.get("presentCode");
+	}
 	getImageFileName() {
 		let data2 = this._data.get("item") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
 		this._data2 = Map<string, any>(data2);
