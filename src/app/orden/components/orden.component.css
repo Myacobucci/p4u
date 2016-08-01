@@ -1,6 +1,7 @@
 .container {
   width: 50%;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .form-select {
@@ -32,4 +33,15 @@
     margin-bottom: 10px;
     height: 39px;
     background: transparent;
+}
+
+.form-dropdown{
+    width: 90%;
+}
+
+.my-radio-group{
+    width: 100%;
+}
+.my-radio{
+    
 }

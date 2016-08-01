@@ -1,6 +1,114 @@
+
 <div class="container">
-	<md-card>
-	  <md-card-title>Orden de compra - paso 1</md-card-title>
+	<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+	<div class="message" *ngIf="message">{{message}}</div>
+	<md-toolbar color="primary">Compra</md-toolbar>
+	<md-card *ngIf="step==1">
+	  <md-card-title>Paso 1 de 3 - Medio de pago</md-card-title>
+	  <md-card-content>
+	    <form>
+		  <div>   
+		    <md-card>
+			   <md-card-title-group>
+			      <img md-card-sm-image src="{{hostImage + imageFileName}}"/>
+			      <md-card-title>{{productName}}</md-card-title>
+			   </md-card-title-group>
+			</md-card>
+			<table width="100%">
+			<thead>
+			  <td><strong>Precio Unitario</strong></td>
+			  <td colspan="3"><strong>Cantidad</strong></td>
+			  <td colspan="3"><strong>Total a Pagar</strong></td>
+			</thead>
+			<tr>
+			  <td>$ {{productCost}}</td>
+			  <td colspan="3"><md-input  type="number" placeholder="Cantidad" 
+			  				[value]="cantidad"
+			  				(input)="cantidad=$event.target.value"></md-input></td>
+			  <td colspan="3">$ {{productCost * cantidad}}</td>
+			</tr>
+			</table>
+	      </div>
+	      
+	      <div>
+	      	<h4>Detinatario</h4>
+		    <div class="my-radio-group">
+			    <input type="radio" class="my-radio" [ngModel]="{checked: groupValue == '0'}" 
+			    		(ngModelChange)="groupValue='0'"  name="userDest" value="0">Para Mi
+	    		<input type="radio" class="my-radio" [ngModel]="{checked: groupValue == '1'}"  
+	    				(ngModelChange)="groupValue='1'" name="userDest" value="1">Para un amigo
+    		</div>
+		    <label *ngIf="groupValue==1" for="power">Usuario: </label>
+			<select *ngIf="groupValue==1" 
+					(change)="idUserDestino=$event.target.value"
+					[value]="idUserDestino"
+					class="form-control form-select form-dropdown" required>
+				<option value="-1" checked="checked">Seleccione</option>
+				<option *ngFor="let user of listUser" [value]="user.id">{{user.firstName + user.lastName}}</option>
+			</select>
+			<textarea class="form-message" maxlength="50" placeholder="Escriba una mensaje"></textarea>
+
+	      </div>
+	      <div>
+	      	<h4>Medio de pago</h4>
+	        <md-input style="width: 100%" 
+	        			maxLength="22" 
+	        			placeholder="Nro de tarjeta"
+	        			value="{{nroTarjeta}}"
+	        			(input)="nroTarjeta=$event.target.value"></md-input>
+	        <table style="width: 100%" cellspacing="0"><tr>
+	        	<md-input placeholder="Vencimiento MM/YY" maxLength="5" style="width: 50%" ></md-input>
+	        	<md-input placeholder="Clave de 3 digitos" maxLength="3" style="width: 50%" ></md-input>
+	        </tr></table>
+	      </div>
+	    </form>
+	  </md-card-content>
+	  <md-card-actions align="end">
+	    <button md-raised-button color="accent" (click)="goConfirm()">Siguiente</button>
+	  </md-card-actions>
+	</md-card>
+	<md-card *ngIf="step==2">
+	  <md-card-title>Paso 2 de 3 - Confirmación</md-card-title>
+	  <md-card-content>
+	    <form>
+		  <div>   
+		    <md-card>
+			   <md-card-title-group>
+			      <img md-card-sm-image src="{{hostImage + imageFileName}}"/>
+			      <md-card-title>{{productName}}</md-card-title>
+			   </md-card-title-group>
+			</md-card>
+			<table width="100%">
+			<thead>
+			  <td><strong>Precio Unitario</strong></td>
+			  <td colspan="3"><strong>Cantidad</strong></td>
+			  <td colspan="3"><strong>Total a Pagar</strong></td>
+			</thead>
+			<tr>
+			  <td>$ {{productCost}}</td>
+			  <td colspan="3">{{cantidad}}</td>
+			  <td colspan="3">$ {{productCost * cantidad}}</td>
+			</tr>
+			</table>
+	      </div>
+	      
+	      <div>
+	      	<h4>Detinatario</h4>
+		    <p>{{usuarioDestino}}</p>
+	      </div>
+	      <div>
+	      	<h4>Medio de pago</h4>
+	        <p>Tarjeta: {{nroTarjeta}}</p>
+	      </div>
+	    </form>
+	  </md-card-content>
+	  <md-card-actions align="end">
+	  <button md-raised-button color="accent" (click)="goInicio()">Atras</button>
+	    <button md-raised-button color="accent" (click)="goFinal()">Confirmar</button>
+	  </md-card-actions>
+	</md-card>
+	<md-card *ngIf="step==3">
+	  <md-card-title>Paso 3 de 3 - Felicitaciones</md-card-title>
 	  <md-card-content>
 	    <form>
 		  <div>   
@@ -11,32 +119,11 @@
 			   </md-card-title-group>
 			</md-card>
 	      </div>
-	      <md-input placeholder="Cantidad">1</md-input>
-	      <div>
-	      	<h4>Detinatario</h4>
-		    <md-radio-group>
-		      <md-radio-button value="0">Para mi </md-radio-button>
-		      <md-radio-button value="1">Para un Amigo</md-radio-button>
-		    </md-radio-group>
-		    <label for="power">Usuario</label>
-			<select class="form-control form-select" required>
-				<option *ngFor="let user of listUser" [value]="user.id">{{user.firstName + user.lastName}}</option>
-			</select>
-			<textarea class="form-message" placeholder="Escriba una mensaje"></textarea>
-
-	      </div>
-	      <div>
-	      	<h4>Medio de pago</h4>
-	        <md-input style="width: 100%" placeholder="Nro de tarjeta"></md-input>
-	        <table style="width: 100%" cellspacing="0"><tr>
-	        	<md-input placeholder="Vencimiento" style="width: 50%" ></md-input>
-	        	<md-input placeholder="Clave de 3 digitos" style="width: 50%" ></md-input>
-	        </tr></table>
-	      </div>
+	      <h3>Felicitaciones, la operación se ha completado exitosamente.</h3>
 	    </form>
 	  </md-card-content>
 	  <md-card-actions align="end">
-	    <button md-raised-button color="accent">Continuar</button>
+	    <button md-raised-button color="accent" (click)="goMisRegalos()">Ir a mis regalos</button>
 	  </md-card-actions>
 	</md-card>
 </div>

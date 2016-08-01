@@ -78,5 +78,5 @@ export class VidrieraComponent implements OnInit {
       this.router.navigate(link);    
     }
   }
-
+  
 }

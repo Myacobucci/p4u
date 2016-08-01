@@ -17,7 +17,7 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
   	MD_BUTTON_DIRECTIVES,
     MD_CARD_DIRECTIVES,
     MdInput,
-    MdButton,
+    MdButton,    
     ROUTER_DIRECTIVES
   ],
   providers: [LoginService],
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   updateState(userState:UserState) {
     this.userSettingsService.updateUserState(userState);
-    let link = ['Rubros',];
+    let link = ['Vidriera',];
     this.router.navigate(link);
   }
 }
