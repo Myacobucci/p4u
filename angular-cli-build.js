@@ -19,7 +19,8 @@ module.exports = function(defaults) {
       '@angular2-material/**/*',
       'immutable/dist/immutable.js',
       'angular2-uuid/index.js',
-      'moment/moment.js'
+      'moment/moment.js',
+      //'ng2-toasty/**/*'
     ]
   });
 };

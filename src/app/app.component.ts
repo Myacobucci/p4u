@@ -16,6 +16,19 @@ import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
 import { RegistracionComponent } from './registracion/components/registracion.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angular/router-deprecated';
+//import { NotificacionComponent } from './notificacion/components/notificacion.component';
+
+//import { ToastyService, ToastyConfig, Toasty, ToastOptions, ToastData } from 'ng2-toasty';
+import { Subject, Observable, Subscription } from 'rxjs/Rx';
+//import {HTTP_PROVIDERS} from '@angular/http';
+//import { AppSettingsService } from './app-settings.service';
+//import { bootstrap } from '@angular/platform-browser-dynamic';
+/*
+bootstrap(AppComponent, [
+  HTTP_PROVIDERS, UserSettingsService, AppSettingsService, 
+  ToastyService, ToastyConfig //Esto es necesario para tener una unica instancia del servicio
+]);
+*/
 
 @Component({
   moduleId: module.id,
@@ -34,8 +47,15 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     VidrieraComponent,
     LoginComponent,
     PerfilComponent,
-    RegistracionComponent
+    RegistracionComponent,
+    //Toasty
+    //NotificacionComponent    
   ],
+  /*template:`
+    <div>Hello world</div>
+    <button (click)="addToast()">Add Toast</botton>
+    <ng2-toasty></ng2-toasty>
+  `*/
 })
 
 @RouteConfig([
@@ -79,7 +99,12 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
     path: '/registracion',
     component: RegistracionComponent,
     name: 'Registracion'
-  }
+  }/*,
+  {
+    path: '/notificacion',
+    component: NotificacionComponent,
+    name: 'Notificacion'
+  }*/
 ])
 
 export class AppComponent implements OnInit {
@@ -91,6 +116,7 @@ export class AppComponent implements OnInit {
   userState:UserState;
   
   constructor(private userSettingsService:UserSettingsService,
+              //private toastyService:ToastyService,
               private router:Router) {
 
   }
@@ -114,5 +140,47 @@ export class AppComponent implements OnInit {
       this.router.navigate(link);
   }
 
+  getTitle(num: number): string {
+    return 'Countdown: ' + num;
+  }
+
+  getMessage(num: number): string {
+    return 'Seconds left: ' + num;
+  }
+
+/*  addToast() {
+        let interval = 1000;
+        let timeout = 5000;
+        let seconds = timeout / 1000;
+        let subscription: Subscription;
+        
+        let toastOptions: ToastOptions = {
+            title: this.getTitle(seconds),
+            msg: this.getMessage(seconds),
+            showClose: true,
+            timeout: timeout,
+            onAdd: (toast: ToastData) => {
+                console.log('Toast ' + toast.id + ' has been added!');
+                // Run the timer with 1 second iterval 
+                let observable = Observable.interval(interval).take(seconds);
+                // Start listen seconds beat 
+                subscription = observable.subscribe((count: number) => {
+                    // Update title of toast 
+                    toast.title = this.getTitle(seconds - count - 1);
+                    // Update message of toast 
+                    toast.msg = this.getMessage(seconds - count - 1);
+                });
+ 
+            },
+            onRemove: function(toast: ToastData) {
+                console.log('Toast ' + toast.id + ' has been removed!');
+                // Stop listenning 
+                subscription.unsubscribe();
+            }
+        };
+
+        this.toastyService.info(toastOptions);
+ 
+  }*/
 
 }

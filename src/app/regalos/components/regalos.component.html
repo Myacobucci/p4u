@@ -1,4 +1,4 @@
-
+<div class="message" *ngIf="mensjRegAceptado">{{mensjRegAceptado}}</div>
 <div class="message" *ngIf="message">
 <h3 class="seccion-title">{{message}}</h3>
 </div>
@@ -13,7 +13,8 @@
           </md-card-title-text>
           <md-card-content>
           <p> </p>
-      		<p><u>Código:</u> 159776264</p>
+          <p><u>Marca:</u> {{regalo.getBrand()}}</p>
+          <p><u>Categoria:</u> {{regalo.getType()}}</p>
    		</md-card-content>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">

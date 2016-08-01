@@ -99,11 +99,16 @@ export class RegalarComponent implements OnInit {
   }
 
   some(mensaje:string){
+    if (this.isLogged) { 
     console.log(mensaje + this.userState.user.id);
     this.regalosService.regalarAUsuario(this.itemId, this.userId, mensaje, this.userState.user.id)
                         .subscribe(
                           userState => this.updateState(userState),
                           error =>  this.errorMessage = <any>error);
+       
+    let link = ['Regalos', {regaloEnviado: "si"}];
+    this.router.navigate(link);
+    }
   }
 
   onChange(id:string){
@@ -111,10 +116,8 @@ export class RegalarComponent implements OnInit {
     console.log(id);
   }
 
-  updateState(userState:UserState) {    
-    this.userSettingsService.updateUserState(userState);
-    let link = ['Vidriera'];
-    this.router.navigate(link);
-  }
+  updateState(userState:UserState) {
+  
+}
 
 }
