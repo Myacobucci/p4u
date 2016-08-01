@@ -4,21 +4,27 @@ import { Observable }     from 'rxjs/Observable';
 import { UserState }     from '../../core/user-state';
 import { User }     from '../../core/user';
 import { AppSettingsService }     from '../../app-settings.service';
-import { List, Map } from 'immutable';
 
 @Injectable()
-export class LoginService {
+export class OrdenService {
 
-  private loginUri:string = "p4u/user/login";
-  private allUserUri:string = "p4u/user/all";
-  
+  private compraUri:string = "p4u/present/buy-present";
+
   constructor(private http:Http,
               private context:AppSettingsService) {}
 
-  doLogin(email:string, pass: string):Observable<UserState> {
-    let url = this.context.getServiceHostName() + this.loginUri + "/" + email + "/" + pass;
+  public doBuy(idUserOrigin:number, idUserDestino:number, 
+  				cantidad:number, message:string, idArticulo:number):Observable<any> {
+  	let url = this.context.getServiceHostName() + this.compraUri;
 
-  	let body = "";
+  	let compraRequest = {"userFrom":idUserOrigin, 
+  							"userTo":idUserDestino,
+  							"quantity":cantidad,
+  							"text": message, 
+  							"presentId" : idArticulo};
+
+  	let body = JSON.stringify(compraRequest);
+  	console.log(body);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     console.log(url);
@@ -27,24 +33,10 @@ export class LoginService {
     				.catch(this.handleError);
   }
 
-  getAllUser() {
-    let url = this.context.getServiceHostName() + this.allUserUri;
-    console.log(url);
-    return this.http.get(url)
-            .map(this.extractUsers)
-            .catch(this.handleError); 
-  }
-
   private extractData(res: Response) {
     let body = res.json();
     console.log(body);
     return body || { };
-  }
-
-  private extractUsers(res: Response) {
-    let body = res.json();
-    var users:User[] = body;
-    return users || { };
   }
 
   private handleError (error: any) {

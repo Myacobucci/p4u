@@ -46,7 +46,7 @@
 				<option value="-1" checked="checked">Seleccione</option>
 				<option *ngFor="let user of listUser" [value]="user.id">{{user.firstName + user.lastName}}</option>
 			</select>
-			<textarea class="form-message" maxlength="50" placeholder="Escriba una mensaje"></textarea>
+			<textarea class="form-message" [value]="messageText" (change)="messageText=$event.target.value"  maxlength="50" placeholder="Escriba una mensaje"></textarea>
 
 	      </div>
 	      <div>

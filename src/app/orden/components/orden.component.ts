@@ -17,7 +17,7 @@ import { User }     from '../../core/user';
 import { AppSettingsService }     from '../../app-settings.service';
 import { VidrieraService } from '../../vidriera/services/vidriera.service';
 import { LoginService } from '../../login/services/login.service';
-
+import { OrdenService } from '../../orden/services/orden.service';
 
 
 import { MdInput } from '@angular2-material/input';
@@ -38,13 +38,14 @@ import { MdButton } from '@angular2-material/button';
     MdToolbar,
     MdRadioButton,
   ],
-  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService, LoginService],
+  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService, OrdenService, LoginService],
 })
 export class OrdenComponent implements OnInit {
   message: string;
   errorMessage: string;
   hostImage:string;
   imageFileName:string;
+  productId:number;
   productName:string;
   productCost:number;
   producto:Producto;
@@ -57,6 +58,7 @@ export class OrdenComponent implements OnInit {
   listUser:User[];
   step:number;
 
+  messageText:string;
   numeroTajeta:string;
 
   constructor(private routeParams: RouteParams,
@@ -64,6 +66,7 @@ export class OrdenComponent implements OnInit {
               private loginService:LoginService,
               private userSettingsService:UserSettingsService,
               private context:AppSettingsService,
+              private ordenService:OrdenService,
               private router:Router) {
     this.hostImage=this.context.getServiceHostName();
     this.idUserOrigen = -1;
@@ -107,6 +110,7 @@ export class OrdenComponent implements OnInit {
         this.productName = productoEncontrado.getName();
         this.imageFileName = productoEncontrado.getImageFileName();
         this.productCost = productoEncontrado.getCost();
+        this.productId = productoEncontrado.getId();
       }
     }
   }
@@ -136,9 +140,19 @@ export class OrdenComponent implements OnInit {
   goInicio() {
     this.step = 1;
   }
+
   goFinal() {
+
+    this.ordenService.doBuy(this.idUserOrigen, this.idUserDestino, 
+                            this.cantidad, this.messageText, this.productId).subscribe(
+                              respuesta => this.finalizarCompra(respuesta),
+                              error =>  this.errorMessage = <any>error);
+  }
+
+  finalizarCompra(respuesta) {
     this.step = 3;
   }
+
   goMisRegalos() {
     let link = ['Regalos',];
     this.router.navigate(link);
