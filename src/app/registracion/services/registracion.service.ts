@@ -7,7 +7,7 @@ import { User } from '../../core/user';
 @Injectable()
 export class RegistracionService {
 
-	private userRegisterUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/register";
+	private userRegisterUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/register";
 
 	constructor(private http:Http) {}
 
