@@ -3,24 +3,24 @@
     [
       {
         "name": "@angular2-material/core",
-        "raw": "@angular2-material/core",
-        "rawSpec": "",
+        "raw": "@angular2-material/core@^2.0.0-alpha.5-2",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
-        "spec": "latest",
-        "type": "tag"
+        "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+        "type": "range"
       },
       "/home/nestor/desa/p4u"
     ]
   ],
-  "_from": "@angular2-material/core@latest",
-  "_id": "@angular2-material/core@2.0.0-alpha.5-2",
+  "_from": "@angular2-material/core@>=2.0.0-alpha.5-2 <3.0.0",
+  "_id": "@angular2-material/core@2.0.0-alpha.6-2",
   "_inCache": true,
   "_installable": true,
   "_location": "/@angular2-material/core",
   "_nodeVersion": "5.7.0",
   "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/core-2.0.0-alpha.5-2.tgz_1464814630971_0.1296463767066598"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/core-2.0.0-alpha.6-2.tgz_1468378849375_0.729686220176518"
   },
   "_npmUser": {
     "email": "angular-core+npm@google.com",
@@ -30,19 +30,19 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "@angular2-material/core",
-    "raw": "@angular2-material/core",
-    "rawSpec": "",
+    "raw": "@angular2-material/core@^2.0.0-alpha.5-2",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
-    "spec": "latest",
-    "type": "tag"
+    "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/core/-/core-2.0.0-alpha.5-2.tgz",
-  "_shasum": "8bb9ecddc6677abae794f1173d4b80b79e45ade8",
+  "_resolved": "https://registry.npmjs.org/@angular2-material/core/-/core-2.0.0-alpha.6-2.tgz",
+  "_shasum": "c46fc4e3d1eef32a3bd6051ac10afe408946a2f5",
   "_shrinkwrap": null,
-  "_spec": "@angular2-material/core",
+  "_spec": "@angular2-material/core@^2.0.0-alpha.5-2",
   "_where": "/home/nestor/desa/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
@@ -52,8 +52,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "8bb9ecddc6677abae794f1173d4b80b79e45ade8",
-    "tarball": "https://registry.npmjs.org/@angular2-material/core/-/core-2.0.0-alpha.5-2.tgz"
+    "shasum": "c46fc4e3d1eef32a3bd6051ac10afe408946a2f5",
+    "tarball": "https://registry.npmjs.org/@angular2-material/core/-/core-2.0.0-alpha.6-2.tgz"
   },
   "homepage": "https://github.com/angular/material2#readme",
   "keywords": [
@@ -73,8 +73,8 @@
   "name": "@angular2-material/core",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/common": "^2.0.0-rc.1",
-    "@angular/core": "^2.0.0-rc.1"
+    "@angular/common": "^2.0.0-rc.4",
+    "@angular/core": "^2.0.0-rc.4"
   },
   "readme": "ERROR: No README data found!",
   "repository": {
@@ -83,5 +83,5 @@
   },
   "scripts": {},
   "typings": "./core.d.ts",
-  "version": "2.0.0-alpha.5-2"
+  "version": "2.0.0-alpha.6-2"
 }

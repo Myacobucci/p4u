@@ -3,24 +3,24 @@
     [
       {
         "name": "@angular2-material/icon",
-        "raw": "@angular2-material/icon",
-        "rawSpec": "",
+        "raw": "@angular2-material/icon@^2.0.0-alpha.5-2",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
-        "spec": "latest",
-        "type": "tag"
+        "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+        "type": "range"
       },
       "/home/nestor/desa/p4u"
     ]
   ],
-  "_from": "@angular2-material/icon@latest",
-  "_id": "@angular2-material/icon@2.0.0-alpha.5-2",
+  "_from": "@angular2-material/icon@>=2.0.0-alpha.5-2 <3.0.0",
+  "_id": "@angular2-material/icon@2.0.0-alpha.6-2",
   "_inCache": true,
   "_installable": true,
   "_location": "/@angular2-material/icon",
   "_nodeVersion": "5.7.0",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/icon-2.0.0-alpha.5-2.tgz_1464814640464_0.8831404927186668"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/icon-2.0.0-alpha.6-2.tgz_1468378860101_0.6742181847803295"
   },
   "_npmUser": {
     "email": "angular-core+npm@google.com",
@@ -30,19 +30,19 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "@angular2-material/icon",
-    "raw": "@angular2-material/icon",
-    "rawSpec": "",
+    "raw": "@angular2-material/icon@^2.0.0-alpha.5-2",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
-    "spec": "latest",
-    "type": "tag"
+    "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/icon/-/icon-2.0.0-alpha.5-2.tgz",
-  "_shasum": "f5480f10ddc5ea7cd4581f0e0563577700dad71f",
+  "_resolved": "https://registry.npmjs.org/@angular2-material/icon/-/icon-2.0.0-alpha.6-2.tgz",
+  "_shasum": "316cce30687346e0b3183290482b9beed84f3483",
   "_shrinkwrap": null,
-  "_spec": "@angular2-material/icon",
+  "_spec": "@angular2-material/icon@^2.0.0-alpha.5-2",
   "_where": "/home/nestor/desa/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
@@ -52,8 +52,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "f5480f10ddc5ea7cd4581f0e0563577700dad71f",
-    "tarball": "https://registry.npmjs.org/@angular2-material/icon/-/icon-2.0.0-alpha.5-2.tgz"
+    "shasum": "316cce30687346e0b3183290482b9beed84f3483",
+    "tarball": "https://registry.npmjs.org/@angular2-material/icon/-/icon-2.0.0-alpha.6-2.tgz"
   },
   "homepage": "https://github.com/angular/material2#readme",
   "keywords": [
@@ -74,8 +74,8 @@
   "name": "@angular2-material/icon",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/http": "2.0.0-rc.1",
-    "@angular2-material/core": "2.0.0-alpha.5-2"
+    "@angular/http": "2.0.0-rc.4",
+    "@angular2-material/core": "2.0.0-alpha.6-2"
   },
   "readme": "ERROR: No README data found!",
   "repository": {
@@ -84,5 +84,5 @@
   },
   "scripts": {},
   "typings": "./icon.d.ts",
-  "version": "2.0.0-alpha.5-2"
+  "version": "2.0.0-alpha.6-2"
 }

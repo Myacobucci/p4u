@@ -1,25 +1,17 @@
-
-<div ng-controller="RubrosCtrl" class="card-container">
-Sus preferencias son:
-<div ng-controller="RubrosCtrl" class="card-container">
-	<md-card *ngFor="let preferenciaUser of preferenciasPorUsuario">
-  		{{preferenciaUser.name}}
-	</md-card>
-</div>
-</div>
-
-<div ng-controller="RubrosCtrl" class="card-container">
-Elija nuevas preferencias:
-<div ng-controller="RubrosCtrl" class="card-container">
-	<md-card *ngFor="let preferencia of preferencias">
-	  <md-checkbox [checked]="true" [ngClick]="updateMessage(preferencia.id, preferencia.description)" [(ngModel)]="preferencia.description"  class="green" align="left">
-  		{{preferencia.name}}
-	  </md-checkbox>
-	</md-card>
+<h3 class="seccion-title">Mis preferencias</h3>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+<div class="message" *ngIf="message">{{message}}</div>
+<div class="card-container">
+	<div class="card-container">
+		<md-card *ngFor="let preferencia of preferencias">
+		<label>
+		  <input type="checkbox" value="{{preferencia.getId()}}" 
+		  (change)="checkboxes[$event.target.getAttribute('value')]=$event.target.checked"
+		  [checked]="checkboxes[preferencia.getId()]">
+        {{ preferencia.getName() }}</label>
+		</md-card>
 	</div>
 </div>
-
-
 <div class="wrapper">
 <button md-raised-button type="submit" (click)="savePreferences()" color="accent">Guardar</button>
 </div>

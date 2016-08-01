@@ -3,24 +3,24 @@
     [
       {
         "name": "@angular2-material/list",
-        "raw": "@angular2-material/list",
-        "rawSpec": "",
+        "raw": "@angular2-material/list@^2.0.0-alpha.5-2",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
-        "spec": "latest",
-        "type": "tag"
+        "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+        "type": "range"
       },
       "/home/nestor/desa/p4u"
     ]
   ],
-  "_from": "@angular2-material/list@latest",
-  "_id": "@angular2-material/list@2.0.0-alpha.5-2",
+  "_from": "@angular2-material/list@>=2.0.0-alpha.5-2 <3.0.0",
+  "_id": "@angular2-material/list@2.0.0-alpha.6-2",
   "_inCache": true,
   "_installable": true,
   "_location": "/@angular2-material/list",
   "_nodeVersion": "5.7.0",
   "_npmOperationalInternal": {
     "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/list-2.0.0-alpha.5-2.tgz_1464814650686_0.5425850667525083"
+    "tmp": "tmp/list-2.0.0-alpha.6-2.tgz_1468378869822_0.5303132985718548"
   },
   "_npmUser": {
     "email": "angular-core+npm@google.com",
@@ -30,19 +30,19 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "@angular2-material/list",
-    "raw": "@angular2-material/list",
-    "rawSpec": "",
+    "raw": "@angular2-material/list@^2.0.0-alpha.5-2",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
-    "spec": "latest",
-    "type": "tag"
+    "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/list/-/list-2.0.0-alpha.5-2.tgz",
-  "_shasum": "5eec8c4c3eceb67137cf78f776f514bf28e95956",
+  "_resolved": "https://registry.npmjs.org/@angular2-material/list/-/list-2.0.0-alpha.6-2.tgz",
+  "_shasum": "d81ddd880e208d104871841040a74de5f5efe51a",
   "_shrinkwrap": null,
-  "_spec": "@angular2-material/list",
+  "_spec": "@angular2-material/list@^2.0.0-alpha.5-2",
   "_where": "/home/nestor/desa/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
@@ -52,8 +52,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "5eec8c4c3eceb67137cf78f776f514bf28e95956",
-    "tarball": "https://registry.npmjs.org/@angular2-material/list/-/list-2.0.0-alpha.5-2.tgz"
+    "shasum": "d81ddd880e208d104871841040a74de5f5efe51a",
+    "tarball": "https://registry.npmjs.org/@angular2-material/list/-/list-2.0.0-alpha.6-2.tgz"
   },
   "homepage": "https://github.com/angular/material2#readme",
   "keywords": [
@@ -74,7 +74,7 @@
   "name": "@angular2-material/list",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular2-material/core": "2.0.0-alpha.5-2"
+    "@angular2-material/core": "2.0.0-alpha.6-2"
   },
   "readme": "ERROR: No README data found!",
   "repository": {
@@ -83,5 +83,5 @@
   },
   "scripts": {},
   "typings": "./list.d.ts",
-  "version": "2.0.0-alpha.5-2"
+  "version": "2.0.0-alpha.6-2"
 }

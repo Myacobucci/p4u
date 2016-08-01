@@ -1,5 +1,47 @@
 .container {
   width: 50%;
   margin: 0 auto;
+  margin-top: 20px;
 }
-	
+
+.form-select {
+	font: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 100%;
+    border-bottom-style: ridge;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.form-message{
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    border-width: initial;
+    border-style: none none ridge;
+    border-color: initial;
+    outline: none;
+    padding: 0px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 39px;
+    background: transparent;
+}
+
+.form-dropdown{
+    width: 90%;
+}
+
+.my-radio-group{
+    width: 100%;
+}
+.my-radio{
+    
+}

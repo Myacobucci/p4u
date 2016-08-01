@@ -9,7 +9,7 @@ var map = {
     '@angular2-material': 'vendor/@angular2-material',
     'immutable': 'vendor/immutable/dist/immutable.js',
     'angular2-uuid': 'vendor/angular2-uuid/index.js',
-    'moment': 'vendor/moment/moment.js'
+    'moment': 'vendor/moment/moment.js',
 };
 /** User packages configuration. */
 var packages = {
@@ -21,7 +21,7 @@ var packages = {
     },
     'moment': {
         format: 'cjs'
-    }
+    },
 };
 // put the names of any of your Material components here
 var materialPkgs = [
@@ -58,6 +58,8 @@ var barrels = [
     // Thirdparty barrels.
     'rxjs',
     'immutable',
+    //'notifications'
+    'ng2-toasty',
     // App specific barrels.
     'app',
     'app/shared',
@@ -65,7 +67,9 @@ var barrels = [
     'app/login/login',
     'app/perfil/perfil',
     'app/orden/components',
-    'app/registracion/components/registracion'
+    'app/regalar/regalar',
+    'app/registracion/components/registracion',
+    'app/notificacion/components/notificacion',
 ];
 var cliSystemConfigPackages = {};
 barrels.forEach(function (barrelName) {

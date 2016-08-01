@@ -71,13 +71,12 @@
 /* This mixin ensures a sidenav element spans the whole viewport.*/
 :host {
   position: relative;
-  -webkit-transform: translate3D(0, 0, 0);
-          transform: translate3D(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   box-sizing: border-box;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: block;
-  overflow-x: hidden; }
+  overflow: hidden; }
   :host[fullscreen] {
     position: absolute;
     top: 0;
@@ -100,15 +99,17 @@
       background-color: rgba(0, 0, 0, 0.6); }
   :host > md-content {
     position: relative;
-    -webkit-transform: translate3D(0, 0, 0);
-            transform: translate3D(0, 0, 0);
-    display: block; }
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    display: block;
+    height: 100%;
+    overflow: auto; }
   :host > md-sidenav {
     position: relative;
-    -webkit-transform: translate3D(0, 0, 0);
-            transform: translate3D(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     z-index: 3;
@@ -158,43 +159,43 @@
         -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0); }
 
-:host-context([dir="rtl"]) > md-sidenav {
+:host-context([dir='rtl']) > md-sidenav {
   -webkit-transform: translate3d(100%, 0, 0);
           transform: translate3d(100%, 0, 0); }
-  :host-context([dir="rtl"]) > md-sidenav.md-sidenav-closed {
+  :host-context([dir='rtl']) > md-sidenav.md-sidenav-closed {
     visibility: hidden; }
-  :host-context([dir="rtl"]) > md-sidenav.md-sidenav-closing {
+  :host-context([dir='rtl']) > md-sidenav.md-sidenav-closing {
     -webkit-transform: translate3d(100%, 0, 0);
             transform: translate3d(100%, 0, 0);
     will-change: transform; }
-  :host-context([dir="rtl"]) > md-sidenav.md-sidenav-opening {
+  :host-context([dir='rtl']) > md-sidenav.md-sidenav-opening {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
     will-change: transform; }
-  :host-context([dir="rtl"]) > md-sidenav.md-sidenav-opened {
+  :host-context([dir='rtl']) > md-sidenav.md-sidenav-opened {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); }
-  :host-context([dir="rtl"]) > md-sidenav.md-sidenav-end {
+  :host-context([dir='rtl']) > md-sidenav.md-sidenav-end {
     left: 0;
     right: auto;
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0); }
-    :host-context([dir="rtl"]) > md-sidenav.md-sidenav-end.md-sidenav-closed {
+    :host-context([dir='rtl']) > md-sidenav.md-sidenav-end.md-sidenav-closed {
       visibility: hidden; }
-    :host-context([dir="rtl"]) > md-sidenav.md-sidenav-end.md-sidenav-closing {
+    :host-context([dir='rtl']) > md-sidenav.md-sidenav-end.md-sidenav-closing {
       -webkit-transform: translate3d(-100%, 0, 0);
               transform: translate3d(-100%, 0, 0);
       will-change: transform; }
-    :host-context([dir="rtl"]) > md-sidenav.md-sidenav-end.md-sidenav-opening {
+    :host-context([dir='rtl']) > md-sidenav.md-sidenav-end.md-sidenav-opening {
       box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
       visibility: visible;
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0);
       will-change: transform; }
-    :host-context([dir="rtl"]) > md-sidenav.md-sidenav-end.md-sidenav-opened {
+    :host-context([dir='rtl']) > md-sidenav.md-sidenav-end.md-sidenav-opened {
       box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
       -webkit-transform: translate3d(0, 0, 0);
               transform: translate3d(0, 0, 0); }

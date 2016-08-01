@@ -1,5 +1,10 @@
 import { ElementRef, EventEmitter, Renderer, AfterContentInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/common';
+import { ControlValueAccessor } from '@angular/forms';
+/**
+ * Provider Expression that allows md-checkbox to register as a ControlValueAccessor. This allows it
+ * to support [(ngModel)].
+ */
+export declare const MD_CHECKBOX_CONTROL_VALUE_ACCESSOR: any;
 export declare class MdCheckboxChange {
     source: MdCheckbox;
     checked: boolean;
@@ -52,7 +57,7 @@ export declare class MdCheckbox implements AfterContentInit, ControlValueAccesso
     private _currentCheckState;
     private _checked;
     private _indeterminate;
-    private _changeSubscription;
+    private _controlValueAccessorChangeFn;
     hasFocus: boolean;
     constructor(_renderer: Renderer, _elementRef: ElementRef);
     /**
@@ -81,7 +86,7 @@ export declare class MdCheckbox implements AfterContentInit, ControlValueAccesso
      * Implemented as part of ControlValueAccessor.
      * TODO: internal
      */
-    registerOnChange(fn: any): void;
+    registerOnChange(fn: (value: any) => void): void;
     /**
      * Implemented as part of ControlValueAccessor.
      * TODO: internal
@@ -89,10 +94,21 @@ export declare class MdCheckbox implements AfterContentInit, ControlValueAccesso
     registerOnTouched(fn: any): void;
     private _transitionCheckState(newState);
     private _emitChangeEvent();
+    /** Informs the component when the input has focus so that we can style accordingly */
+    _onInputFocus(): void;
+    /** Informs the component when we lose focus in order to style accordingly */
+    _onInputBlur(): void;
     /**
      * Toggles the `checked` value between true and false
      */
     toggle(): void;
+    /**
+     * Event handler for checkbox input element.
+     * Toggles checked state if element is not disabled.
+     * @param event
+     */
+    _onInteractionEvent(event: Event): void;
+    _onInputClick(event: Event): void;
     private _getAnimationClassForCheckStateTransition(oldState, newState);
 }
 export declare const MD_CHECKBOX_DIRECTIVES: typeof MdCheckbox[];
