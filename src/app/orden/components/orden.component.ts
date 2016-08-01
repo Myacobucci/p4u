@@ -38,7 +38,7 @@ import { MdButton } from '@angular2-material/button';
     MdToolbar,
     MdRadioButton,
   ],
-  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService, OrdenService, LoginService],
+  providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService, OrdenService  , LoginService],
 })
 export class OrdenComponent implements OnInit {
   message: string;
@@ -70,6 +70,7 @@ export class OrdenComponent implements OnInit {
               private router:Router) {
     this.hostImage=this.context.getServiceHostName();
     this.idUserOrigen = -1;
+    this.idUserDestino = -1;
     this.imageFileName = "";
     this.productName = "";
     this.listUser = [];
@@ -79,6 +80,7 @@ export class OrdenComponent implements OnInit {
     this.groupValue="0";
     this.numeroTajeta="XXXXX";
     this.usuarioDestino="";
+    this.messageText="";
   }
 
   ngOnInit() {
@@ -142,11 +144,16 @@ export class OrdenComponent implements OnInit {
   }
 
   goFinal() {
-
-    this.ordenService.doBuy(this.idUserOrigen, this.idUserDestino, 
+    if (this.idUserDestino == -1) {
+      this.errorMessage = "Debe seleccionar un usuario destino";
+    } else if (this.cantidad < 1) {
+      this.errorMessage = "Debe seleccionar un cantidad positiva";
+    } else {
+      this.ordenService.doBuy(this.idUserOrigen, this.idUserDestino, 
                             this.cantidad, this.messageText, this.productId).subscribe(
                               respuesta => this.finalizarCompra(respuesta),
-                              error =>  this.errorMessage = <any>error);
+                              error =>  this.errorMessage = <any>error);  
+    }
   }
 
   finalizarCompra(respuesta) {

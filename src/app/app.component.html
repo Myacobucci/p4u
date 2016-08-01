@@ -5,10 +5,10 @@
 	        <md-icon md-list-icon>home</md-icon>
 	        <span md-line>Home</span>
 	      </a>
-	      <!--a md-list-item [routerLink]="['Perfil']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
+	      <a md-list-item [routerLink]="['Registracion']" *ngIf="!isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>assignment ind</md-icon>
-	        <span md-line>Mi cuenta</span>
-	      </a-->
+	        <span md-line>Registrarme</span>
+	      </a>
 	      <a md-list-item [routerLink]="['Rubros']" *ngIf="isLogged" routerLinkActive="active" (click)="sidenav.close()">
 	        <md-icon md-list-icon>assignment ind</md-icon>
 	        <span md-line>Mis Preferencias</span>
@@ -27,7 +27,9 @@
 		<button md-icon-button (click)="sidenav.open()">
 		  <md-icon>menu</md-icon>
 		</button>
-		<img src="http://oi67.tinypic.com/23kuk29.jpg" alt="Logo" width="50" height="65" >
+		<a md-list-item [routerLink]="['Vidriera']" routerLinkActive="active" (click)="sidenav.close()">
+	    	<img src="http://oi67.tinypic.com/23kuk29.jpg" alt="Logo" width="50" height="65" >
+	    </a>
 		<span>{{title}}</span>
 		<!-- This fills the remaining space of the current row -->
   		<span class="toolbar-fill-remaining-space"></span>

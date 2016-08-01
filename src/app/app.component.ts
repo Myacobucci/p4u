@@ -109,7 +109,7 @@ bootstrap(AppComponent, [
 
 export class AppComponent implements OnInit {
 
-  title = 'Present for you!!';
+  title = '';
 
   isLogged:boolean;
 

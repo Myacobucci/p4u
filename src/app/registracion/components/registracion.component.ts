@@ -8,6 +8,7 @@ import { UserState }     from '../../core/user-state';
 import { RegistracionService } from '../services/registracion.service';
 import { UserSettingsService } from '../../user-settings.service';
 import { Router} from '@angular/router-deprecated';
+import { MdToolbar } from '@angular2-material/toolbar';
 
 @Component({
   moduleId: module.id,
@@ -18,7 +19,8 @@ import { Router} from '@angular/router-deprecated';
     MD_BUTTON_DIRECTIVES,
     MD_CARD_DIRECTIVES,
     MdInput,
-    MdButton
+    MdButton,
+    MdToolbar
   ],
   providers: [RegistracionService]
 })

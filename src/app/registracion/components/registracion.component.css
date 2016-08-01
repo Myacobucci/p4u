@@ -3,8 +3,9 @@
   flex-flow: row wrap;
 }
 
-md-card {
-  width: 300px;
-  box-sizing: border-box;
-  margin: 16px;
+
+.container {
+  width: 291px;
+  margin: 0 auto;
+  margin-top: 20px;
 }

@@ -7,6 +7,7 @@ import { UserSettingsService } from '../../user-settings.service';
 import { LoginService } from '../services/login.service';
 import { UserState }     from '../../core/user-state';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { MdToolbar } from '@angular2-material/toolbar';
 
 @Component({
   moduleId: module.id,
@@ -18,6 +19,7 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
     MD_CARD_DIRECTIVES,
     MdInput,
     MdButton,    
+    MdToolbar,
     ROUTER_DIRECTIVES
   ],
   providers: [LoginService],
