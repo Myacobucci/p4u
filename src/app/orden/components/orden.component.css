@@ -1,5 +1,5 @@
 .container {
-  width: 50%;
+  width: 700px;
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -44,4 +44,12 @@
 }
 .my-radio{
     
+}
+
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+  .container {
+    width: 310px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 }
