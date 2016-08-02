@@ -22,7 +22,37 @@ md-card-title {
     margin-bottom: 0px;
 }
 
-@media only screen and (min-width: 300px) and (max-width: 500px) {
+
+
+@media only screen and (min-width: 1081px) {
+
+  .card-container {
+    margin: 0 auto;
+    width: 1080px;
+  }
+
+}
+@media only screen and (min-width: 801px) and (max-width: 1080px) {
+
+  .card-container {
+    margin: 0 auto;
+    width: 720px;
+  }
+
+}
+
+
+@media only screen and (min-width: 721px) and (max-width: 800px) {
+
+  .card-container {
+    margin: 0 auto;
+    width: 720px;
+  }
+
+}
+
+
+@media only screen and (min-width: 300px) and (max-width: 720px) {
 
   md-card {
     width: 94px;
@@ -34,6 +64,11 @@ md-card-title {
     font-size: 9px;
     font-weight: 400;
     min-height: 41px;
+  }
+
+  .card-container {
+    margin: 0 auto;
+    width: 320px;
   }
 
   md-card-content {
