@@ -36,9 +36,12 @@ export class RegalosComponent implements OnInit {
   isLogged:boolean;
   message: string;
   mensjRegAceptado: string;
+  titRegExpir: string;
   messageCanj: string;
+  codigoRegaloProxAVencer: string;
   canjeados: Array<Regalo> = [];
   noCanjeados: Array<Regalo> = [];
+  expirados: Array<Regalo> = [];
   private _regalosCanjeados2: List<Regalo> ;
 
   constructor(private routeParams: RouteParams,
@@ -81,21 +84,36 @@ export class RegalosComponent implements OnInit {
   filtroCanjeados(regalos:List<Regalo>) {
     var canje: Array<Regalo> = [];
     var noCanje: Array<Regalo> = [];
+    var expi: Array<Regalo> = [];
     var mes: string;
     var mesCanj: string;
+    var mesExp: string;
+    var codProxAExp: string;
+    var i = 1;
     regalos.forEach(function(item:Regalo) {
-      if (item.getState() == "Canjeado"){
+      if (item.getExpired()){
+        expi.push(item);
+        mesExp = "Regalos Expirados";
+      } else if (item.getState() == "Canjeado"){
         canje.push(item);
+        console.log(item.getCodigo());
         mesCanj = "Mis Regalos Aceptados";
       } else {
         noCanje.push(item);
         mes = "Mis Regalos Recibidos";
+        if (i == 1){
+          i = 0;
+          codProxAExp = item.getCodigo();
+        }
       }
     });
     this.canjeados = canje;
     this.noCanjeados = noCanje;
     this.message = mes;
     this.messageCanj = mesCanj;
+    this.expirados = expi;
+    this.titRegExpir = mesExp;
+    this.codigoRegaloProxAVencer = codProxAExp;
   }
 
 

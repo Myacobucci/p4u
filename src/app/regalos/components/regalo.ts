@@ -23,6 +23,10 @@ export class Regalo {
 		return <number> this._data2.get("presentId");
 	}
 
+	getExpired() {
+		return <boolean> this._data.get("expired");
+	}
+
 	getItemId() {
 		let data3 = this._data.get("id") || { id: -1, name: "", address: 0, uuid: UUID.UUID() }
 		this._data3 = Map<string, any>(data3);
