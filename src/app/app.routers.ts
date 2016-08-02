@@ -4,7 +4,6 @@ import { LoginComponent } from './login/components/login.component';
 import { RubrosComponent } from './rubros/components/rubros.component';
 import { RegistracionComponent } from './registracion/components/registracion.component';
 import { RegalosComponent } from './regalos/components/regalos.component';
-//import { NotificacionComponent } from './notificacion/components/notificacion.component';
 
 const routes: RouterConfig = [
   {
@@ -26,11 +25,7 @@ const routes: RouterConfig = [
   {
     path: 'registracion',
     component: RegistracionComponent
-  }/*,
-  {
-    path: 'notificacion',
-    component: NotificacionComponent
-  }*/
+  }
 ];
 
 export const APP_ROUTER_PROVIDERS = [

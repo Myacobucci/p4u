@@ -10,9 +10,7 @@ const map: any = {
   '@angular2-material': 'vendor/@angular2-material',
   'immutable': 'vendor/immutable/dist/immutable.js',
   'angular2-uuid': 'vendor/angular2-uuid/index.js',
-  'moment': 'vendor/moment/moment.js',
-  /*'notifications': 'node_modules/angular2-notifications'*/
-  //'ng2-toasty': 'vendor/ng2-toasty/ng2-toasty.js'
+  'moment': 'vendor/moment/moment.js'
 };
 
 /** User packages configuration. */
@@ -25,11 +23,7 @@ const packages: any = {
   },
   'moment':{
     format: 'cjs'
-  },
-  //'notifications': { main: 'components.js', defaultExtension: 'js' }
-  /*'ng2-toasty':{
-    format: 'cjs'
-  }*/
+  }
 };
 
 // put the names of any of your Material components here
@@ -43,7 +37,8 @@ const materialPkgs:string[] = [
   'icon',
   'input',
   'radio',
-  'checkbox'
+  'checkbox',
+  'menu'
 ];
 
 materialPkgs.forEach((pkg) => {
@@ -68,9 +63,7 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
-  'immutable',  
-  //'notifications'
-  'ng2-toasty',
+  'immutable',
   
   // App specific barrels.
   'app',

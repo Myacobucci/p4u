@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
@@ -16,19 +16,9 @@ import { UserSettingsService } from './user-settings.service';
 import { UserState }     from './core/user-state';
 import { RegistracionComponent } from './registracion/components/registracion.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angular/router-deprecated';
-//import { NotificacionComponent } from './notificacion/components/notificacion.component';
-
-//import { ToastyService, ToastyConfig, Toasty, ToastOptions, ToastData } from 'ng2-toasty';
 import { Subject, Observable, Subscription } from 'rxjs/Rx';
-//import {HTTP_PROVIDERS} from '@angular/http';
-//import { AppSettingsService } from './app-settings.service';
-//import { bootstrap } from '@angular/platform-browser-dynamic';
-/*
-bootstrap(AppComponent, [
-  HTTP_PROVIDERS, UserSettingsService, AppSettingsService, 
-  ToastyService, ToastyConfig //Esto es necesario para tener una unica instancia del servicio
-]);
-*/
+import { MD_MENU_DIRECTIVES } from '@angular2-material/menu';
+import { List } from 'immutable';
 
 @Component({
   moduleId: module.id,
@@ -48,8 +38,7 @@ bootstrap(AppComponent, [
     LoginComponent,
     PerfilComponent,
     RegistracionComponent,
-    //Toasty
-    //NotificacionComponent    
+    MD_MENU_DIRECTIVES   
   ],
   /*template:`
     <div>Hello world</div>
@@ -99,12 +88,7 @@ bootstrap(AppComponent, [
     path: '/registracion',
     component: RegistracionComponent,
     name: 'Registracion'
-  }/*,
-  {
-    path: '/notificacion',
-    component: NotificacionComponent,
-    name: 'Notificacion'
-  }*/
+  }
 ])
 
 export class AppComponent implements OnInit {
@@ -114,11 +98,12 @@ export class AppComponent implements OnInit {
   isLogged:boolean;
 
   userState:UserState;
+
+  notificacion = List<string>();
   
   constructor(private userSettingsService:UserSettingsService,
-              //private toastyService:ToastyService,
-              private router:Router) {
-
+              private router:Router) {      
+      setInterval(() => { this.actualizarNotificaciones(); }, 1000 * 60); //Deberia de invocarse cada un minuto
   }
 
   ngOnInit() {
@@ -140,7 +125,12 @@ export class AppComponent implements OnInit {
       this.router.navigate(link);
   }
 
-  getTitle(num: number): string {
+  actualizarNotificaciones() {
+      console.log("Se invoco al metodo para actualizar notificaciones");
+  }
+
+
+/*    getTitle(num: number): string {
     return 'Countdown: ' + num;
   }
 
@@ -148,7 +138,7 @@ export class AppComponent implements OnInit {
     return 'Seconds left: ' + num;
   }
 
-/*  addToast() {
+  addToast() {
         let interval = 1000;
         let timeout = 5000;
         let seconds = timeout / 1000;
