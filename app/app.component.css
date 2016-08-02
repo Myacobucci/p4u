@@ -9,7 +9,6 @@ md-sidenav-layout {
   background: rgba(0,0,0,0.03);
 }
 
-
 .toolbar-fill-remaining-space {
   flex: 1 1 auto;
 }
@@ -23,3 +22,18 @@ md-sidenav-layout {
 	text-decoration: none;
 	color: white;
 }
+
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+
+	.my-perfil-link, .my-login-link {
+		border: 1px solid white;
+		padding: 5px 14px;
+	    font-size: 14px;
+	}
+
+
+
+
+}
+
+

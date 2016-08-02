@@ -8,13 +8,10 @@
 
 	  <md-card-content class="secondary">
 	    <h4>Precio: ${{producto.getCost()}}</h4>
-	    <h4 *ngIf="producto.getFree()" >Obtenelo <span>GRATIS</span></h4>
+	    <!--h4 *ngIf="producto.getFree()" >Obtenelo <span>GRATIS</span></h4-->
 	  </md-card-content>
-	  <md-card-actions *ngIf="!producto.getFree()" align="end">
+	  <md-card-actions align="end">
 	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
-	  </md-card-actions>
-	  <md-card-actions *ngIf="producto.getFree()" align="end">
-	    <button md-button color="primary" (click)="realizarOrden(producto);" >Quiero</button>
 	  </md-card-actions>
 	</md-card>
 </div>

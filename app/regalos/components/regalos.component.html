@@ -1,4 +1,4 @@
-<div class="message" *ngIf="mensjRegAceptado">{{mensjRegAceptado}}</div>
+<div class="message" style="color:#FF0000" *ngIf="mensjRegAceptado">{{mensjRegAceptado}}</div>
 <div class="message" *ngIf="message">
 <h3 class="seccion-title">{{message}}</h3>
 </div>
@@ -14,7 +14,7 @@
           <md-card-content>
           <p> </p>
           <p><u>Marca:</u> {{regalo.getBrand()}}</p>
-          <p><u>Categoria:</u> {{regalo.getType()}}</p>
+          <div class="message" style="color:#FF0000" *ngIf="regalo.getCodigo() == codigoRegaloProxAVencer">¡Atención! Este es tu regalo que está más próximo a expirar.</div>
    		</md-card-content>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
@@ -38,6 +38,26 @@
           <md-card-content>
           <p> </p>
           <p><u>Código:</u> {{reg.getCodigo()}}</p>
+      </md-card-content>
+        </md-card-title>
+ 
+      </md-card>
+      
+</div>
+<div class="message" *ngIf="titRegExpir">
+<h3 class="seccion-title">{{titRegExpir}}</h3>
+</div>
+<div class="card-container">
+  <md-card *ngFor="let exp of expirados">
+  <img align="right" src="{{hostImage + exp.getImageFileName()}}" height="150" width="150">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{exp.getName()}}</span>
+            <span class="md-subhead"></span>
+          </md-card-title-text>
+          <md-card-content>
+          <p> </p>
+          <p><u>EXPIRADO</u></p>
       </md-card-content>
         </md-card-title>
  

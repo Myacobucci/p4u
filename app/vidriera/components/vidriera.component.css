@@ -21,3 +21,27 @@ md-card-title {
     padding-left: 20px;
     margin-bottom: 0px;
 }
+
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+
+  md-card {
+    width: 94px;
+    box-sizing: border-box;
+    margin: 3px;
+  }
+
+  md-card-title {
+    font-size: 9px;
+    font-weight: 400;
+    min-height: 41px;
+  }
+
+  md-card-content {
+    font-size: 8px;
+  }
+
+  md-card-actions button {
+    font-size: 10px; 
+  }
+
+}
