@@ -1,4 +1,8 @@
 <h3 class="seccion-title">Vidriera</h3>
+<div *ngIf="isWaiting" class="my-progress-circle">
+  <md-progress-circle mode="indeterminate"
+                      color="warn"></md-progress-circle>
+</div>
 <div class="card-container">
 	<md-card *ngFor="let producto of productos">
 	  <img *ngIf="!producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
@@ -17,6 +21,10 @@
 </div>
 
 <h3 *ngIf="isLogged" class="seccion-title">Recomendados para vos</h3>
+<div *ngIf="isLogged && isWaiting" class="my-progress-circle">
+  <md-progress-circle mode="indeterminate"
+                      color="warn"></md-progress-circle>
+</div>
 <div *ngIf="isLogged" class="card-container">
 	<md-card *ngFor="let producto of prodRecomendados">
 

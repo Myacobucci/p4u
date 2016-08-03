@@ -23,6 +23,9 @@
 	      </a>
 	    </md-nav-list>
   	</md-sidenav>
+  	
+  	
+
 	<md-toolbar color="warn" >
 		<button md-icon-button (click)="sidenav.open()">
 		  <md-icon>menu</md-icon>
@@ -33,6 +36,26 @@
 		<span>{{title}}</span>
 		<!-- This fills the remaining space of the current row -->
   		<span class="toolbar-fill-remaining-space"></span>
+
+		<md-menu #menuNotificacion *ngFor="let notificacion of notificaciones">				
+			<md-menu-content width="4">
+				<button md-menu-item> Refresh </button>
+			    <button md-menu-item> Settings </button>
+			    <button md-menu-item> Help </button>
+			    <button md-menu-item disabled> Sign Out </button>
+			</md-menu-content>			    
+		</md-menu>
+  		
+
+  		<div *ngIf="isLogged">
+			<!-- menu opens when trigger button is clicked -->
+			<button md-icon-button (click)="menuNotificacion.openMenu()">			   		   
+			    <md-icon aria-hidden="true" md-svg-src="img/icons/ic_notifications_none_24px.svg" class="name">
+                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+                </md-icon>                       
+			</button>			
+		</div>
   		
   		<div *ngIf="isLogged" class="my-perfil-link">
 			<a md-list-item [routerLink]="['Rubros']">

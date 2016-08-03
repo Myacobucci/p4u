@@ -12,6 +12,10 @@
 			   <md-card-title-group>
 			      <img md-card-sm-image src="{{hostImage + imageFileName}}"/>
 			      <md-card-title>{{productName}}</md-card-title>
+			      <md-card-subtitle>
+			      	<p>Marca: {{productBrand}}</p>
+			      	<p>Stock: {{productStock}}</p>
+			      </md-card-subtitle>
 			   </md-card-title-group>
 			</md-card>
 			<table width="100%">
@@ -106,6 +110,10 @@
 	  <button md-raised-button color="warn" (click)="goInicio()">Atras</button>
 	    <button md-raised-button color="warn" (click)="goFinal()">Confirmar</button>
 	  </md-card-actions>
+	  <div *ngIf="isWaiting" class="my-progress-circle">
+        <md-progress-circle mode="indeterminate"
+                            color="warn"></md-progress-circle>
+      </div>
 	</md-card>
 	<md-card *ngIf="step==3">
 	  <md-card-title>Paso 3 de 3 - Felicitaciones</md-card-title>
