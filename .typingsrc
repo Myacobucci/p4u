@@ -1,0 +1,5 @@
+{
+    "proxy": "http://x33673728:TSSA20156@localhost:3128",
+    "https-proxy": "http://x33673728:TSSA20156@localhost:3128",
+    "rejectUnauthorized": false
+}

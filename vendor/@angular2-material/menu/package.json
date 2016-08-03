@@ -2,14 +2,15 @@
   "_args": [
     [
       {
-        "name": "@angular2-material/menu",
         "raw": "@angular2-material/menu@^2.0.0-alpha.5-2",
-        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
+        "escapedName": "@angular2-material%2fmenu",
+        "name": "@angular2-material/menu",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "spec": ">=2.0.0-alpha.5-2 <3.0.0",
         "type": "range"
       },
-      "/home/nestor/desa/p4u"
+      "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u"
     ]
   ],
   "_from": "@angular2-material/menu@>=2.0.0-alpha.5-2 <3.0.0",
@@ -23,27 +24,28 @@
     "tmp": "tmp/menu-2.0.0-alpha.6-2.tgz_1468378875968_0.9617248731665313"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular2-material"
+    "name": "angular2-material",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular2-material/menu",
     "raw": "@angular2-material/menu@^2.0.0-alpha.5-2",
-    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
+    "escapedName": "@angular2-material%2fmenu",
+    "name": "@angular2-material/menu",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "spec": ">=2.0.0-alpha.5-2 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/menu/-/menu-2.0.0-alpha.6-2.tgz",
+  "_resolved": "http://registry.npmjs.org/@angular2-material/menu/-/menu-2.0.0-alpha.6-2.tgz",
   "_shasum": "1f20f8718e338bf4e7dd4cc352b66bff2f071b75",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/menu@^2.0.0-alpha.5-2",
-  "_where": "/home/nestor/desa/p4u",
+  "_where": "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -67,8 +69,8 @@
   "main": "./menu.js",
   "maintainers": [
     {
-      "email": "angular-core+npm@google.com",
-      "name": "angular2-material"
+      "name": "angular2-material",
+      "email": "angular-core+npm@google.com"
     }
   ],
   "name": "@angular2-material/menu",

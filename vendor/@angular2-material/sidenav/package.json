@@ -2,14 +2,15 @@
   "_args": [
     [
       {
-        "name": "@angular2-material/sidenav",
         "raw": "@angular2-material/sidenav@^2.0.0-alpha.5-2",
-        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
+        "escapedName": "@angular2-material%2fsidenav",
+        "name": "@angular2-material/sidenav",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "spec": ">=2.0.0-alpha.5-2 <3.0.0",
         "type": "range"
       },
-      "/home/nestor/desa/p4u"
+      "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u"
     ]
   ],
   "_from": "@angular2-material/sidenav@>=2.0.0-alpha.5-2 <3.0.0",
@@ -23,27 +24,28 @@
     "tmp": "tmp/sidenav-2.0.0-alpha.6-2.tgz_1468378893946_0.8796856375411153"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular2-material"
+    "name": "angular2-material",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular2-material/sidenav",
     "raw": "@angular2-material/sidenav@^2.0.0-alpha.5-2",
-    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
+    "escapedName": "@angular2-material%2fsidenav",
+    "name": "@angular2-material/sidenav",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "spec": ">=2.0.0-alpha.5-2 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/sidenav/-/sidenav-2.0.0-alpha.6-2.tgz",
+  "_resolved": "http://registry.npmjs.org/@angular2-material/sidenav/-/sidenav-2.0.0-alpha.6-2.tgz",
   "_shasum": "40c47ff96387feff66e4473900938a31b3b451ea",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/sidenav@^2.0.0-alpha.5-2",
-  "_where": "/home/nestor/desa/p4u",
+  "_where": "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -70,8 +72,8 @@
   "main": "./sidenav.js",
   "maintainers": [
     {
-      "email": "angular-core+npm@google.com",
-      "name": "angular2-material"
+      "name": "angular2-material",
+      "email": "angular-core+npm@google.com"
     }
   ],
   "name": "@angular2-material/sidenav",

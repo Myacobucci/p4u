@@ -2,14 +2,15 @@
   "_args": [
     [
       {
-        "name": "@angular2-material/radio",
         "raw": "@angular2-material/radio@^2.0.0-alpha.5-2",
-        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
+        "escapedName": "@angular2-material%2fradio",
+        "name": "@angular2-material/radio",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "spec": ">=2.0.0-alpha.5-2 <3.0.0",
         "type": "range"
       },
-      "/home/nestor/desa/p4u"
+      "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u"
     ]
   ],
   "_from": "@angular2-material/radio@>=2.0.0-alpha.5-2 <3.0.0",
@@ -23,27 +24,28 @@
     "tmp": "tmp/radio-2.0.0-alpha.6-2.tgz_1468378889417_0.1922112146858126"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular2-material"
+    "name": "angular2-material",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular2-material/radio",
     "raw": "@angular2-material/radio@^2.0.0-alpha.5-2",
-    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
+    "escapedName": "@angular2-material%2fradio",
+    "name": "@angular2-material/radio",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "spec": ">=2.0.0-alpha.5-2 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/radio/-/radio-2.0.0-alpha.6-2.tgz",
+  "_resolved": "http://registry.npmjs.org/@angular2-material/radio/-/radio-2.0.0-alpha.6-2.tgz",
   "_shasum": "65beeb5d00d0fcca1b0fdb679d3bd221d2772d7d",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/radio@^2.0.0-alpha.5-2",
-  "_where": "/home/nestor/desa/p4u",
+  "_where": "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -67,15 +69,15 @@
   "main": "./radio.js",
   "maintainers": [
     {
-      "email": "angular-core+npm@google.com",
-      "name": "angular2-material"
+      "name": "angular2-material",
+      "email": "angular-core+npm@google.com"
     }
   ],
   "name": "@angular2-material/radio",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/forms": "^0.1.0",
-    "@angular2-material/core": "2.0.0-alpha.6-2"
+    "@angular2-material/core": "2.0.0-alpha.6-2",
+    "@angular/forms": "^0.1.0"
   },
   "readme": "ERROR: No README data found!",
   "repository": {

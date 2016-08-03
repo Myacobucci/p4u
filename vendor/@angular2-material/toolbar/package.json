@@ -2,14 +2,15 @@
   "_args": [
     [
       {
-        "name": "@angular2-material/toolbar",
         "raw": "@angular2-material/toolbar@^2.0.0-alpha.5-2",
-        "rawSpec": "^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
+        "escapedName": "@angular2-material%2ftoolbar",
+        "name": "@angular2-material/toolbar",
+        "rawSpec": "^2.0.0-alpha.5-2",
         "spec": ">=2.0.0-alpha.5-2 <3.0.0",
         "type": "range"
       },
-      "/home/nestor/desa/p4u"
+      "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u"
     ]
   ],
   "_from": "@angular2-material/toolbar@>=2.0.0-alpha.5-2 <3.0.0",
@@ -23,27 +24,28 @@
     "tmp": "tmp/toolbar-2.0.0-alpha.6-2.tgz_1468378908434_0.2633876802865416"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular2-material"
+    "name": "angular2-material",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular2-material/toolbar",
     "raw": "@angular2-material/toolbar@^2.0.0-alpha.5-2",
-    "rawSpec": "^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
+    "escapedName": "@angular2-material%2ftoolbar",
+    "name": "@angular2-material/toolbar",
+    "rawSpec": "^2.0.0-alpha.5-2",
     "spec": ">=2.0.0-alpha.5-2 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/toolbar/-/toolbar-2.0.0-alpha.6-2.tgz",
+  "_resolved": "http://registry.npmjs.org/@angular2-material/toolbar/-/toolbar-2.0.0-alpha.6-2.tgz",
   "_shasum": "fa02ca65f9ea0a8e0db5d1c5b0a96987f2b40299",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/toolbar@^2.0.0-alpha.5-2",
-  "_where": "/home/nestor/desa/p4u",
+  "_where": "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -68,8 +70,8 @@
   "main": "./toolbar.js",
   "maintainers": [
     {
-      "email": "angular-core+npm@google.com",
-      "name": "angular2-material"
+      "name": "angular2-material",
+      "email": "angular-core+npm@google.com"
     }
   ],
   "name": "@angular2-material/toolbar",

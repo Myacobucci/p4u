@@ -35,7 +35,6 @@ var materialPkgs = [
     'input',
     'radio',
     'checkbox',
-    'menu',
     'progress-circle'
 ];
 materialPkgs.forEach(function (pkg) {

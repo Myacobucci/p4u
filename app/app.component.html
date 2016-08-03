@@ -23,9 +23,21 @@
 	      </a>
 	    </md-nav-list>
   	</md-sidenav>
-  	
-  	
 
+  	<md-sidenav #sidenavNotificacion align="end">
+  		<md-toolbar color="warn">Notificaciones</md-toolbar>
+  		<form>
+          <md-nav-list>
+		      <a md-list-item *ngFor="let notificacion of notificaciones">	        
+		        <span md-line>{{notificacion.getSender()}} te a enviado un regalo</span>
+		      </a>	      
+		    </md-nav-list>
+        </form>	        
+	    <md-card-actions align="center">
+        	<button (click)="limpiarNotificaciones();sidenavNotificacion.close()" md-raised-button color="warn">Ok</button>
+      	</md-card-actions>
+  	</md-sidenav>
+  	
 	<md-toolbar color="warn" >
 		<button md-icon-button (click)="sidenav.open()">
 		  <md-icon>menu</md-icon>
@@ -37,24 +49,14 @@
 		<!-- This fills the remaining space of the current row -->
   		<span class="toolbar-fill-remaining-space"></span>
 
-		<md-menu #menuNotificacion *ngFor="let notificacion of notificaciones">				
-			<md-menu-content width="4">
-				<button md-menu-item> Refresh </button>
-			    <button md-menu-item> Settings </button>
-			    <button md-menu-item> Help </button>
-			    <button md-menu-item disabled> Sign Out </button>
-			</md-menu-content>			    
-		</md-menu>
-  		
-
-  		<div *ngIf="isLogged">
-			<!-- menu opens when trigger button is clicked -->
-			<button md-icon-button (click)="menuNotificacion.openMenu()">			   		   
-			    <md-icon aria-hidden="true" md-svg-src="img/icons/ic_notifications_none_24px.svg" class="name">
-                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                   <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
-                </md-icon>                       
-			</button>			
+  		<div *ngIf="tieneNotificacion">
+  			<span md-line>
+				<button md-icon-button (click)="sidenavNotificacion.open()">				
+				    <md-icon aria-hidden="true" md-svg-src="img/icons/ic_notifications_active_24px.svg" class="name">
+	                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.58 4.08L6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2c.15-2.65 1.51-4.97 3.55-6.42zm12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43c2.02 1.45 3.39 3.77 3.54 6.42zM18 11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2v-5zm-6 11c.14 0 .27-.01.4-.04.65-.14 1.18-.58 1.44-1.18.1-.24.15-.5.15-.78h-4c.01 1.1.9 2 2.01 2z"/></svg>                 
+	                </md-icon>              
+				</button>
+			</span>
 		</div>
   		
   		<div *ngIf="isLogged" class="my-perfil-link">

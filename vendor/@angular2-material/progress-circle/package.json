@@ -2,48 +2,50 @@
   "_args": [
     [
       {
-        "name": "@angular2-material/progress-circle",
-        "raw": "@angular2-material/progress-circle@2.0.0-alpha.5-2",
-        "rawSpec": "2.0.0-alpha.5-2",
+        "raw": "@angular2-material/progress-circle@^2.0.0-alpha.5-2",
         "scope": "@angular2-material",
-        "spec": "2.0.0-alpha.5-2",
-        "type": "version"
+        "escapedName": "@angular2-material%2fprogress-circle",
+        "name": "@angular2-material/progress-circle",
+        "rawSpec": "^2.0.0-alpha.5-2",
+        "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+        "type": "range"
       },
-      "/home/nestor/desa/p4u"
+      "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u"
     ]
   ],
-  "_from": "@angular2-material/progress-circle@2.0.0-alpha.5-2",
-  "_id": "@angular2-material/progress-circle@2.0.0-alpha.5-2",
+  "_from": "@angular2-material/progress-circle@>=2.0.0-alpha.5-2 <3.0.0",
+  "_id": "@angular2-material/progress-circle@2.0.0-alpha.6-2",
   "_inCache": true,
   "_installable": true,
   "_location": "/@angular2-material/progress-circle",
   "_nodeVersion": "5.7.0",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/progress-circle-2.0.0-alpha.5-2.tgz_1464814660659_0.251015932764858"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/progress-circle-2.0.0-alpha.6-2.tgz_1468378885038_0.10451248660683632"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular2-material"
+    "name": "angular2-material",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular2-material/progress-circle",
-    "raw": "@angular2-material/progress-circle@2.0.0-alpha.5-2",
-    "rawSpec": "2.0.0-alpha.5-2",
+    "raw": "@angular2-material/progress-circle@^2.0.0-alpha.5-2",
     "scope": "@angular2-material",
-    "spec": "2.0.0-alpha.5-2",
-    "type": "version"
+    "escapedName": "@angular2-material%2fprogress-circle",
+    "name": "@angular2-material/progress-circle",
+    "rawSpec": "^2.0.0-alpha.5-2",
+    "spec": ">=2.0.0-alpha.5-2 <3.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular2-material/progress-circle/-/progress-circle-2.0.0-alpha.5-2.tgz",
-  "_shasum": "24faf13a37c5640fda12d7927c4dcfba9d4a0905",
+  "_resolved": "http://registry.npmjs.org/@angular2-material/progress-circle/-/progress-circle-2.0.0-alpha.6-2.tgz",
+  "_shasum": "756bbce8d0184b4e57bf6e9bbaf3e5f88a27d5bd",
   "_shrinkwrap": null,
-  "_spec": "@angular2-material/progress-circle@2.0.0-alpha.5-2",
-  "_where": "/home/nestor/desa/p4u",
+  "_spec": "@angular2-material/progress-circle@^2.0.0-alpha.5-2",
+  "_where": "/home/elianaalt/Descargas/TallerDesaI/front-end/usuario/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -52,8 +54,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "24faf13a37c5640fda12d7927c4dcfba9d4a0905",
-    "tarball": "https://registry.npmjs.org/@angular2-material/progress-circle/-/progress-circle-2.0.0-alpha.5-2.tgz"
+    "shasum": "756bbce8d0184b4e57bf6e9bbaf3e5f88a27d5bd",
+    "tarball": "https://registry.npmjs.org/@angular2-material/progress-circle/-/progress-circle-2.0.0-alpha.6-2.tgz"
   },
   "homepage": "https://github.com/angular/material2#readme",
   "keywords": [
@@ -68,14 +70,14 @@
   "main": "./progress-circle.js",
   "maintainers": [
     {
-      "email": "angular-core+npm@google.com",
-      "name": "angular2-material"
+      "name": "angular2-material",
+      "email": "angular-core+npm@google.com"
     }
   ],
   "name": "@angular2-material/progress-circle",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular2-material/core": "2.0.0-alpha.5-2"
+    "@angular2-material/core": "2.0.0-alpha.6-2"
   },
   "readme": "ERROR: No README data found!",
   "repository": {
@@ -84,5 +86,5 @@
   },
   "scripts": {},
   "typings": "./progress-circle.d.ts",
-  "version": "2.0.0-alpha.5-2"
+  "version": "2.0.0-alpha.6-2"
 }
