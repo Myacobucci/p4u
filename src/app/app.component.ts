@@ -19,6 +19,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
 import { Subject, Observable, Subscription } from 'rxjs/Rx';
 import { List } from 'immutable';
 import { AppService } from './app.service';
+import { Notificacion } from './notificacion';
 
 @Component({
   moduleId: module.id,
@@ -39,11 +40,6 @@ import { AppService } from './app.service';
     PerfilComponent,
     RegistracionComponent 
   ]
-  /*template:`
-    <div>Hello world</div>
-    <button (click)="addToast()">Add Toast</botton>
-    <ng2-toasty></ng2-toasty>
-  `*/
 })
 
 @RouteConfig([
@@ -100,14 +96,15 @@ export class AppComponent implements OnInit {
 
   tieneNotificacion:boolean;
 
-  mensajeNotificacion:string;
+  notificaciones: Array<Notificacion> = [];
+
+  errorMessage:string;
   
   constructor(private userSettingsService:UserSettingsService,
               private router:Router,
               private appService:AppService) {      
       this.tieneNotificacion = false;
-      setInterval(() => { this.actualizarNotificaciones(); }, 1000 * 60); //Deberia de invocarse cada un minuto
-      setInterval(() => { this.limpiarNotificaciones(); }, 3000 * 60); //Deberia de invocarse cada 3 minutos
+      setInterval(() => { this.actualizarNotificaciones(); }, 1000 * 60); //Deberia de invocarse cada un minuto      
   }
 
   ngOnInit() {
@@ -131,12 +128,21 @@ export class AppComponent implements OnInit {
 
   actualizarNotificaciones() {
       console.log("Se invoco al metodo para actualizar notificaciones");
-      if(this.isLogged){
-        let notificaciones = this.appService.obtenerNotificaciones(this.userState.user);
-        console.log("Notificaciones - controller - response: " + notificaciones);
-        if(notificaciones != { }){
-          this.mensajeNotificacion = "Tenes nuevos regalos."
+      let notificacionesNoMostradas = [];
+      if(this.notificaciones.length != 0){
+        notificacionesNoMostradas = this.notificaciones;
+      }  
+
+      if(this.isLogged){      
+        this.appService.getNotificaciones(this.userState.user)
+                        .subscribe(
+                          notificaciones => this.notificaciones = notificaciones,
+                          error => this.errorMessage = <any>error);
+
+        console.log("Notificaciones - controller - response: " + this.notificaciones);
+        if(this.notificaciones.length != 0 || notificacionesNoMostradas.length != 0){
           this.tieneNotificacion = true;
+          this.notificaciones = this.notificaciones.concat(notificacionesNoMostradas);
         }
       }
   }
@@ -144,6 +150,6 @@ export class AppComponent implements OnInit {
   limpiarNotificaciones(){
       console.log("Se invoco al metodo para LIMPIAR notificaciones");
       this.tieneNotificacion = false;
-      this.mensajeNotificacion = "";
+      this.notificaciones = [];
   }
 }

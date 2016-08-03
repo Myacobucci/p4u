@@ -3,6 +3,8 @@ import { Headers, RequestOptions, Http, Response } from '@angular/http';
 import { User }     from './core/user';
 import { AppSettingsService }     from './app-settings.service';
 import { Observable } from 'rxjs/Observable';
+import { List, Map } from 'immutable';
+import { Notificacion } from './notificacion';
 
 @Injectable()
 export class AppService {
@@ -15,27 +17,25 @@ export class AppService {
   	this.userNotificacionUrl = this.context.getServiceHostName() + "p4u/notification/";
   }
 
-  obtenerNotificaciones(usuario:User){
+  getNotificaciones(usuario:User){
   	let url = this.userNotificacionUrl + usuario.id;
-	let body = "";
-	let headers = new Headers({ 'Content-Type': 'application/json' });
-	let options = new RequestOptions({ headers: headers });
-	
-	console.log("Notificacion - Url: " + url);
-	console.log("Notificacion - body: " + body);    	
-	console.log("Notificacion - headers: " + headers);
-	console.log("Notificacion - Options: " + options);
-
-	return this.http.post(url, body, options)
-				.map(this.extractData)
-				.catch(this.handleError);
+  	  	
+  	console.log("Notificacion - Url: " + url);
+  	
+  	return this.http.get(url)
+  				.map(this.extractData)
+  				.catch(this.handleError);
   }
 
   private extractData(res: Response) {
-  	let body = res.json();
-  	console.log(body);
-  	
-  	return body || { };
+    let body = res.json();
+    let notificaciones = List<Notificacion>();
+    for (var notificacion of body) {
+      var item = new Notificacion(notificacion); 
+      notificaciones = notificaciones.push(item);
+    }
+    console.log("Notificacion: " + notificaciones);
+    return notificaciones || [];
   }
 
   private handleError (error: any) {
