@@ -9,3 +9,12 @@
   margin: 0 auto;
   margin-top: 20px;
 }
+.error{
+  color: #F44336;
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+
+md-input{
+  width: 100%;
+}

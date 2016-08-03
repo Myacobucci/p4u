@@ -37,7 +37,8 @@ const materialPkgs:string[] = [
   'icon',
   'input',
   'radio',
-  'checkbox'
+  'checkbox',
+  'progress-circle'
 ];
 
 materialPkgs.forEach((pkg) => {

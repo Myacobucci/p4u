@@ -4,12 +4,14 @@ import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MdButton } from '@angular2-material/button';
 import { VidrieraService } from '../services/vidriera.service';
 import { UserSettingsService } from '../../user-settings.service';
+import { AppSettingsService }     from '../../app-settings.service';
 import { Articulo } from './articulo';
 import { UserState }     from '../../core/user-state';
 import { Producto }     from '../../core/producto';
 import { Router } from '@angular/router-deprecated';
 import { Subscription }   from 'rxjs/Subscription';
 import { List, Map } from 'immutable';
+import {MdProgressCircle} from '@angular2-material/progress-circle/progress-circle';
 import * as moment from 'moment';
 moment().format();
 
@@ -21,6 +23,7 @@ moment().format();
   directives: [
   	MD_BUTTON_DIRECTIVES,
     MD_CARD_DIRECTIVES,
+    MdProgressCircle, 
   ],
   providers: [VidrieraService],
 
@@ -33,26 +36,35 @@ export class VidrieraComponent implements OnInit {
   prodRecomendados = List<Producto>();
   userState:UserState;
   isLogged:boolean;
+  isWaiting:boolean;
 
 
 
   constructor(private vidrieraService:VidrieraService,
               private userSettingsService:UserSettingsService,
-              private router: Router) {
+              private router: Router,
+              private context:AppSettingsService) {
     
-    this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
+    this.hostImage= this.context.getServiceHostName();
+    this.isWaiting = false;
   }
 
   ngOnInit() {
     this.userState = this.userSettingsService.userState;
     this.isLogged = this.userState.logged;
+    this.isWaiting = true; 
     this.vidrieraService.getProductos()
                         .subscribe(
-                          productos => this.productos = productos,
+                          productos => this.cargarProductos(productos),
                           error => this.errorMessage = <any>error);
     if (this.isLogged) {
       this.cargarRecomendaciones(this.userState);  
     }
+  }
+
+  cargarProductos(productos) {
+    this.isWaiting = false;
+    this.productos = productos
   }
 
  

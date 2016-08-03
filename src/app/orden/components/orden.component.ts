@@ -22,6 +22,7 @@ import { OrdenService } from '../../orden/services/orden.service';
 
 import { MdInput } from '@angular2-material/input';
 import { MdButton } from '@angular2-material/button';
+import {MdProgressCircle} from '@angular2-material/progress-circle/progress-circle';
 
 
 @Component({
@@ -37,6 +38,8 @@ import { MdButton } from '@angular2-material/button';
     MdInput,
     MdToolbar,
     MdRadioButton,
+    MdProgressCircle,
+
   ],
   providers: [MdUniqueSelectionDispatcher, MdRadioButton, VidrieraService, OrdenService  , LoginService],
 })
@@ -44,11 +47,15 @@ export class OrdenComponent implements OnInit {
   message: string;
   errorMessage: string;
   hostImage:string;
+  
   imageFileName:string;
   productId:number;
   productName:string;
   productCost:number;
+  productStock:number;
+  productBrand:string;
   producto:Producto;
+
   cantidad:number;
   nroTarjeta:string;
   idUserOrigen:number;
@@ -57,6 +64,7 @@ export class OrdenComponent implements OnInit {
   groupValue:string="0";
   listUser:User[];
   step:number;
+  isWaiting:boolean;
 
   messageText:string;
   numeroTajeta:string;
@@ -81,6 +89,9 @@ export class OrdenComponent implements OnInit {
     this.numeroTajeta="XXXXX";
     this.usuarioDestino="";
     this.messageText="";
+    this.productStock=0;
+    this.productBrand="";
+    this.isWaiting=false;
   }
 
   ngOnInit() {
@@ -113,6 +124,8 @@ export class OrdenComponent implements OnInit {
         this.imageFileName = productoEncontrado.getImageFileName();
         this.productCost = productoEncontrado.getCost();
         this.productId = productoEncontrado.getId();
+        this.productStock=productoEncontrado.getStock();
+        this.productBrand=productoEncontrado.getBrand();
       }
     }
   }
@@ -149,6 +162,7 @@ export class OrdenComponent implements OnInit {
     } else if (this.cantidad < 1) {
       this.errorMessage = "Debe seleccionar un cantidad positiva";
     } else {
+      this.isWaiting=true;
       this.ordenService.doBuy(this.idUserOrigen, this.idUserDestino, 
                             this.cantidad, this.messageText, this.productId).subscribe(
                               respuesta => this.finalizarCompra(respuesta),
@@ -157,6 +171,7 @@ export class OrdenComponent implements OnInit {
   }
 
   finalizarCompra(respuesta) {
+    this.isWaiting=false;
     this.step = 3;
   }
 

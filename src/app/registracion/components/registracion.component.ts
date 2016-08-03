@@ -46,20 +46,32 @@ export class RegistracionComponent implements OnInit {
     console.log("email: " + email);
     console.log("password: " + password);
 
-    this.user  = new User();
-    this.user.email = email;
-    this.user.username = email;
-    this.user.password = password;
-    this.user.facebookUserName = "";
-    this.user.address = direccion;
-    this.user.firstName = nombre;
-    this.user.lastName = apellido;
-    this.user.birthDate = fechaNacimiento;   
+    if (nombre == "") {
+      this.errorMessage = "Debe completar el campo Nombre";
+    } else if (apellido == "") {
+      this.errorMessage = "Debe completar el campo Apellido";
+    } else if (fechaNacimiento == "") {
+      this.errorMessage = "Debe completar el campo Fecha de Nacimiento";
+    } else if (email == "") {
+      this.errorMessage = "Debe completar el campo Email";
+    } else if (password == "") {
+      this.errorMessage = "Debe completar el campo Contraseña";
+    } else {
+      this.user  = new User();
+      this.user.email = email;
+      this.user.username = email;
+      this.user.password = password;
+      this.user.facebookUserName = "";
+      this.user.address = direccion;
+      this.user.firstName = nombre;
+      this.user.lastName = apellido;
+      this.user.birthDate = fechaNacimiento;   
 
-    this.registracionService.doRegistrar(this.user)
-                        .subscribe(
-                          userState => this.updateState(userState),
-                          error =>  this.errorMessage = <any>error);
+      this.registracionService.doRegistrar(this.user)
+                          .subscribe(
+                            userState => this.updateState(userState),
+                            error =>  this.errorMessage = <any>error);  
+    }
   }
 
   updateState(userState:UserState) {    
