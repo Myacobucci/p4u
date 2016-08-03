@@ -128,23 +128,21 @@ export class AppComponent implements OnInit {
 
   actualizarNotificaciones() {
       console.log("Se invoco al metodo para actualizar notificaciones");
-      let notificacionesNoMostradas = [];
-      if(this.notificaciones.length != 0){
-        notificacionesNoMostradas = this.notificaciones;
-      }  
-
-      if(this.isLogged){      
+      
+      if(this.isLogged && this.notificaciones.length == 0){      
         this.appService.getNotificaciones(this.userState.user)
                         .subscribe(
-                          notificaciones => this.notificaciones = notificaciones,
-                          error => this.errorMessage = <any>error);
-
-        console.log("Notificaciones - controller - response: " + this.notificaciones);
-        if(this.notificaciones.length != 0 || notificacionesNoMostradas.length != 0){
-          this.tieneNotificacion = true;
-          this.notificaciones = this.notificaciones.concat(notificacionesNoMostradas);
-        }
+                          notificaciones => this.cargarNotificaciones(notificaciones), 
+                          error => this.errorMessage = <any>error);        
       }
+  }
+
+  cargarNotificaciones(notificaciones: Array<Notificacion>){
+    this.notificaciones = notificaciones;
+    console.log("Notificaciones - controller - response: " + this.notificaciones);
+    if(this.notificaciones.length != 0){
+      this.tieneNotificacion = true;      
+    }
   }
 
   limpiarNotificaciones(){
