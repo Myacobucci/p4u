@@ -9,10 +9,10 @@ import { List, Map } from 'immutable';
 @Injectable()
 export class RegalosService {
 
-  private regalosUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/notification/";
-  private amigosUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/user/all";
-  private regalarAAmigo = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/transfer-present";
-  private canjearUrl = "http://p4ucloud-mnforlenza.rhcloud.com/p4u/present/redeem-present/";
+  private regalosUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/notification/";
+  private amigosUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/all";
+  private regalarAAmigo = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/present/transfer-present";
+  private canjearUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/present/redeem-present/";
 
   constructor(private http:Http) {}
 
