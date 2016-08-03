@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
@@ -17,8 +17,8 @@ import { UserState }     from './core/user-state';
 import { RegistracionComponent } from './registracion/components/registracion.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angular/router-deprecated';
 import { Subject, Observable, Subscription } from 'rxjs/Rx';
-import { MD_MENU_DIRECTIVES } from '@angular2-material/menu';
 import { List } from 'immutable';
+import { AppService } from './app.service';
 
 @Component({
   moduleId: module.id,
@@ -37,9 +37,8 @@ import { List } from 'immutable';
     VidrieraComponent,
     LoginComponent,
     PerfilComponent,
-    RegistracionComponent,
-    MD_MENU_DIRECTIVES   
-  ],
+    RegistracionComponent 
+  ]
   /*template:`
     <div>Hello world</div>
     <button (click)="addToast()">Add Toast</botton>
@@ -95,15 +94,20 @@ export class AppComponent implements OnInit {
 
   title = '';
 
-  isLogged:boolean;
+  isLogged:boolean;  
 
   userState:UserState;
 
-  notificacion = List<string>();
+  tieneNotificacion:boolean;
+
+  mensajeNotificacion:string;
   
   constructor(private userSettingsService:UserSettingsService,
-              private router:Router) {      
+              private router:Router,
+              private appService:AppService) {      
+      this.tieneNotificacion = false;
       setInterval(() => { this.actualizarNotificaciones(); }, 1000 * 60); //Deberia de invocarse cada un minuto
+      setInterval(() => { this.limpiarNotificaciones(); }, 3000 * 60); //Deberia de invocarse cada 3 minutos
   }
 
   ngOnInit() {
@@ -127,50 +131,19 @@ export class AppComponent implements OnInit {
 
   actualizarNotificaciones() {
       console.log("Se invoco al metodo para actualizar notificaciones");
+      if(this.isLogged){
+        let notificaciones = this.appService.obtenerNotificaciones(this.userState.user);
+        console.log("Notificaciones - controller - response: " + notificaciones);
+        if(notificaciones != { }){
+          this.mensajeNotificacion = "Tenes nuevos regalos."
+          this.tieneNotificacion = true;
+        }
+      }
   }
 
-
-/*    getTitle(num: number): string {
-    return 'Countdown: ' + num;
+  limpiarNotificaciones(){
+      console.log("Se invoco al metodo para LIMPIAR notificaciones");
+      this.tieneNotificacion = false;
+      this.mensajeNotificacion = "";
   }
-
-  getMessage(num: number): string {
-    return 'Seconds left: ' + num;
-  }
-
-  addToast() {
-        let interval = 1000;
-        let timeout = 5000;
-        let seconds = timeout / 1000;
-        let subscription: Subscription;
-        
-        let toastOptions: ToastOptions = {
-            title: this.getTitle(seconds),
-            msg: this.getMessage(seconds),
-            showClose: true,
-            timeout: timeout,
-            onAdd: (toast: ToastData) => {
-                console.log('Toast ' + toast.id + ' has been added!');
-                // Run the timer with 1 second iterval 
-                let observable = Observable.interval(interval).take(seconds);
-                // Start listen seconds beat 
-                subscription = observable.subscribe((count: number) => {
-                    // Update title of toast 
-                    toast.title = this.getTitle(seconds - count - 1);
-                    // Update message of toast 
-                    toast.msg = this.getMessage(seconds - count - 1);
-                });
- 
-            },
-            onRemove: function(toast: ToastData) {
-                console.log('Toast ' + toast.id + ' has been removed!');
-                // Stop listenning 
-                subscription.unsubscribe();
-            }
-        };
-
-        this.toastyService.info(toastOptions);
- 
-  }*/
-
 }

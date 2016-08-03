@@ -3,13 +3,18 @@ import { Headers, RequestOptions, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { UserState } from '../../core/user-state';
 import { User } from '../../core/user';
+import { AppSettingsService }     from '../../app-settings.service';
 
 @Injectable()
 export class RegistracionService {
 
-	private userRegisterUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/register";
+  //"https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/register"
+	private userRegisterUrl:string;
 
-	constructor(private http:Http) {}
+	constructor(private http:Http,
+              private context:AppSettingsService) {
+    this.userRegisterUrl = this.context.getServiceHostName() + "p4u/user/register";
+  }
 
 	doRegistrar(usuario:User):Observable<UserState> {
   	
@@ -26,29 +31,29 @@ export class RegistracionService {
     	return this.http.post(this.userRegisterUrl, body, options)
     				.map(this.extractData)
     				.catch(this.handleError);
-  	}
+  }
 
-  	private extractData(res: Response) {
-    	let body = res.json();
-    	console.log(body);
-    	let response = { };
-    	if(body != "") {
-    		let userState = new UserState();
-    		userState.logged = true;
-    		userState.user = body;
+	private extractData(res: Response) {
+  	let body = res.json();
+  	console.log(body);
+  	let response = { };
+  	if(body != "") {
+  		let userState = new UserState();
+  		userState.logged = true;
+  		userState.user = body;
 
-    		response = userState;
-    	}
-    	
-    	return response || { };
+  		response = userState;
   	}
+  	
+  	return response || { };
+	}
 
-  	private handleError (error: any) {
-  		// In a real world app, we might use a remote logging infrastructure
-  		// We'd also dig deeper into the error to get a better message
-    	let errMsg = (error.message) ? error.message :
-    	error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    	console.error(errMsg); // log to console instead
-    	return Observable.throw(errMsg);
-  	}
+	private handleError (error: any) {
+		// In a real world app, we might use a remote logging infrastructure
+		// We'd also dig deeper into the error to get a better message
+  	let errMsg = (error.message) ? error.message :
+  	error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+  	console.error(errMsg); // log to console instead
+  	return Observable.throw(errMsg);
+	}
 }
