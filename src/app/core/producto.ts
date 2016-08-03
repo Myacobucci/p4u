@@ -27,10 +27,13 @@ export class Producto {
 		return <boolean> this._data.get("free");
 	}
 	getStock() {
-		return <boolean> this._data.get("stock");
+		return <number> this._data.get("stock");
+	}
+	getBrand() {
+		return <string> this._data.get("brand");
 	}
 	getImageFileName() {
-		return <boolean> this._data.get("imageFileName");
+		return <string> this._data.get("imageFileName");
 	}
 
 	
@@ -44,13 +47,16 @@ export class Producto {
 	setCost(value:number) {
 		return new Producto(this._data.set('cost', value));
 	}
-	setFree(value:boolean) {
+	setFree(value:number) {
 		return new Producto(this._data.set('free', value));
 	}
-	setStock(value:boolean) {
+	setStock(value:number) {
 		return new Producto(this._data.set('free', value));
 	}
-	setImageFileName(value:boolean) {
+	setBrand(value:string) {
+		return new Producto(this._data.set('brand', value));
+	}
+	setImageFileName(value:string) {
 		return new Producto(this._data.set('imageFileName', value));
 	}
 

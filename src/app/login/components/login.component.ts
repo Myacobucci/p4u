@@ -8,6 +8,7 @@ import { LoginService } from '../services/login.service';
 import { UserState }     from '../../core/user-state';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { MdToolbar } from '@angular2-material/toolbar';
+import {MdProgressCircle, MdSpinner} from '@angular2-material/progress-circle/progress-circle';
 
 @Component({
   moduleId: module.id,
@@ -20,17 +21,21 @@ import { MdToolbar } from '@angular2-material/toolbar';
     MdInput,
     MdButton,    
     MdToolbar,
-    ROUTER_DIRECTIVES
+    ROUTER_DIRECTIVES,
+    MdProgressCircle, 
   ],
   providers: [LoginService],
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
   errorMessage:string;
+  isWaiting:boolean;
 
   constructor(private userSettingsService:UserSettingsService,
               private loginService:LoginService,
-              private router:Router) {}
+              private router:Router) {
+    this.isWaiting = false;
+  }
 
   ngOnInit() {
     
@@ -40,6 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   doLogin(email:string, pass:string) {
+    this.isWaiting = true;
     console.log("Loguear " + email);
     console.log("pass " + pass);
     this.loginService.doLogin(email, pass)
@@ -49,8 +55,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   updateState(userState:UserState) {
-    this.userSettingsService.updateUserState(userState);
-    let link = ['Vidriera',];
-    this.router.navigate(link);
+    this.isWaiting = false;
+    if (userState.logged) {
+      this.userSettingsService.updateUserState(userState);
+      let link = ['Vidriera',];
+      this.router.navigate(link);  
+    } else {
+      this.errorMessage = "Algunos de los datos ingresados es incorrecto.";
+    }
   }
 }
