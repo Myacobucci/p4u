@@ -60,4 +60,8 @@ md-card-subtitle p {
     margin: 0 auto;
     margin-top: 20px;
   }
+
+  md-card-actions {
+    margin: 0 auto;
+  }
 }

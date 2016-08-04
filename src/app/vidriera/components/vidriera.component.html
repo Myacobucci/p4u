@@ -5,15 +5,15 @@
 </div>
 <div class="card-container">
 	<md-card *ngFor="let producto of productos">
-	  <img *ngIf="!producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
-	  <img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+	  <div class="my-image">
+  		<img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+	  </div>
 
-	  <md-card-title>{{producto.getName()}}</md-card-title>
-
-	  <md-card-content class="secondary">
-	    <h4>Precio: ${{producto.getCost()}}</h4>
-	    <!--h4 *ngIf="producto.getFree()" >Obtenelo <span>GRATIS</span></h4-->
-	  </md-card-content>
+	  <div class="my-image-detail">
+		  <md-card-title>{{producto.getName()}}</md-card-title>
+		  <md-card-subtitle>{{producto.getBrand()}}</md-card-subtitle>
+		  <md-card-subtitle>${{producto.getCost()}}</md-card-subtitle>
+	  </div>
 	  <md-card-actions align="end">
 	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
 	  </md-card-actions>
@@ -28,14 +28,15 @@
 <div *ngIf="isLogged" class="card-container">
 	<md-card *ngFor="let producto of prodRecomendados">
 
-	  <img *ngIf="!producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
-	  <img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+	  <div class="my-image">
+  		<img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+	  </div>
 
-	  <md-card-title>{{producto.getName()}}</md-card-title>
-
-	  <md-card-content class="secondary">
-	    <h4>Precio: ${{producto.getCost()}}</h4>
-	  </md-card-content>
+	  <div class="my-image-detail">
+		  <md-card-title>{{producto.getName()}}</md-card-title>
+		  <md-card-subtitle>{{producto.getBrand()}}</md-card-subtitle>
+		  <md-card-subtitle>${{producto.getCost()}}</md-card-subtitle>
+	  </div>
 	  <md-card-actions align="end">
 	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
 	  </md-card-actions>

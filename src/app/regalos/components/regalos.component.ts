@@ -38,6 +38,7 @@ export class RegalosComponent implements OnInit {
   mensjRegAceptado: string;
   titRegExpir: string;
   messageCanj: string;
+  tieneRegalos: boolean;
   codigoRegaloProxAVencer: string;
   canjeados: Array<Regalo> = [];
   noCanjeados: Array<Regalo> = [];
@@ -50,6 +51,7 @@ export class RegalosComponent implements OnInit {
               private router: Router) {
 
     this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
+    this.tieneRegalos=false;
     
   }
 
@@ -107,6 +109,12 @@ export class RegalosComponent implements OnInit {
         }
       }
     });
+    if (regalos.size == 0 ) {
+      this.tieneRegalos = false;
+    } else {
+      this.tieneRegalos = true;
+    }
+
     this.canjeados = canje;
     this.noCanjeados = noCanje;
     this.message = mes;

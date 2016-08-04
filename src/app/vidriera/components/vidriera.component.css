@@ -63,15 +63,18 @@ md-card-title {
 @media only screen and (min-width: 300px) and (max-width: 720px) {
 
   md-card {
-    width: 94px;
+    width: 100%;
     box-sizing: border-box;
     margin: 3px;
   }
 
   md-card-title {
-    font-size: 9px;
+    font-size: 25px;
     font-weight: 400;
     min-height: 41px;
+  }
+  md-card-title {
+    font-size: 20px;
   }
 
   .card-container {
@@ -82,9 +85,21 @@ md-card-title {
   md-card-content {
     font-size: 8px;
   }
+  md-card-actions {
+    float: right;
+    width: 100%;
+  }
 
   md-card-actions button {
-    font-size: 10px; 
+    font-size: 18px; 
+  }
+
+  .my-image {
+    float: right;
+    width: 30%;
+  }
+  .my-image-detail {
+    width: 66%;
   }
 
 }
