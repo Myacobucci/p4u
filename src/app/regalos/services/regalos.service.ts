@@ -4,17 +4,24 @@ import { Regalo } from '../components/regalo';
 import { Amigo } from '../components/amigo';
 import { Observable }     from 'rxjs/Observable';
 import { List, Map } from 'immutable';
+import { AppSettingsService }     from '../../app-settings.service';
 
 
 @Injectable()
 export class RegalosService {
 
-  private regalosUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/notification/";
-  private amigosUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/user/all";
-  private regalarAAmigo = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/present/transfer-present";
-  private canjearUrl = "https://p4ucloud-mnforlenza.rhcloud.com/p4u/present/redeem-present/";
+  private regalosUrl:string;
+  private amigosUrl:string;
+  private regalarAAmigo:string;
+  private canjearUrl:string;
 
-  constructor(private http:Http) {}
+  constructor(private http:Http,
+              private context:AppSettingsService) {
+     this.regalosUrl = this.context.getServiceHostName() + "p4u/notification/";
+     this.amigosUrl = this.context.getServiceHostName() + "p4u/user/all";
+     this.regalarAAmigo = this.context.getServiceHostName() + "p4u/present/transfer-present";
+     this.canjearUrl = this.context.getServiceHostName() + "p4u/present/redeem-present/";
+  }
 
   public getRegalos(id: string): Observable<List<Regalo> > {
   	console.log("here");
