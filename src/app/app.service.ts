@@ -3,8 +3,8 @@ import { Headers, RequestOptions, Http, Response } from '@angular/http';
 import { User }     from './core/user';
 import { AppSettingsService }     from './app-settings.service';
 import { Observable } from 'rxjs/Observable';
-import { List, Map } from 'immutable';
-import { Notificacion } from './notificacion';
+import { List } from 'immutable';
+import { Regalo } from './regalos/components/regalo';
 
 @Injectable()
 export class AppService {
@@ -23,19 +23,19 @@ export class AppService {
   	console.log("Notificacion - Url: " + url);
   	
   	return this.http.get(url)
-  				.map(this.extractData)
+  				.map(this.parseRegalos)
   				.catch(this.handleError);
   }
 
-  private extractData(res: Response) {
+  private parseRegalos(res: Response) {
     let body = res.json();
-    let notificaciones = List<Notificacion>();
-    for (var notificacion of body) {
-      var item = new Notificacion(notificacion); 
-      notificaciones = notificaciones.push(item);
+    let regalos = List<Regalo>();
+    for (var regalo of body) {
+      var item = new Regalo(regalo); 
+      regalos = regalos.push(item);
     }
-    console.log("Notificacion: " + notificaciones);
-    return notificaciones || [];
+    console.log("Notificacion - Regalos: " + regalos);
+    return regalos || { };
   }
 
   private handleError (error: any) {

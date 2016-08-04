@@ -50,8 +50,6 @@ export class RegistracionComponent implements OnInit {
       this.errorMessage = "Debe completar el campo Nombre";
     } else if (apellido == "") {
       this.errorMessage = "Debe completar el campo Apellido";
-    } else if (fechaNacimiento == "") {
-      this.errorMessage = "Debe completar el campo Fecha de Nacimiento";
     } else if (email == "") {
       this.errorMessage = "Debe completar el campo Email";
     } else if (password == "") {

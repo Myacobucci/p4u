@@ -19,7 +19,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from '@angula
 import { Subject, Observable, Subscription } from 'rxjs/Rx';
 import { List } from 'immutable';
 import { AppService } from './app.service';
-import { Notificacion } from './notificacion';
+import { Regalo } from './regalos/components/regalo';
 
 @Component({
   moduleId: module.id,
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
 
   tieneNotificacion:boolean;
 
-  notificaciones: Array<Notificacion> = [];
+  notificaciones: Array<Regalo> = [];
 
   errorMessage:string;
   
@@ -137,8 +137,16 @@ export class AppComponent implements OnInit {
       }
   }
 
-  cargarNotificaciones(notificaciones: Array<Notificacion>){
-    this.notificaciones = notificaciones;
+  cargarNotificaciones(regalos:List<Regalo>){
+    console.log("Se van a filtrar las notificaciones.");
+    var noCanje: Array<Regalo> = [];
+    regalos.forEach(function(item:Regalo) {
+      if (!item.getExpired() && item.getState() != "Canjeado"){
+        noCanje.push(item);
+      }
+    });
+    this.notificaciones = noCanje;
+
     console.log("Notificaciones - controller - response: " + this.notificaciones);
     if(this.notificaciones.length != 0){
       this.tieneNotificacion = true;      
