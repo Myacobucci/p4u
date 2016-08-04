@@ -1,6 +1,7 @@
 import { Component, OnInit , ChangeDetectionStrategy, Input} from '@angular/core';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
+import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs/tabs';
 import { MdButton } from '@angular2-material/button';
 import { VidrieraService } from '../services/vidriera.service';
 import { UserSettingsService } from '../../user-settings.service';
@@ -23,6 +24,7 @@ moment().format();
   directives: [
   	MD_BUTTON_DIRECTIVES,
     MD_CARD_DIRECTIVES,
+    MD_TABS_DIRECTIVES,
     MdProgressCircle, 
   ],
   providers: [VidrieraService],

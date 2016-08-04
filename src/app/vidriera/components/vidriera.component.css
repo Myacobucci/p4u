@@ -60,7 +60,10 @@ md-card-title {
 }
 
 
+
+
 @media only screen and (min-width: 300px) and (max-width: 720px) {
+
 
   md-card {
     width: 100%;
@@ -101,5 +104,6 @@ md-card-title {
   .my-image-detail {
     width: 66%;
   }
+
 
 }

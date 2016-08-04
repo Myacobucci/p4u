@@ -51,7 +51,7 @@ export class RegalosComponent implements OnInit {
               private router: Router) {
 
     this.hostImage="https://p4ucloud-mnforlenza.rhcloud.com/";
-    this.tieneRegalos=false;
+    this.tieneRegalos=true;
     
   }
 
@@ -61,18 +61,18 @@ export class RegalosComponent implements OnInit {
     if (this.isLogged) {
       let idUser = this.userState.user.id;
       console.log(idUser);
-    this.regalosService.getRegalos(String(idUser))
-                        .subscribe(
-                          regalos => this.regalos = regalos,
-                          error => this.errorMessage = <any>error);
-                      
+      this.regalosService.getRegalos(String(idUser))
+                          .subscribe(
+                            regalos => this.regalos = regalos,
+                            error => this.errorMessage = <any>error);
+                        
 
-    this.regalosService.getRegalos(String(idUser))
-                        .subscribe(
-                          regalosCanjeados => this.filtroCanjeados(regalosCanjeados),
-                          error => this.errorMessage = <any>error);
-                      }
-    this.regalosCanjeados = this.regalos; 
+      this.regalosService.getRegalos(String(idUser))
+                          .subscribe(
+                            regalosCanjeados => this.filtroCanjeados(regalosCanjeados),
+                            error => this.errorMessage = <any>error);
+    }
+      this.regalosCanjeados = this.regalos; 
     if (this.routeParams.get('acepta') == "si"){
       this.mensjRegAceptado = "       El regalo fue aceptado correctamente."
     }
