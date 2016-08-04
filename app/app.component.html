@@ -65,7 +65,7 @@
   		
   		<div *ngIf="isLogged" class="my-perfil-link">
 			<a md-list-item [routerLink]="['Rubros']">
-	        	<span md-line>{{userState.user.email}}</span>
+	        	<span md-line>{{userState.user.firstName + " " + userState.user.lastName}}</span>
 	      	</a>
 		</div>
 		<div *ngIf="!isLogged" class="my-login-link">

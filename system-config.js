@@ -35,7 +35,8 @@ var materialPkgs = [
     'input',
     'radio',
     'checkbox',
-    'progress-circle'
+    'progress-circle',
+    'tabs'
 ];
 materialPkgs.forEach(function (pkg) {
     packages[("@angular2-material/" + pkg)] = { main: pkg + ".js" };

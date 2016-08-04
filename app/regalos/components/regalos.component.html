@@ -3,25 +3,23 @@
 <h3 class="seccion-title">{{message}}</h3>
 </div>
 <div class="card-container">
+  <h3 *ngIf="!tieneRegalos">Todav&iacute;a no tenes ning&uacute;n regalo</h3>
+  <md-card *ngFor="let regalo of noCanjeados">
+    <div class="my-image">
+      <img md-card-image [alt]="regalo.getName()" src="{{hostImage + regalo.getImageFileName()}}">
+    </div>
 
-	<md-card *ngFor="let regalo of noCanjeados">
-	<img align="right" src="{{hostImage + regalo.getImageFileName()}}" height="150" width="150">
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">{{regalo.getName()}}</span>
-            <span class="md-subhead"></span>
-          </md-card-title-text>
-          <md-card-content>
-          <p> </p>
-          <p><u>Marca:</u> {{regalo.getBrand()}}</p>
-          <div class="message" style="color:#FF0000" *ngIf="regalo.getCodigo() == codigoRegaloProxAVencer">¡Atención! Este es tu regalo que está más próximo a expirar.</div>
-   		</md-card-content>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <button md-raised-button (click)="canjear(regalo)" color="accent">Aceptar</button>
-          <button md-raised-button (click)="regalar(regalo);" color="accent">Regalar</button>
-        </md-card-actions>
-      </md-card>
+    <div class="my-image-detail">
+      <md-card-title>{{regalo.getName()}}</md-card-title>
+      <md-card-subtitle>{{regalo.getBrand()}}</md-card-subtitle>
+      <div class="message" style="color:#FF0000" *ngIf="regalo.getCodigo() == codigoRegaloProxAVencer">¡Atención! Este es tu regalo que está más próximo a expirar.</div>
+    </div>
+    <md-card-actions layout="row" layout-align="end center">
+      <button md-raised-button (click)="canjear(regalo)" color="primary">Aceptar</button>
+      <button md-raised-button (click)="regalar(regalo);" color="primary">Regalar</button>
+    </md-card-actions>
+
+  </md-card>
       
 </div>
 <div class="message" *ngIf="messageCanj">

@@ -2,15 +2,14 @@
   "_args": [
     [
       {
-        "raw": "@angular2-material/menu@^2.0.0-alpha.5-2",
-        "scope": "@angular2-material",
-        "escapedName": "@angular2-material%2fmenu",
         "name": "@angular2-material/menu",
+        "raw": "@angular2-material/menu@^2.0.0-alpha.5-2",
         "rawSpec": "^2.0.0-alpha.5-2",
+        "scope": "@angular2-material",
         "spec": ">=2.0.0-alpha.5-2 <3.0.0",
         "type": "range"
       },
-      "/home/ediaz/devel/repositorio/tallerDesaI/front-end/usuario/p4u"
+      "/home/nestor/desa/test/p4u"
     ]
   ],
   "_from": "@angular2-material/menu@>=2.0.0-alpha.5-2 <3.0.0",
@@ -24,17 +23,16 @@
     "tmp": "tmp/menu-2.0.0-alpha.6-2.tgz_1468378875968_0.9617248731665313"
   },
   "_npmUser": {
-    "name": "angular2-material",
-    "email": "angular-core+npm@google.com"
+    "email": "angular-core+npm@google.com",
+    "name": "angular2-material"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "@angular2-material/menu@^2.0.0-alpha.5-2",
-    "scope": "@angular2-material",
-    "escapedName": "@angular2-material%2fmenu",
     "name": "@angular2-material/menu",
+    "raw": "@angular2-material/menu@^2.0.0-alpha.5-2",
     "rawSpec": "^2.0.0-alpha.5-2",
+    "scope": "@angular2-material",
     "spec": ">=2.0.0-alpha.5-2 <3.0.0",
     "type": "range"
   },
@@ -45,7 +43,7 @@
   "_shasum": "1f20f8718e338bf4e7dd4cc352b66bff2f071b75",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/menu@^2.0.0-alpha.5-2",
-  "_where": "/home/ediaz/devel/repositorio/tallerDesaI/front-end/usuario/p4u",
+  "_where": "/home/nestor/desa/test/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -69,8 +67,8 @@
   "main": "./menu.js",
   "maintainers": [
     {
-      "name": "angular2-material",
-      "email": "angular-core+npm@google.com"
+      "email": "angular-core+npm@google.com",
+      "name": "angular2-material"
     }
   ],
   "name": "@angular2-material/menu",

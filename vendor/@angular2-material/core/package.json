@@ -2,15 +2,14 @@
   "_args": [
     [
       {
-        "raw": "@angular2-material/core@^2.0.0-alpha.5-2",
-        "scope": "@angular2-material",
-        "escapedName": "@angular2-material%2fcore",
         "name": "@angular2-material/core",
+        "raw": "@angular2-material/core@^2.0.0-alpha.5-2",
         "rawSpec": "^2.0.0-alpha.5-2",
+        "scope": "@angular2-material",
         "spec": ">=2.0.0-alpha.5-2 <3.0.0",
         "type": "range"
       },
-      "/home/ediaz/devel/repositorio/tallerDesaI/front-end/usuario/p4u"
+      "/home/nestor/desa/test/p4u"
     ]
   ],
   "_from": "@angular2-material/core@>=2.0.0-alpha.5-2 <3.0.0",
@@ -24,17 +23,16 @@
     "tmp": "tmp/core-2.0.0-alpha.6-2.tgz_1468378849375_0.729686220176518"
   },
   "_npmUser": {
-    "name": "angular2-material",
-    "email": "angular-core+npm@google.com"
+    "email": "angular-core+npm@google.com",
+    "name": "angular2-material"
   },
   "_npmVersion": "3.7.5",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "@angular2-material/core@^2.0.0-alpha.5-2",
-    "scope": "@angular2-material",
-    "escapedName": "@angular2-material%2fcore",
     "name": "@angular2-material/core",
+    "raw": "@angular2-material/core@^2.0.0-alpha.5-2",
     "rawSpec": "^2.0.0-alpha.5-2",
+    "scope": "@angular2-material",
     "spec": ">=2.0.0-alpha.5-2 <3.0.0",
     "type": "range"
   },
@@ -45,7 +43,7 @@
   "_shasum": "c46fc4e3d1eef32a3bd6051ac10afe408946a2f5",
   "_shrinkwrap": null,
   "_spec": "@angular2-material/core@^2.0.0-alpha.5-2",
-  "_where": "/home/ediaz/devel/repositorio/tallerDesaI/front-end/usuario/p4u",
+  "_where": "/home/nestor/desa/test/p4u",
   "bugs": {
     "url": "https://github.com/angular/material2/issues"
   },
@@ -68,15 +66,15 @@
   "main": "./core.js",
   "maintainers": [
     {
-      "name": "angular2-material",
-      "email": "angular-core+npm@google.com"
+      "email": "angular-core+npm@google.com",
+      "name": "angular2-material"
     }
   ],
   "name": "@angular2-material/core",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/core": "^2.0.0-rc.4",
-    "@angular/common": "^2.0.0-rc.4"
+    "@angular/common": "^2.0.0-rc.4",
+    "@angular/core": "^2.0.0-rc.4"
   },
   "readme": "ERROR: No README data found!",
   "repository": {

@@ -1,44 +1,57 @@
-<h3 class="seccion-title">Vidriera</h3>
-<div *ngIf="isWaiting" class="my-progress-circle">
-  <md-progress-circle mode="indeterminate"
-                      color="warn"></md-progress-circle>
-</div>
-<div class="card-container">
-	<md-card *ngFor="let producto of productos">
-	  <img *ngIf="!producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
-	  <img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+<md-tab-group class="demo-tab-group">
+  <md-tab >
+    <template md-tab-label>Vidriera</template>
+    <template md-tab-content class="my-tab-content">
+      <div *ngIf="isWaiting" class="my-progress-circle">
+	  <md-progress-circle mode="indeterminate"
+	                      color="warn"></md-progress-circle>
+	</div>
+	<div class="card-container">
+		<md-card *ngFor="let producto of productos">
+		  <div class="my-image">
+	  		<img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+		  </div>
 
-	  <md-card-title>{{producto.getName()}}</md-card-title>
+		  <div class="my-image-detail">
+			  <md-card-title>{{producto.getName()}}</md-card-title>
+			  <md-card-subtitle>{{producto.getBrand()}}</md-card-subtitle>
+			  <md-card-subtitle>${{producto.getCost()}}</md-card-subtitle>
+		  </div>
+		  <md-card-actions align="end">
+		    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
+		  </md-card-actions>
+		</md-card>
+	</div>
 
-	  <md-card-content class="secondary">
-	    <h4>Precio: ${{producto.getCost()}}</h4>
-	    <!--h4 *ngIf="producto.getFree()" >Obtenelo <span>GRATIS</span></h4-->
-	  </md-card-content>
-	  <md-card-actions align="end">
-	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
-	  </md-card-actions>
-	</md-card>
-</div>
+    </template>
+  </md-tab>
+  <md-tab *ngIf="isLogged">
+    <template md-tab-label>Recomendados</template>
+    <template md-tab-content>
+      <div *ngIf="isLogged && isWaiting" class="my-progress-circle">
+	  <md-progress-circle mode="indeterminate"
+	                      color="warn"></md-progress-circle>
+	</div>
+	<div *ngIf="isLogged" class="card-container">
+		<md-card *ngFor="let producto of prodRecomendados">
 
-<h3 *ngIf="isLogged" class="seccion-title">Recomendados para vos</h3>
-<div *ngIf="isLogged && isWaiting" class="my-progress-circle">
-  <md-progress-circle mode="indeterminate"
-                      color="warn"></md-progress-circle>
-</div>
-<div *ngIf="isLogged" class="card-container">
-	<md-card *ngFor="let producto of prodRecomendados">
+		  <div class="my-image">
+	  		<img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+		  </div>
 
-	  <img *ngIf="!producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="default-store-350x350.jpg">
-	  <img *ngIf="producto.getImageFileName()" md-card-image [alt]="producto.getName()" src="{{hostImage + producto.getImageFileName()}}">
+		  <div class="my-image-detail">
+			  <md-card-title>{{producto.getName()}}</md-card-title>
+			  <md-card-subtitle>{{producto.getBrand()}}</md-card-subtitle>
+			  <md-card-subtitle>${{producto.getCost()}}</md-card-subtitle>
+		  </div>
+		  <md-card-actions align="end">
+		    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
+		  </md-card-actions>
+		</md-card>
+	</div>	
 
-	  <md-card-title>{{producto.getName()}}</md-card-title>
 
-	  <md-card-content class="secondary">
-	    <h4>Precio: ${{producto.getCost()}}</h4>
-	  </md-card-content>
-	  <md-card-actions align="end">
-	    <button md-button color="primary" (click)="realizarOrden(producto);" >Comprar</button>
-	  </md-card-actions>
-	</md-card>
-</div>	
+    </template>
+  </md-tab>
+</md-tab-group>
 
