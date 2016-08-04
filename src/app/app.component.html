@@ -30,12 +30,16 @@
           <md-nav-list>
 		      <a md-list-item *ngFor="let notificacion of notificaciones">	        
 		        <span md-line>{{notificacion.getSender()}} te a enviado un regalo</span>
+		      </a>
+			  <a md-list-item (click)="limpiarNotificaciones();sidenavNotificacion.close()">
+		        <a [routerLink]="['Regalos']" style="color: blue;
+					text-decoration: underline;">Ver regalos</a>
+		      </a>
+		      <a md-list-item>		      		    	
+		        <button (click)="limpiarNotificaciones();sidenavNotificacion.close()" md-raised-button color="warn">Ok</button>
 		      </a>	      
 		    </md-nav-list>
-        </form>	        
-	    <md-card-actions align="center">
-        	<button (click)="limpiarNotificaciones();sidenavNotificacion.close()" md-raised-button color="warn">Ok</button>
-      	</md-card-actions>
+        </form>
   	</md-sidenav>
   	
 	<md-toolbar color="warn" >

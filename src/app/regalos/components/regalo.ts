@@ -72,14 +72,15 @@ export class Regalo {
 		return <string> this._data4.get("imageFileName");
 	}
 	
-	
-
 	setItemId(value:number) {
 		return new Regalo(this._data.set('id', value));
 	}
+	
 	setName(value:string) {
 		return new Regalo(this._data.set('name', value));
 	}
 	
-
+	getSender() {
+		return <boolean> this._data.get("sender");
+	}
 }
