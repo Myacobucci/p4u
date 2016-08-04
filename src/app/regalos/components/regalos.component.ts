@@ -144,7 +144,9 @@ export class RegalosComponent implements OnInit {
 
      let link = ['Vidriera',];
      this.router.navigate(link);
-     let link2 = ['Regalos', {acepta: "si"}];
+     let link2 = ['Vidriera', {acepta: "si"}];
+     this.router.navigate(link2);
+     this.router.navigate(link);
      this.router.navigate(link2);
    }
    let a = "a";

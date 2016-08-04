@@ -106,7 +106,7 @@ export class RegalarComponent implements OnInit {
                           userState => this.updateState(userState),
                           error =>  this.errorMessage = <any>error);
        
-    let link = ['Regalos', {regaloEnviado: "si"}];
+    let link = ['Vidriera', {regaloEnviado: "si"}];
     this.router.navigate(link);
     }
   }
